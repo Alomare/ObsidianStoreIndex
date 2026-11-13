@@ -1,0 +1,15 @@
+{
+  "kit": [
+    "Alomare/ObsidianAPI",
+    "Alomare/ObsidianPatches",
+    "Alomare/ObsidianTrainer"
+  ],
+  "mods": [
+    "Alomare/HD1-BetterHUD",
+    "Alomare/HD1-PhotoMode",
+    "Alomare/HD1-EnhancedVisuals",
+    "Alomare/HD1-IntegratedThirdPerson",
+    "Alomare/HD1-CustomCrosshair",
+    "Alomare/HD1-HelldiversArcade"
+  ]
+}

@@ -1,0 +1,36 @@
+# Rebuilds index.json and img/ from the releases of the listed mods, and commits what changed.
+name: Build index
+
+on:
+  push:
+    branches: [main]
+    paths: ["mods.json", "tools/**", ".github/workflows/build.yml"]
+  schedule:
+    - cron: "17 */6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: build-index
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pillow==11.0.0
+      - run: python tools/build.py
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Commit
+        run: |
+          git add index.json img
+          if git diff --cached --quiet; then echo "No change"; exit 0; fi
+          git -c user.name=Alomare -c user.email=86606696+Alomare@users.noreply.github.com commit -m "Index: rebuilt from the releases"
+          git push
