@@ -1,4 +1,7 @@
 {
+  "verified": [
+    "Alomare"
+  ],
   "kit": [
     "Alomare/ObsidianAPI",
     "Alomare/ObsidianPatches",

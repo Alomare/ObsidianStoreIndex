@@ -6,7 +6,7 @@ The list of mods the **STORE** tab of [Obsidian](https://github.com/Alomare/Obsi
 
 | File | What it holds |
 |---|---|
-| `mods.json` | The repositories in the Store: `kit` for the Obsidian Kit, `mods` for the rest. Edited by hand. |
+| `mods.json` | The repositories in the Store: `kit` for the Obsidian Kit, `mods` for the rest, and `verified`, the GitHub accounts whose mods carry the Obsidian Verified tag. Edited by hand. |
 | `index.json` | Built from the releases. Do not edit. |
 | `img/` | The icon and the thumbnail of each mod, built with `index.json`. |
 | `tools/build.py` | The build. |
@@ -15,9 +15,8 @@ The list of mods the **STORE** tab of [Obsidian](https://github.com/Alomare/Obsi
 
 `tools/build.py` reads each repository at the newest stable release (or the newest release, when none is stable):
 
-- `obsidian.json`: id, name, description, version, scope, requirements and options.
-- `README.md`: the text of the mod page, without the sections about installing, building, tests, credits and the license, and without pictures.
-- The icon the manifest names and `thumbnail.jpg`, from the release, else from `main`, else from `dev`.
+- `obsidian.json`: id, name, authors, version, scope, requirements and options.
+- From `dev`, else `main`, else the release, so they can change between releases: the description in `obsidian.json`, `README.md` (the text of the mod page, without the sections about installing, building, tests, credits and the license, and without pictures), the icon the manifest names and `thumbnail.jpg`.
 - The notes of the last ten releases, with the date and the channel (stable, beta and others, from the tag).
 
 The workflow in `.github/workflows/build.yml` runs the build every six hours, on a change to `mods.json` or the build, and when started by hand, and commits only what changed.
@@ -40,7 +39,8 @@ Add the repository to `mods` in `mods.json`.
 
 | Field | Meaning |
 |---|---|
-| `id`, `name`, `summary` | From `obsidian.json` (English). |
+| `id`, `name`, `summary`, `authors` | From `obsidian.json` (English). |
+| `verified` | The owner of the repository is listed in `verified` in `mods.json`. |
 | `description` | Markdown from the README. |
 | `version`, `released` | The newest stable release and the date. |
 | `added` | The date of the first release. |

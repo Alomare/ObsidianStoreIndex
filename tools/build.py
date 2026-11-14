@@ -1,6 +1,7 @@
 # Builds index.json and img/ from the repositories listed in mods.json, as each one is at its newest
-# stable release: the obsidian.json and the README at that tag, the icon the manifest names and
-# thumbnail.jpg, and the notes of the last releases. Obsidian reads index.json and the pictures from the raw
+# stable release: the obsidian.json at that tag, the notes of the last releases, and the README, the
+# description, the icon the manifest names and thumbnail.jpg from dev, else main, else the tag (text and
+# pictures can change between releases). Obsidian reads index.json and the pictures from the raw
 # files of this repository, so the Store costs no GitHub API call.
 #
 #   python tools/build.py            (uses GITHUB_TOKEN when set, else `gh auth token`, else no token)
@@ -111,7 +112,7 @@ def picture(data, slug, kind, size):
     return "img/" + name
 
 
-def entry(repo, kit):
+def entry(repo, kit, verified):
     latest = api(f"/repos/{repo}/releases/latest")
     releases = [r for r in (api(f"/repos/{repo}/releases?per_page=100") or []) if not r.get("draft")]
     if not latest and releases:
@@ -121,9 +122,9 @@ def entry(repo, kit):
     tag = latest["tag_name"]
     m = json.loads(raw(repo, tag, "obsidian.json"))
     slug = re.sub(r"[^a-z0-9]+", "-", m["id"].lower()).strip("-")
-    # A picture comes from the release, else from main, else from dev: a new thumbnail can land before the next release.
+    # Text and pictures come from dev, else main, else the release: they can change before the next release.
     def pic(path):
-        for ref in (tag, "main", "dev"):
+        for ref in ("dev", "main", tag):
             data = raw(repo, ref, path)
             if data:
                 return data
@@ -134,7 +135,13 @@ def entry(repo, kit):
         icon = picture(data, slug, "icon", ICON) if data else None
     data = pic("thumbnail.jpg")
     banner = picture(data, slug, "banner", BANNER) if data else None
-    text = raw(repo, tag, "README.md")
+    text = pic("README.md")
+    head = pic("obsidian.json")
+    try:
+        summary = en(json.loads(head).get("description")) if head else ""
+    except ValueError:
+        summary = ""
+    summary = summary or en(m.get("description"))
     version = m["version"]
     vers = [{"version": r["tag_name"].lstrip("vV"), "date": (r.get("published_at") or "")[:10] or None,
              "channel": channel(r["tag_name"]), "notes": notes(r.get("body"))} for r in releases[:VERSIONS]]
@@ -142,7 +149,9 @@ def entry(repo, kit):
     return {
         "id": m["id"],
         "name": en(m["name"]),
-        "summary": en(m.get("description")),
+        "summary": summary,
+        "authors": [a for a in m.get("authors") or [] if isinstance(a, str)],
+        "verified": repo.split("/")[0].lower() in verified,
         "description": readme(text.decode("utf-8")) if text else "",
         "version": version,
         "early": version.split(".")[0] == "0",
@@ -165,7 +174,10 @@ def entry(repo, kit):
 def main():
     src = json.load(open(os.path.join(ROOT, "mods.json"), encoding="utf-8"))
     os.makedirs(IMG, exist_ok=True)
-    mods = [entry(r, True) for r in src["kit"]] + [entry(r, False) for r in src["mods"]]
+    # Obsidian Verified goes by the GitHub account that owns the repository, which only that account can
+    # publish from; the authors in obsidian.json are written by the mod and prove nothing.
+    verified = {o.lower() for o in src.get("verified", [])}
+    mods = [entry(r, True, verified) for r in src["kit"]] + [entry(r, False, verified) for r in src["mods"]]
     ids = [m["id"] for m in mods]
     if len(set(ids)) != len(ids):
         raise SystemExit("two repositories give the same mod id")
