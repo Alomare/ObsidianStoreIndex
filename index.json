@@ -11,6 +11,14 @@
    "scope": "library",
    "requires": [],
    "options": 1,
+   "option_list": [
+    {
+     "label": "Open the menu with a controller",
+     "description": "The buttons that open and close the F6 menu from a controller, pressed together. In the menu, the D-pad or the left stick moves, A selects, B goes back, Y resets a row, and LB and RB switch pages.",
+     "group": null
+    }
+   ],
+   "option_groups": [],
    "repo": "Alomare/ObsidianAPI",
    "kit": true,
    "icon": "img/obsidian-api-icon-976df8f8d5.jpg",
@@ -92,6 +100,64 @@
     "obsidian.api"
    ],
    "options": 11,
+   "option_list": [
+    {
+     "label": "Widescreen fixes",
+     "description": "No black bars on screens wider than 16:9, and the objective list, dialogue boxes and galaxy map panels at the real edges of the screen.",
+     "group": null
+    },
+    {
+     "label": "Expedite mission end",
+     "description": "Faster gives each results screen about a second. Instant skips to the last one. Rewards are saved either way.",
+     "group": null
+    },
+    {
+     "label": "Skip intro",
+     "description": "No logos or intro video at launch.",
+     "group": null
+    },
+    {
+     "label": "Skip login screen",
+     "description": "Starts on the ship, still online, with keyboard and mouse as the player 1 controls.",
+     "group": null
+    },
+    {
+     "label": "Skip war briefs",
+     "description": "Hides the war briefs at login and on the galaxy map, including the updates shown as the war moves. The end of a war still plays.",
+     "group": null
+    },
+    {
+     "label": "Skip planet scanning",
+     "description": "No planet discovery animation after a liberation or a new sector.",
+     "group": null
+    },
+    {
+     "label": "Dynamic solo pause",
+     "description": "With a single player in the mission, the pause menu freezes the game, even in a public or friends-only lobby. The game resumes as soon as someone joins.",
+     "group": null
+    },
+    {
+     "label": "Aim cursor always visible",
+     "description": "On PC, the cursor keeps the aiming look at all times, instead of dimming between shots.",
+     "group": null
+    },
+    {
+     "label": "Toggle minimap",
+     "description": "The map key opens the minimap and keeps it open until pressed again, instead of only while held.",
+     "group": null
+    },
+    {
+     "label": "Weapon recoil animation fix",
+     "description": "Every weapon taken in hand plays the matching recoil animation, whatever was in hand before.",
+     "group": null
+    },
+    {
+     "label": "Sprint pose fix",
+     "description": "Sprinting right after getting up from a dive shows the normal running pose, instead of an upper body stuck until the sprint starts over.",
+     "group": null
+    }
+   ],
+   "option_groups": [],
    "repo": "Alomare/ObsidianPatches",
    "kit": true,
    "icon": "img/obsidian-qol-icon-6bb7fca71d.jpg",
@@ -173,6 +239,14 @@
     "obsidian.api"
    ],
    "options": 1,
+   "option_list": [
+    {
+     "label": "Keep saved edits",
+     "description": "Applies the kept edits each time the game starts. The multiplayer check can't see them, so they belong in lobbies where everyone agreed to them.",
+     "group": null
+    }
+   ],
+   "option_groups": [],
    "repo": "Alomare/ObsidianTrainer",
    "kit": true,
    "icon": "img/obsidian-trainer-icon-717943693e.jpg",
@@ -254,6 +328,74 @@
     "obsidian.api"
    ],
    "options": 13,
+   "option_list": [
+    {
+     "label": "Ammo counter",
+     "description": "Rounds left in the magazine, over the magazine count, for weapons that fire rounds. Hidden while calling a stratagem.",
+     "group": null
+    },
+    {
+     "label": "Grenade counter",
+     "description": "Replaces the lower grenade icon on each player card with the number of grenades, such as x3, so counts above two show too.",
+     "group": null
+    },
+    {
+     "label": "Player health bars",
+     "description": "A red bar under each player card, with a white chunk fading where health was lost and a yellow bar over it while a shield holds. After 10 seconds at full health the bar fades to grey and half opacity.",
+     "group": null
+    },
+    {
+     "label": "Health numbers",
+     "description": "Current and maximum health at the right of each player bar.",
+     "group": null
+    },
+    {
+     "label": "Stamina bar",
+     "description": "A thin white bar under the health bar of each player on this computer, emptying while sprinting and filling back up after. After 10 seconds full the bar fades to grey and half opacity. Players on other computers get none, as the game does not send stamina over the network.",
+     "group": null
+    },
+    {
+     "label": "Enemy health bars",
+     "description": "A bar over every enemy the player hits and every heavy that any player hurts. The bar of an enemy out of view waits at the edge of the screen. In the shoulder view of Integrated Third Person, that bar hides until the enemy is in view.",
+     "group": null
+    },
+    {
+     "label": "Reload circle",
+     "description": "A ring to the left of each local Helldiver that fills while the weapon in hand reloads.",
+     "group": null
+    },
+    {
+     "label": "Ammo circle",
+     "description": "A yellow ring beside each local Helldiver with the share of the magazine left, fading to red from 30% to empty. Lasers fill the ring with heat, pulsing between yellow and red from half heat, faster as it heats. Arc weapons fill it in blue with the charge, dim until the charge can fire. Empty or overheated, the ring shakes and flashes red, with the reload button inside. Shows from a shot, hides after a reload, and fades out 8 seconds after the last shot.",
+     "group": null
+    },
+    {
+     "label": "Hide on-player health bar",
+     "description": "Takes away the game's own red bar over each Helldiver.",
+     "group": null
+    },
+    {
+     "label": "Hide on-player recovery bar",
+     "description": "Takes away the game's own bar over a downed Helldiver getting back up.",
+     "group": null
+    },
+    {
+     "label": "Damage numbers",
+     "description": "The damage dealt, where it lands: on enemies the player hits, on players losing health, or both.",
+     "group": null
+    },
+    {
+     "label": "Damage numbers mode",
+     "description": "Stacked shows a number for each hit, rising out of the way at once. Accumulated adds every hit on one target into one number that stays in place and fades out, and a new one starts only once it is gone.",
+     "group": null
+    },
+    {
+     "label": "Damage numbers position",
+     "description": "Above health bar needs Enemy health bars, and uses the entity spot where no bar shows. At damage instance uses the spot each hit landed.",
+     "group": null
+    }
+   ],
+   "option_groups": [],
    "repo": "Alomare/HD1-BetterHUD",
    "kit": false,
    "icon": "img/alomare-betterhud-icon-f8848148c9.jpg",
@@ -335,6 +477,14 @@
     "obsidian.api"
    ],
    "options": 1,
+   "option_list": [
+    {
+     "label": "Fix skies",
+     "description": "Clears the part of the picture past the level, where the game leaves smears of old frames, and adds the skies of the Sky row. Takes effect at the next launch.",
+     "group": null
+    }
+   ],
+   "option_groups": [],
    "repo": "Alomare/HD1-PhotoMode",
    "kit": false,
    "icon": "img/alomare-photomode-icon-2a2b0ea7c2.jpg",
@@ -416,6 +566,64 @@
     "obsidian.api"
    ],
    "options": 11,
+   "option_list": [
+    {
+     "label": "Screen dust",
+     "description": "The layer of dust that drifts across the picture on most planets.",
+     "group": null
+    },
+    {
+     "label": "Sharpening",
+     "description": "Restores the fine detail that anti-aliasing softens, with less at strong edges so they don't ring. Takes effect at the next launch.",
+     "group": null
+    },
+    {
+     "label": "Ambient light",
+     "description": "Deepens the dark tones and spreads a soft glow around lit areas, in place of the game's bloom. The HUD keeps the game's colors. Takes effect at the next launch.",
+     "group": null
+    },
+    {
+     "label": "Desert ambient light",
+     "description": "Ambient light in daytime missions on desert planets. Off by default, as the bright sand makes the picture too bright with it. Applies at once.",
+     "group": null
+    },
+    {
+     "label": "Ambient occlusion",
+     "description": "Darkens the light where surfaces meet, such as at the foot of walls and under crates and rocks.",
+     "group": null
+    },
+    {
+     "label": "Ambient occlusion affects",
+     "description": "Ambient light darkens only the light from the sky, so the effect shows mostly in shade. All daylight darkens sunlight too.",
+     "group": null
+    },
+    {
+     "label": "Shadow resolution",
+     "description": "The size of the sun's shadow map; larger gives sharper shadows. 8192 uses 256 MB of video memory. Takes effect at the next launch.",
+     "group": null
+    },
+    {
+     "label": "Shadow distance",
+     "description": "How far from the camera the sun casts shadows. The game stops at about 20 m, which can leave the top of the screen without shadows when zoomed out. Takes effect at the next launch.",
+     "group": null
+    },
+    {
+     "label": "Shadow edges",
+     "description": "Softens the hard, stepped edges of sun shadows. Takes effect at the next launch.",
+     "group": null
+    },
+    {
+     "label": "Render scale",
+     "description": "Draws the scene above the screen's resolution and scales it down, for cleaner edges. 2x costs about four times the pixel work. Takes effect at the next launch.",
+     "group": null
+    },
+    {
+     "label": "Model detail distance",
+     "description": "How far from the camera models keep their most detailed version.",
+     "group": null
+    }
+   ],
+   "option_groups": [],
    "repo": "Alomare/HD1-EnhancedVisuals",
    "kit": false,
    "icon": "img/alomare-enhancedvisuals-icon-1f9486e80a.jpg",
@@ -461,6 +669,139 @@
     "obsidian.api"
    ],
    "options": 21,
+   "option_list": [
+    {
+     "label": "On-foot camera distance (m)",
+     "description": "Meters between the camera and the Helldiver on foot in a mission.",
+     "group": "camera"
+    },
+    {
+     "label": "Ship camera distance (m)",
+     "description": "Meters between the camera and the Helldiver on the Super Destroyer.",
+     "group": "camera"
+    },
+    {
+     "label": "On-foot field of view (degrees)",
+     "description": "Vertical field of view on foot.",
+     "group": "camera"
+    },
+    {
+     "label": "Shoulder",
+     "description": "The side of the Helldiver the camera sits on. The swap key changes it in a mission. A mech camera starts on the same side; in any vehicle the swap key moves the camera from left to the middle to right.",
+     "group": "camera"
+    },
+    {
+     "label": "Look sensitivity",
+     "description": "How fast the camera turns with the mouse or the right stick.",
+     "group": "camera"
+    },
+    {
+     "label": "Invert vertical look",
+     "description": "Moving the mouse up looks down.",
+     "group": "camera"
+    },
+    {
+     "label": "Dive camera",
+     "description": "Brings the camera in close and down during a dive, quickly but smoothly, and eases it back out once the dive ends.",
+     "group": "camera"
+    },
+    {
+     "label": "Hellpod camera",
+     "description": "When the Helldiver drops in, the camera rides the Hellpod down looking at the ground, shakes on the landing, then glides into the shoulder view.",
+     "group": "camera"
+    },
+    {
+     "label": "Camera shake",
+     "description": "How much explosions, impacts and the Hellpod landing shake the shoulder camera.",
+     "group": "camera"
+    },
+    {
+     "label": "Vehicle camera distance (m)",
+     "description": "Meters between the camera and the vehicle: mech, APC, bike and turrets. A mech camera sits beside the shoulder, other vehicles in the middle and high.",
+     "group": "vehicles"
+    },
+    {
+     "label": "Vehicle field of view (degrees)",
+     "description": "Vertical field of view in a vehicle.",
+     "group": "vehicles"
+    },
+    {
+     "label": "Enemy indicators",
+     "description": "A ring around the crosshair in four segments. The right, back and left segments show faintly while an enemy is in range on that side, and stronger within half the range. The side with the closest enemy within half the range also shows a warning triangle. Hidden while the game is paused.",
+     "group": "indicators"
+    },
+    {
+     "label": "Indicator range (m)",
+     "description": "Enemies closer than this show on the ring; within half of it, the segment is stronger.",
+     "group": "indicators"
+    },
+    {
+     "label": "Hit direction",
+     "description": "A bar near the crosshair points toward where a hit came from and fades within 2 seconds: red when health is lost, yellow when the personal shield takes it, white when the vehicle does. A bar for an enemy follows the enemy.",
+     "group": "indicators"
+    },
+    {
+     "label": "Names above heads",
+     "description": "In third person, the name cards of players show above their heads instead of at their feet.",
+     "group": "indicators"
+    },
+    {
+     "label": "Long view distance",
+     "description": "Pushes the fog, the far edge of the view and the detail of distant models out, so distant enemies and landmarks show.",
+     "group": "world"
+    },
+    {
+     "label": "Sky",
+     "description": "Draws a sky over the level in the color of the planet fog, instead of the smears the game leaves past the level. Needs a deploy.",
+     "group": "world"
+    },
+    {
+     "label": "Footsteps",
+     "description": "In third person, each footstep of Helldivers and enemies plays more than once, so steps out of view are easier to hear. Louder plays a step twice, Loudest four times. Normal leaves the steps as in the game.",
+     "group": "sound"
+    },
+    {
+     "label": "Max weapon range",
+     "description": "Every weapon reaches as far as the farthest one, so targets far off in the third-person view can be hit. Changes the shared game: off in lobbies with players who don't run it.",
+     "group": "lobby"
+    },
+    {
+     "label": "Far enemy detection",
+     "description": "Enemies notice and chase the squad from much farther away. Alarm range stays as in the game. Changes the shared game: off in lobbies with players who don't run it.",
+     "group": "lobby"
+    },
+    {
+     "label": "Free movement",
+     "description": "In third person, the Helldiver is no longer held on the shared top-down screen with the squad. Changes the shared game: off in lobbies with players who don't run it.",
+     "group": "lobby"
+    }
+   ],
+   "option_groups": [
+    {
+     "id": "camera",
+     "label": "Camera on foot"
+    },
+    {
+     "id": "vehicles",
+     "label": "Camera in vehicles"
+    },
+    {
+     "id": "indicators",
+     "label": "Indicators and names"
+    },
+    {
+     "id": "world",
+     "label": "View distance and sky"
+    },
+    {
+     "id": "sound",
+     "label": "Sound"
+    },
+    {
+     "id": "lobby",
+     "label": "Lobby-wide changes"
+    }
+   ],
    "repo": "Alomare/HD1-IntegratedThirdPerson",
    "kit": false,
    "icon": null,
@@ -536,6 +877,281 @@
     "obsidian.api"
    ],
    "options": 51,
+   "option_list": [
+    {
+     "label": "Custom crosshair",
+     "description": "Draws the crosshair set here in place of the game cursor, in missions and on the ship. The menu cursor stays as it is.",
+     "group": "general"
+    },
+    {
+     "label": "Third person crosshair",
+     "description": "With Integrated Third Person, draws this crosshair where shots go, in place of the one from that mod. The game has no cursor in third person, so a state set to Game cursor uses the default look there.",
+     "group": "general"
+    },
+    {
+     "label": "Idle shape",
+     "description": "Game cursor keeps the cursor of the game; None shows no crosshair at all.",
+     "group": "idle"
+    },
+    {
+     "label": "Idle scale",
+     "description": "Size of the whole crosshair, outline and shadow included. At 1 the pixel sizes below are drawn as set.",
+     "group": "idle"
+    },
+    {
+     "label": "Idle gap (px)",
+     "description": "Space between the center and the lines. Also sets how wide circles, brackets and the chevron sit.",
+     "group": "idle"
+    },
+    {
+     "label": "Idle length (px)",
+     "description": "Length of each line. Circles, brackets and the chevron grow with it.",
+     "group": "idle"
+    },
+    {
+     "label": "Idle thickness (px)",
+     "description": "Width of the lines. The dot is twice as wide.",
+     "group": "idle"
+    },
+    {
+     "label": "Idle color",
+     "description": "",
+     "group": "idle"
+    },
+    {
+     "label": "Idle opacity",
+     "description": "1 is solid. The outline and the shadow fade with the lines.",
+     "group": "idle"
+    },
+    {
+     "label": "Idle outline",
+     "description": "A border around every line, so the crosshair stands out on light and dark ground.",
+     "group": "idle"
+    },
+    {
+     "label": "Idle outline color",
+     "description": "",
+     "group": "idle"
+    },
+    {
+     "label": "Idle outline thickness (px)",
+     "description": "",
+     "group": "idle"
+    },
+    {
+     "label": "Idle shadow",
+     "description": "A copy behind the crosshair, moved down and to the right.",
+     "group": "idle"
+    },
+    {
+     "label": "Idle shadow color",
+     "description": "",
+     "group": "idle"
+    },
+    {
+     "label": "Idle shadow opacity",
+     "description": "",
+     "group": "idle"
+    },
+    {
+     "label": "Idle shadow offset (px)",
+     "description": "Distance down and to the right.",
+     "group": "idle"
+    },
+    {
+     "label": "Idle shadow size",
+     "description": "Scales the shadow around the center of the crosshair. Below 1 the shadow shrinks inside the lines; above 1 it reaches past them.",
+     "group": "idle"
+    },
+    {
+     "label": "Idle shadow spread (px)",
+     "description": "Widens the shadow by this many pixels on every side, on top of the outline width.",
+     "group": "idle"
+    },
+    {
+     "label": "Idle shadow blur (px)",
+     "description": "Softens the shadow edge with fainter copies up to this many pixels out. 0 keeps a sharp edge.",
+     "group": "idle"
+    },
+    {
+     "label": "Aiming shape",
+     "description": "Game cursor keeps the cursor of the game; None shows no crosshair at all.",
+     "group": "aim"
+    },
+    {
+     "label": "Aiming scale",
+     "description": "Size of the whole crosshair, outline and shadow included. At 1 the pixel sizes below are drawn as set.",
+     "group": "aim"
+    },
+    {
+     "label": "Aiming gap (px)",
+     "description": "Space between the center and the lines. Also sets how wide circles, brackets and the chevron sit.",
+     "group": "aim"
+    },
+    {
+     "label": "Aiming length (px)",
+     "description": "Length of each line. Circles, brackets and the chevron grow with it.",
+     "group": "aim"
+    },
+    {
+     "label": "Aiming gap scales with spread",
+     "description": "Opens the aiming gap by up to 12 pixels as the spread of the weapon in hand grows while firing, and closes it as the spread settles.",
+     "group": "aim"
+    },
+    {
+     "label": "Aiming thickness (px)",
+     "description": "Width of the lines. The dot is twice as wide.",
+     "group": "aim"
+    },
+    {
+     "label": "Aiming color",
+     "description": "",
+     "group": "aim"
+    },
+    {
+     "label": "Aiming opacity",
+     "description": "1 is solid. The outline and the shadow fade with the lines.",
+     "group": "aim"
+    },
+    {
+     "label": "Aiming outline",
+     "description": "A border around every line, so the crosshair stands out on light and dark ground.",
+     "group": "aim"
+    },
+    {
+     "label": "Aiming outline color",
+     "description": "",
+     "group": "aim"
+    },
+    {
+     "label": "Aiming outline thickness (px)",
+     "description": "",
+     "group": "aim"
+    },
+    {
+     "label": "Aiming shadow",
+     "description": "A copy behind the crosshair, moved down and to the right.",
+     "group": "aim"
+    },
+    {
+     "label": "Aiming shadow color",
+     "description": "",
+     "group": "aim"
+    },
+    {
+     "label": "Aiming shadow opacity",
+     "description": "",
+     "group": "aim"
+    },
+    {
+     "label": "Aiming shadow offset (px)",
+     "description": "Distance down and to the right.",
+     "group": "aim"
+    },
+    {
+     "label": "Aiming shadow size",
+     "description": "Scales the shadow around the center of the crosshair. Below 1 the shadow shrinks inside the lines; above 1 it reaches past them.",
+     "group": "aim"
+    },
+    {
+     "label": "Aiming shadow spread (px)",
+     "description": "Widens the shadow by this many pixels on every side, on top of the outline width.",
+     "group": "aim"
+    },
+    {
+     "label": "Aiming shadow blur (px)",
+     "description": "Softens the shadow edge with fainter copies up to this many pixels out. 0 keeps a sharp edge.",
+     "group": "aim"
+    },
+    {
+     "label": "Hitmarker",
+     "description": "Shows four short diagonal lines around the crosshair on a hit, at full strength first, then fading out over the time set below.",
+     "group": "hitmarker"
+    },
+    {
+     "label": "Show on hits",
+     "description": "Every hit that costs an enemy health shows the mark in the hit color.",
+     "group": "hitmarker"
+    },
+    {
+     "label": "Show on kills",
+     "description": "A kill shows the mark in the kill color, over any hit mark still fading.",
+     "group": "hitmarker"
+    },
+    {
+     "label": "Hits from",
+     "description": "Weapons in hand counts shots from the primary, the sidearm and the support weapon. Rockets, grenades, mines, sentries and stratagems count only with Everything.",
+     "group": "hitmarker"
+    },
+    {
+     "label": "Hit color",
+     "description": "",
+     "group": "hitmarker"
+    },
+    {
+     "label": "Kill color",
+     "description": "",
+     "group": "hitmarker"
+    },
+    {
+     "label": "Hit opacity",
+     "description": "How strong a hit mark shows at first, before the fade. 1 is solid.",
+     "group": "hitmarker"
+    },
+    {
+     "label": "Kill opacity",
+     "description": "How strong a kill mark shows at first, before the fade. 1 is solid.",
+     "group": "hitmarker"
+    },
+    {
+     "label": "Kill mark scale",
+     "description": "A kill mark is this many times the size of a hit mark: line length, gap and thickness alike.",
+     "group": "hitmarker"
+    },
+    {
+     "label": "Hitmarker size (px)",
+     "description": "Length of each line.",
+     "group": "hitmarker"
+    },
+    {
+     "label": "Hitmarker gap (px)",
+     "description": "Distance from the center of the crosshair to the inner end of each line, along the diagonal.",
+     "group": "hitmarker"
+    },
+    {
+     "label": "Hitmarker thickness (px)",
+     "description": "Width of the lines.",
+     "group": "hitmarker"
+    },
+    {
+     "label": "Hitmarker time (s)",
+     "description": "How long a mark takes to fade out. A new hit starts the fade again.",
+     "group": "hitmarker"
+    },
+    {
+     "label": "Hitmarker outline",
+     "description": "A black border one pixel wide, so the mark stands out on light ground.",
+     "group": "hitmarker"
+    }
+   ],
+   "option_groups": [
+    {
+     "id": "general",
+     "label": "General"
+    },
+    {
+     "id": "idle",
+     "label": "Idle"
+    },
+    {
+     "id": "aim",
+     "label": "Aiming"
+    },
+    {
+     "id": "hitmarker",
+     "label": "Hitmarker"
+    }
+   ],
    "repo": "Alomare/HD1-CustomCrosshair",
    "kit": false,
    "icon": null,
@@ -600,6 +1216,8 @@
     "alomare.betterhud"
    ],
    "options": 0,
+   "option_list": [],
+   "option_groups": [],
    "repo": "Alomare/HD1-HelldiversArcade",
    "kit": false,
    "icon": null,
