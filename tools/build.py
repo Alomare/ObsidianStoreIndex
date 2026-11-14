@@ -149,6 +149,9 @@ def entry(repo, kit):
         "scope": m.get("scope", "unspecified"),
         "requires": m.get("requires", []),
         "options": len(m.get("options") or []),
+        "option_list": [{"label": en(o.get("label")) or o.get("id", ""), "description": en(o.get("description")), "group": o.get("group")}
+                        for o in m.get("options") or []],
+        "option_groups": [{"id": g.get("id", ""), "label": en(g.get("label")) or g.get("id", "")} for g in m.get("option_groups") or []],
         "repo": repo,
         "kit": kit,
         "icon": icon,
