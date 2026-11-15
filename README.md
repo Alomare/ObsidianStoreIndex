@@ -77,6 +77,7 @@ The build checks each entry (`repo` is `owner/name`, `id` follows the id rule of
 | `scope`, `requires`, `options` | From `obsidian.json`; `options` is the count. |
 | `repo` | `owner/name` on GitHub. |
 | `stars` | The stars of the repository on GitHub, at the time of the build. |
+| `downloads` | Downloads of every asset of every published release, added up at the time of the build. |
 | `kit` | In the Obsidian Kit. |
 | `icon`, `banner` | Paths in this repository, or null. |
 | `versions` | `version`, `date`, `channel`, `notes`, newest first. |

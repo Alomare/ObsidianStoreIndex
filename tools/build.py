@@ -164,6 +164,7 @@ def entry(repo, kit, verified):
         "option_groups": [{"id": g.get("id", ""), "label": en(g.get("label")) or g.get("id", "")} for g in m.get("option_groups") or []],
         "repo": repo,
         "stars": int(info.get("stargazers_count") or 0),
+        "downloads": sum(int(a.get("download_count") or 0) for r in releases for a in r.get("assets") or []),
         "kit": kit,
         "icon": icon,
         "banner": banner,
