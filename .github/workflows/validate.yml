@@ -1,0 +1,43 @@
+# Checks a pull request that adds mods to mods.json. The checks run from the base branch, so a pull
+# request cannot change them; only the mods.json of the pull request is read from it.
+name: Validate submission
+
+on:
+  pull_request:
+    paths: ["mods.json"]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.base.ref }}
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Read the pull request
+        env:
+          PR: ${{ github.event.pull_request.number }}
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: |
+          git fetch --no-tags origin "pull/$PR/head:pr-head"
+          git show pr-head:mods.json > "$RUNNER_TEMP/pr-mods.json"
+          git show "$BASE_SHA:mods.json" > "$RUNNER_TEMP/base-mods.json"
+          git show "$BASE_SHA:index.json" > "$RUNNER_TEMP/base-index.json"
+          git diff --name-only "$BASE_SHA...pr-head" > "$RUNNER_TEMP/changed.txt"
+      - name: Check
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          AUTHOR: ${{ github.event.pull_request.user.login }}
+        run: >
+          python tools/validate.py
+          --base "$RUNNER_TEMP/base-mods.json"
+          --head "$RUNNER_TEMP/pr-mods.json"
+          --index "$RUNNER_TEMP/base-index.json"
+          --files "$RUNNER_TEMP/changed.txt"
+          --author "$AUTHOR"

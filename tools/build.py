@@ -1,4 +1,4 @@
-# Builds index.json and img/ from the repositories listed in mods.json, as each one is at its newest
+# Builds index.json and img/ from the repositories listed in mods.json, as each one is at the newest
 # stable release: the obsidian.json at that tag, the notes of the last releases, and the README, the
 # description, the icon the manifest names and thumbnail.jpg from dev, else main, else the tag (text and
 # pictures can change between releases). Obsidian reads index.json and the pictures from the raw
@@ -7,7 +7,7 @@
 #   python tools/build.py            (uses GITHUB_TOKEN when set, else `gh auth token`, else no token)
 #
 # Needs Pillow. Writes only what changed: a picture is named after a hash of the source file, so an
-# unchanged picture keeps its name and Obsidian keeps the copy it has.
+# unchanged picture keeps the same name and Obsidian keeps the copy it has.
 import hashlib
 import io
 import json
@@ -113,6 +113,7 @@ def picture(data, slug, kind, size):
 
 
 def entry(repo, kit, verified):
+    info = api(f"/repos/{repo}") or {}
     latest = api(f"/repos/{repo}/releases/latest")
     releases = [r for r in (api(f"/repos/{repo}/releases?per_page=100") or []) if not r.get("draft")]
     if not latest and releases:
@@ -162,6 +163,7 @@ def entry(repo, kit, verified):
                         for o in m.get("options") or []],
         "option_groups": [{"id": g.get("id", ""), "label": en(g.get("label")) or g.get("id", "")} for g in m.get("option_groups") or []],
         "repo": repo,
+        "stars": int(info.get("stargazers_count") or 0),
         "kit": kit,
         "icon": icon,
         "banner": banner,
@@ -169,6 +171,38 @@ def entry(repo, kit, verified):
         "added": min(dates)[:10] if dates else None,
         "versions": vers,
     }
+
+
+REPO = re.compile(r"^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$")
+ID = re.compile(r"^[a-z0-9][a-z0-9._-]{0,63}$")  # the mod id rule of Obsidian
+SCOPES = ("client", "session", "library", "expansion")
+
+
+def early_access(items, public_ids, verified):
+    """The private repositories of mods.json (early access), checked; the build cannot read them, so
+    every field is written by hand."""
+    out, seen = [], set()
+    for i, p in enumerate(items):
+        where = f"private[{i}]"
+        if not isinstance(p, dict):
+            raise SystemExit(f"{where}: not an object")
+        repo, mid, scope = p.get("repo"), p.get("id"), p.get("scope")
+        name, summary = p.get("name"), p.get("summary")
+        if not isinstance(repo, str) or not REPO.match(repo):
+            raise SystemExit(f"{where}: repo must be owner/name")
+        if not isinstance(mid, str) or not ID.match(mid):
+            raise SystemExit(f"{where}: id must be 1 to 64 lowercase letters, digits, '.', '_' or '-', starting with a letter or digit")
+        if scope not in SCOPES:
+            raise SystemExit(f"{where}: scope must be one of {', '.join(SCOPES)}")
+        for key, v in (("name", name), ("summary", summary)):
+            if not isinstance(v, str) or not v.strip():
+                raise SystemExit(f"{where}: {key} is empty")
+        if mid in public_ids or mid in seen:
+            raise SystemExit(f"{where}: the id {mid} is already used")
+        seen.add(mid)
+        out.append({"repo": repo, "id": mid, "name": name.strip(), "summary": summary.strip(), "scope": scope,
+                    "verified": repo.split("/")[0].lower() in verified})
+    return out
 
 
 def main():
@@ -181,7 +215,10 @@ def main():
     ids = [m["id"] for m in mods]
     if len(set(ids)) != len(ids):
         raise SystemExit("two repositories give the same mod id")
+    private = early_access(src.get("private") or [], set(ids), verified)
     index = {"format": FORMAT, "mods": mods}
+    if private:
+        index["private"] = private
     with open(os.path.join(ROOT, "index.json"), "w", encoding="utf-8", newline="\n") as f:
         json.dump(index, f, ensure_ascii=False, indent=1)
         f.write("\n")

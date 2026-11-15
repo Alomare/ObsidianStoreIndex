@@ -24,6 +24,7 @@
    ],
    "option_groups": [],
    "repo": "Alomare/ObsidianAPI",
+   "stars": 0,
    "kit": true,
    "icon": "img/obsidian-api-icon-976df8f8d5.jpg",
    "banner": null,
@@ -167,6 +168,7 @@
    ],
    "option_groups": [],
    "repo": "Alomare/ObsidianPatches",
+   "stars": 0,
    "kit": true,
    "icon": "img/obsidian-qol-icon-6bb7fca71d.jpg",
    "banner": null,
@@ -260,6 +262,7 @@
    ],
    "option_groups": [],
    "repo": "Alomare/ObsidianTrainer",
+   "stars": 0,
    "kit": true,
    "icon": "img/obsidian-trainer-icon-717943693e.jpg",
    "banner": null,
@@ -413,6 +416,7 @@
    ],
    "option_groups": [],
    "repo": "Alomare/HD1-BetterHUD",
+   "stars": 0,
    "kit": false,
    "icon": "img/alomare-betterhud-icon-f8848148c9.jpg",
    "banner": "img/alomare-betterhud-banner-249c90315b.jpg",
@@ -506,6 +510,7 @@
    ],
    "option_groups": [],
    "repo": "Alomare/HD1-PhotoMode",
+   "stars": 0,
    "kit": false,
    "icon": "img/alomare-photomode-icon-2a2b0ea7c2.jpg",
    "banner": "img/alomare-photomode-banner-45d6d42c2d.jpg",
@@ -649,6 +654,7 @@
    ],
    "option_groups": [],
    "repo": "Alomare/HD1-EnhancedVisuals",
+   "stars": 0,
    "kit": false,
    "icon": "img/alomare-enhancedvisuals-icon-1f9486e80a.jpg",
    "banner": "img/alomare-enhancedvisuals-banner-8479c5978f.jpg",
@@ -690,14 +696,14 @@
     "yukiorsrs"
    ],
    "verified": true,
-   "description": "An over-the-shoulder camera for HELLDIVERS (2015), for the [Obsidian](https://github.com/Alomare/ObsidianLauncher) mod manager. Based on [Third Person Camera (HD2 Style)](https://github.com/yukiorsrs/third-person-camera-helldivers) by **yukiorsrs**, rebuilt with the permission of the author so that other mods keep working beside it.\n\nThe camera follows the Helldiver on foot, in vehicles and on the ship. Shots, grenades and stratagems go where the crosshair points. The view reaches farther, the sky over the level is filled in, a ring around the crosshair warns of enemies close by, and a bar shows where hits come from.\n\nThird Person Camera replaces 28 game scripts, so mods that change the same parts of the game stop working with it. Integrated Third Person replaces no script: every change is a hook through Obsidian.\n\n## How to use\n\n**F8** switches between third person and the top-down camera, and **H** swaps the shoulder. Both keys can be changed in Obsidian.\n\n## Playing with others\n\nThe camera and everything on screen work in any lobby. Three options change the game for the whole lobby: Max weapon range, Far enemy detection and Free movement. They run only when every player runs Obsidian with the same mods, and switch off when anyone else joins. With all three off, the mod counts as a client mod.\n\n## Known issues\n\n- Players on one computer share a screen, so third person turns off while a second local player is in, and comes back after.\n- The mod stays off while Third Person Camera is installed.\n\nMod authors can read the camera state through `obsidian.import(\"alomare.integratedthirdperson\")`: `active()`, `crosshair()` and `shoulder()`.",
-   "version": "0.4.2",
+   "description": "An over-the-shoulder camera for HELLDIVERS (2015), for the [Obsidian](https://github.com/Alomare/ObsidianLauncher) mod manager. Based on [Third Person Camera (HD2 Style)](https://github.com/yukiorsrs/third-person-camera-helldivers) by **yukiorsrs**, rebuilt with the permission of the author so that other mods keep working beside it.\n\nThe camera follows the Helldiver on foot, in vehicles and on the ship. Shots, grenades and stratagems go where the crosshair points. The view reaches farther, the sky over the level is filled in, a ring around the crosshair warns of enemies close by, and a bar shows where hits come from.\n\nThird Person Camera replaces 28 game scripts, so mods that change the same parts of the game stop working with it. Integrated Third Person replaces no script: every change is a hook through Obsidian.\n\n## How to use\n\n**F8** switches between third person and the top-down camera, and **H** swaps the shoulder. Both keys can be changed in Obsidian.\n\n## Playing with others\n\nThe camera and everything on screen work in any lobby. Four options change the game for the whole lobby: Max weapon range, Far enemy detection, Free movement and Increased throw range. They run only when every player runs Obsidian with the same mods, and switch off when anyone else joins. With all four off, the mod counts as a client mod.\n\n## Known issues\n\n- Players on one computer share a screen, so third person turns off while a second local player is in, and comes back after.\n- The mod stays off while Third Person Camera is installed.\n\nMod authors can read the camera state through `obsidian.import(\"alomare.integratedthirdperson\")`: `active()`, `crosshair()` and `shoulder()`.",
+   "version": "0.5.0",
    "early": true,
    "scope": "session",
    "requires": [
     "obsidian.api"
    ],
-   "options": 21,
+   "options": 26,
    "option_list": [
     {
      "label": "On-foot camera distance (m)",
@@ -731,7 +737,12 @@
     },
     {
      "label": "Dive camera",
-     "description": "Brings the camera in close and down during a dive, quickly but smoothly, and eases it back out once the dive ends.",
+     "description": "Brings the camera down during a dive, quickly but smoothly, and eases it back up once the dive ends.",
+     "group": "camera"
+    },
+    {
+     "label": "Downed camera",
+     "description": "While the Helldiver is down and crawling, the camera sits low, near the ground, and 1 m farther back.",
      "group": "camera"
     },
     {
@@ -785,6 +796,21 @@
      "group": "world"
     },
     {
+     "label": "Remove fog",
+     "description": "Removes the fog of the level, in third person and in the top-down view. Photo Mode shows the fog while it is open.",
+     "group": "picture"
+    },
+    {
+     "label": "Disable bloom",
+     "description": "Removes the glow around bright lights and surfaces. Photo Mode shows the bloom while it is open.",
+     "group": "picture"
+    },
+    {
+     "label": "Depth of field",
+     "description": "Game default keeps the blur of the planet. Focus on the Helldiver keeps the Helldiver sharp and blurs what is much nearer or farther. Off keeps the whole picture sharp. Photo Mode sets the depth of field while open.",
+     "group": "picture"
+    },
+    {
      "label": "Footsteps",
      "description": "In third person, each footstep of Helldivers and enemies plays more than once, so steps out of view are easier to hear. Louder plays a step twice, Loudest four times. Normal leaves the steps as in the game.",
      "group": "sound"
@@ -802,6 +828,11 @@
     {
      "label": "Free movement",
      "description": "In third person, the Helldiver is no longer held on the shared top-down screen with the squad. Changes the shared game: off in lobbies with players who don't run it.",
+     "group": "lobby"
+    },
+    {
+     "label": "Increased throw range",
+     "description": "Grenades and stratagem balls fly twice as far, on top of the Strong Arm perk. Changes the shared game: off in lobbies with players who don't run it.",
      "group": "lobby"
     }
    ],
@@ -823,6 +854,10 @@
      "label": "View distance and sky"
     },
     {
+     "id": "picture",
+     "label": "Picture"
+    },
+    {
      "id": "sound",
      "label": "Sound"
     },
@@ -832,12 +867,19 @@
     }
    ],
    "repo": "Alomare/HD1-IntegratedThirdPerson",
+   "stars": 0,
    "kit": false,
    "icon": null,
    "banner": null,
-   "released": "2026-11-13",
+   "released": "2026-11-15",
    "added": "2026-11-11",
    "versions": [
+    {
+     "version": "0.5.0",
+     "date": "2026-11-15",
+     "channel": "stable",
+     "notes": "- New: Remove fog option, on by default. Photo Mode shows the fog while it is open.\n- New: Disable bloom option, on by default. Photo Mode shows the bloom while it is open.\n- New: Depth of field option: Game default, Focus on the Helldiver, or Off (the default). Photo Mode sets the depth of field while open.\n- New: downed camera. While the Helldiver is down, the camera sits near the ground and 1 m farther back.\n- New: Increased throw range, a lobby-wide option, on by default. Grenades and stratagem balls fly twice as far, on top of the Strong Arm perk.\n- Changed: the game's own crosshair shows in third person instead of a crosshair of the mod, and Custom Crosshair replaces it when installed.\n- Changed: the own name card is hidden in third person. The cards of other players stay.\n- Changed: the camera on foot in a mission is 1 m farther away by default.\n- Changed: the dive camera only comes down and no longer moves closer.\n- Changed: the segments of the enemy indicator ring are twice as thick.\n- Fixed: the game's hardware cursor showed in third person, away from the crosshair.\n- Fixed: marks over the crew and the terminals on the Super Destroyer trailed behind the camera."
+    },
     {
      "version": "0.4.2",
      "date": "2026-11-13",
@@ -1186,6 +1228,7 @@
     }
    ],
    "repo": "Alomare/HD1-CustomCrosshair",
+   "stars": 0,
    "kit": false,
    "icon": null,
    "banner": null,
@@ -1256,6 +1299,7 @@
    "option_list": [],
    "option_groups": [],
    "repo": "Alomare/HD1-HelldiversArcade",
+   "stars": 0,
    "kit": false,
    "icon": null,
    "banner": null,
