@@ -25,6 +25,7 @@
    "option_groups": [],
    "repo": "Alomare/ObsidianAPI",
    "stars": 0,
+   "downloads": 1850,
    "kit": true,
    "icon": "img/obsidian-api-icon-976df8f8d5.jpg",
    "banner": null,
@@ -169,6 +170,7 @@
    "option_groups": [],
    "repo": "Alomare/ObsidianPatches",
    "stars": 0,
+   "downloads": 739,
    "kit": true,
    "icon": "img/obsidian-qol-icon-6bb7fca71d.jpg",
    "banner": null,
@@ -263,6 +265,7 @@
    "option_groups": [],
    "repo": "Alomare/ObsidianTrainer",
    "stars": 0,
+   "downloads": 1271,
    "kit": true,
    "icon": "img/obsidian-trainer-icon-717943693e.jpg",
    "banner": null,
@@ -417,6 +420,7 @@
    "option_groups": [],
    "repo": "Alomare/HD1-BetterHUD",
    "stars": 0,
+   "downloads": 265,
    "kit": false,
    "icon": "img/alomare-betterhud-icon-f8848148c9.jpg",
    "banner": "img/alomare-betterhud-banner-249c90315b.jpg",
@@ -511,6 +515,7 @@
    "option_groups": [],
    "repo": "Alomare/HD1-PhotoMode",
    "stars": 0,
+   "downloads": 28,
    "kit": false,
    "icon": "img/alomare-photomode-icon-2a2b0ea7c2.jpg",
    "banner": "img/alomare-photomode-banner-45d6d42c2d.jpg",
@@ -588,7 +593,7 @@
    ],
    "verified": true,
    "description": "Better graphics and extra visual effects for HELLDIVERS (2015), for the [Obsidian](https://github.com/Alomare/ObsidianLauncher) mod manager.\n\nThe mod turns on the ambient occlusion pass that the game ships but never runs, adds sharpening and an ambient light effect, raises the resolution and distance of sun shadows, softens shadow edges, keeps detailed models farther from the camera, and can draw the scene above the screen resolution.\n\n## How to use\n\n**F9** switches between Enhanced Visuals and the plain game, to compare. The key can be changed in Obsidian.\n\nFor the game textures at twice the size, see [Upscaled Textures](https://github.com/Alomare/HD1-UpscaledTextures), a separate mod that works with or without this one.\n\n## Known issues\n\n- Third Person Camera also uses F9: with both mods on, change one of the keys. Put Enhanced Visuals after Third Person Camera in the load order, or the shadow and render scale options do nothing.\n- A shadow resolution of 8192 takes 256 MB of video memory.",
-   "version": "1.1.0",
+   "version": "1.1.1",
    "early": false,
    "scope": "client",
    "requires": [
@@ -654,13 +659,20 @@
    ],
    "option_groups": [],
    "repo": "Alomare/HD1-EnhancedVisuals",
-   "stars": 0,
+   "stars": 1,
+   "downloads": 63,
    "kit": false,
    "icon": "img/alomare-enhancedvisuals-icon-1f9486e80a.jpg",
    "banner": "img/alomare-enhancedvisuals-banner-8479c5978f.jpg",
-   "released": "2026-11-10",
+   "released": "2026-11-15",
    "added": "2026-11-07",
    "versions": [
+    {
+     "version": "1.1.1",
+     "date": "2026-11-15",
+     "channel": "stable",
+     "notes": "- Changed: Enhanced Visuals loads after Unleashed Camera, which replaces the render config too."
+    },
     {
      "version": "1.1.0",
      "date": "2026-11-10",
@@ -688,7 +700,7 @@
    ]
   },
   {
-   "id": "alomare.integratedthirdperson",
+   "id": "alomare.unleashedcamera",
    "name": "Unleashed Camera",
    "summary": "Third person and first person cameras that keep other mods working.",
    "authors": [
@@ -697,47 +709,17 @@
    ],
    "verified": true,
    "description": "Third person and first person cameras for HELLDIVERS (2015), for the [Obsidian](https://github.com/Alomare/ObsidianLauncher) mod manager. Formerly Integrated Third Person: remove that mod when installing this one. Based on [Third Person Camera (HD2 Style)](https://github.com/yukiorsrs/third-person-camera-helldivers) by **yukiorsrs**, rebuilt with the permission of the author so that other mods keep working beside it.\n\nThe camera follows the Helldiver over the shoulder on foot, in vehicles and on the ship, or from the eyes of the Helldiver in first person. Shots, grenades and stratagems go where the crosshair points. The view reaches farther, the sky over the level is filled in, a ring around the crosshair warns of enemies close by, and a bar shows where hits come from.\n\nThird Person Camera replaces 28 game scripts, so mods that change the same parts of the game stop working with it. Unleashed Camera replaces no script: every change is a hook through Obsidian.\n\n## How to use\n\n**F8** cycles the camera: the top-down camera of the game, third person, and first person. **H** swaps the shoulder. Both keys can be changed in Obsidian.\n\n## Playing with others\n\nThe camera and everything on screen work in any lobby. Four session features change the game for the whole lobby: Max weapon range, Far enemy detection, Free movement and Increased throw range. They run only when every player runs Obsidian with the same mods, and switch off when anyone else joins. With all four off, the mod counts as a client mod.\n\n## Known issues\n\n- Players on one computer share a screen, so the camera goes back to top-down while a second local player is in, and comes back after.\n- The mod stays off while Third Person Camera is installed.\n- First person is new: vehicles keep the third-person camera.\n\nMod authors can read the camera state through `obsidian.import(\"alomare.unleashedcamera\")`: `active()`, `mode()`, `crosshair()` and `shoulder()`.",
-   "version": "0.7.0",
+   "version": "0.9.1",
    "early": true,
    "scope": "session",
    "requires": [
     "obsidian.api"
    ],
-   "options": 28,
+   "options": 31,
    "option_list": [
     {
      "label": "Camera mode",
-     "description": "The camera at the start of the game. Default is the top-down camera of the game. The camera key cycles the three in a mission. In first person the camera sits in the head of the Helldiver and the helmet is hidden; vehicles keep the third-person camera.",
-     "group": "camera"
-    },
-    {
-     "label": "On-foot camera distance (m)",
-     "description": "Meters between the camera and the Helldiver on foot in a mission.",
-     "group": "camera"
-    },
-    {
-     "label": "Ship camera distance (m)",
-     "description": "Meters between the camera and the Helldiver on the Super Destroyer.",
-     "group": "camera"
-    },
-    {
-     "label": "On-foot field of view (degrees)",
-     "description": "Vertical field of view on foot in third person.",
-     "group": "camera"
-    },
-    {
-     "label": "First person field of view (degrees)",
-     "description": "Vertical field of view in first person.",
-     "group": "camera"
-    },
-    {
-     "label": "Overall camera height (m)",
-     "description": "Raises or lowers the third-person camera on foot, in a dive, while down, in vehicles and on the Super Destroyer.",
-     "group": "camera"
-    },
-    {
-     "label": "Shoulder",
-     "description": "The side of the Helldiver the camera sits on. The swap key changes it in a mission. A mech camera starts on the same side; in any vehicle the swap key moves the camera from left to the middle to right.",
+     "description": "The camera at the start of the game. Default is the top-down camera of the game. The camera key cycles the three in a mission. In first person the camera sits in the head of the Helldiver, and the arms hold the weapon in view while the rest of the body is hidden (with Arms and weapon off, only the helmet is hidden); vehicles keep the third-person camera.",
      "group": "camera"
     },
     {
@@ -751,32 +733,82 @@
      "group": "camera"
     },
     {
-     "label": "Dive camera",
-     "description": "Brings the camera down during a dive, quickly but smoothly, and eases it back up once the dive ends.",
-     "group": "camera"
-    },
-    {
-     "label": "Downed camera",
-     "description": "While the Helldiver is down and crawling, the camera sits as low as in a dive, and 1 m farther back.",
-     "group": "camera"
-    },
-    {
-     "label": "Hellpod camera",
-     "description": "When the Helldiver drops in, the camera rides the Hellpod down looking at the ground, shakes on the landing, and glides into the shoulder view once the Helldiver climbs out. The view stays still until then.",
-     "group": "camera"
-    },
-    {
      "label": "Camera shake",
      "description": "How much explosions, impacts and the Hellpod landing shake the shoulder camera.",
      "group": "camera"
     },
     {
-     "label": "Vehicle camera distance (m)",
+     "label": "Hellpod camera",
+     "description": "When the Helldiver drops in, the camera rides down above the Hellpod looking down on it, shakes on the landing, and glides into the shoulder view once the Helldiver climbs out. The view stays still until then.",
+     "group": "camera"
+    },
+    {
+     "label": "Shoulder",
+     "description": "The side of the Helldiver the camera sits on. The swap key changes it in a mission. A mech camera starts on the same side; in any vehicle the swap key moves the camera from left to the middle to right.",
+     "group": "third"
+    },
+    {
+     "label": "Distance on foot (m)",
+     "description": "Meters between the camera and the Helldiver on foot in a mission.",
+     "group": "third"
+    },
+    {
+     "label": "Field of view on foot (degrees)",
+     "description": "Vertical field of view on foot in third person.",
+     "group": "third"
+    },
+    {
+     "label": "Overall camera height (m)",
+     "description": "Raises or lowers the third-person camera on foot, in a dive, while down, in vehicles and on the Super Destroyer.",
+     "group": "third"
+    },
+    {
+     "label": "Distance on the Super Destroyer (m)",
+     "description": "Meters between the camera and the Helldiver on the Super Destroyer.",
+     "group": "third"
+    },
+    {
+     "label": "Dive camera",
+     "description": "Brings the camera down during a dive, quickly but smoothly, and eases it back up once the dive ends.",
+     "group": "third"
+    },
+    {
+     "label": "Downed camera",
+     "description": "While the Helldiver is down and crawling, the camera sits as low as in a dive, and 1 m farther back.",
+     "group": "third"
+    },
+    {
+     "label": "Field of view (degrees)",
+     "description": "Vertical field of view in first person.",
+     "group": "first"
+    },
+    {
+     "label": "Arms and weapon",
+     "description": "Shows the arms and the weapon in hand in first person, with motion for walking, sprinting, aiming, firing, reloading, switching weapons, diving and being downed. The rest of the body is hidden. Assault rifles and the standard pistol have holds of their own; other weapons use the rifle hold, and sidearms the pistol hold.",
+     "group": "first"
+    },
+    {
+     "label": "Eye height (m)",
+     "description": "Metres the camera sits above the middle of the head.",
+     "group": "first"
+    },
+    {
+     "label": "Eye forward (m)",
+     "description": "Metres the camera sits in front of the head, along the ground. With Arms and weapon off, looking down adds up to 0.3 m more, so the inside of the body stays out of view.",
+     "group": "first"
+    },
+    {
+     "label": "Eye side (m)",
+     "description": "Metres the camera sits to the right of the head; below 0, to the left.",
+     "group": "first"
+    },
+    {
+     "label": "Distance (m)",
      "description": "Meters between the camera and the vehicle: mech, APC, bike and turrets. A mech camera sits beside the shoulder, other vehicles in the middle and high.",
      "group": "vehicles"
     },
     {
-     "label": "Vehicle field of view (degrees)",
+     "label": "Field of view (degrees)",
      "description": "Vertical field of view in a vehicle.",
      "group": "vehicles"
     },
@@ -801,28 +833,23 @@
      "group": "indicators"
     },
     {
-     "label": "Long view distance",
-     "description": "Pushes the fog, the far edge of the view and the detail of distant models out, so distant enemies and landmarks show.",
-     "group": "world"
-    },
-    {
-     "label": "Sky",
-     "description": "Draws a sky over the level in the color of the planet fog, instead of the smears the game leaves past the level. Needs a deploy.",
-     "group": "world"
-    },
-    {
      "label": "Remove fog",
      "description": "Removes the fog of the level, in third person and in the top-down view. Photo Mode shows the fog while it is open.",
      "group": "picture"
     },
     {
-     "label": "Disable bloom",
-     "description": "Removes the glow around bright lights and surfaces. Photo Mode shows the bloom while it is open.",
+     "label": "Depth of field",
+     "description": "Game default keeps the blur of the planet. Focus on the Helldiver keeps the Helldiver sharp and blurs what lies a metre or more nearer or farther; in first person the sharp part is where the crosshair points. Off keeps the whole picture sharp. Photo Mode sets the depth of field while open.",
      "group": "picture"
     },
     {
-     "label": "Depth of field",
-     "description": "Game default keeps the blur of the planet. Focus on the Helldiver keeps the Helldiver sharp and blurs what is much nearer or farther. Off keeps the whole picture sharp. Photo Mode sets the depth of field while open.",
+     "label": "Long view distance",
+     "description": "Pushes the fog, the far edge of the view and the detail of distant models out, so distant enemies and landmarks show.",
+     "group": "picture"
+    },
+    {
+     "label": "Sky",
+     "description": "Draws a sky over the level for the time of the mission, dawn, day, dusk or night, instead of the smears the game leaves past the level: brighter toward the horizon, with the sun where the light of the level comes from, clouds, and stars and a moon at night. Needs a deploy.",
      "group": "picture"
     },
     {
@@ -849,19 +876,23 @@
    "option_groups": [
     {
      "id": "camera",
-     "label": "Camera on foot"
+     "label": "Camera"
+    },
+    {
+     "id": "third",
+     "label": "Third person"
+    },
+    {
+     "id": "first",
+     "label": "First person"
     },
     {
      "id": "vehicles",
-     "label": "Camera in vehicles"
+     "label": "Vehicles"
     },
     {
      "id": "indicators",
      "label": "Indicators and names"
-    },
-    {
-     "id": "world",
-     "label": "View distance and sky"
     },
     {
      "id": "picture",
@@ -874,12 +905,43 @@
    ],
    "repo": "Alomare/HD1-UnleashedCamera",
    "stars": 0,
+   "downloads": 62,
    "kit": false,
    "icon": null,
    "banner": null,
    "released": "2026-11-15",
    "added": "2026-11-11",
    "versions": [
+    {
+     "version": "0.9.1",
+     "date": "2026-11-15",
+     "channel": "stable",
+     "notes": "- New: in first person, throwing, calling stratagems, using objectives, reviving and carrying show the arms of the Helldiver as the game animates them, in place of lowering the weapon."
+    },
+    {
+     "version": "0.9.0",
+     "date": "2026-11-15",
+     "channel": "stable",
+     "notes": "- New: first person arms. The arms hold the weapon in view, with motion for walking, sprinting, aiming, firing, reloading, melee, switching weapons, throwing, calling stratagems, diving and being downed. The option Arms and weapon, under First person, is on by default.\n- New: assault rifles and the standard pistol have holds of their own. Other weapons use the rifle hold, and other sidearms the pistol hold.\n- Changed: with the arms on, first person hides the whole body, and looking down no longer moves the camera forward.\n- Changed: new skies, drawn for each time of day: brighter toward the horizon, a sun where the light of the level comes from, clouds in perspective, and stars and a moon at night.\n- Fixed: the sky was a flat dome with clouds circling overhead."
+    },
+    {
+     "version": "0.8.2",
+     "date": "2026-11-15",
+     "channel": "stable",
+     "notes": "- Fixed: the sky was the day sky in every mission. It now follows the time of the mission: dawn, day, dusk or night.\n- Changed: the skies are the dawn, day, dusk and night skies of Photo Mode, with clouds and stars, in place of the plain skies in the colour of the planet fog."
+    },
+    {
+     "version": "0.8.1",
+     "date": "2026-11-15",
+     "channel": "stable",
+     "notes": "- Fixed: Focus on the Helldiver showed almost no blur: the sharp zone was so deep that only things far past the Helldiver blurred, and barely. It is now 2 m deep around the Helldiver, at full blur outside it. In first person it is around the crosshair point.\n- Removed: the Disable bloom option. The bloom was bright mostly because of the sky, which 0.8.0 fixed."
+    },
+    {
+     "version": "0.8.0",
+     "date": "2026-11-15",
+     "channel": "stable",
+     "notes": "- Changed: the mod id is now alomare.unleashedcamera. Obsidian installs it as a new mod: remove Integrated Third Person after installing it. Settings start from the defaults again.\n- Changed: while Integrated Third Person is still installed, Unleashed Camera stays off and says so.\n- Changed: less work every frame for the game's screen checks, the weapon aim, the hidden helmet in first person and the depth of field that follows the Helldiver.\n- New: Eye height, Eye forward and Eye side options for the first person camera.\n- Changed: the options are in new groups: Camera, Third person, First person, Vehicles, Indicators and names, Picture, and Session features.\n- Changed: the Hellpod camera rides down above the pod and a little ahead, looking almost straight down, so the pod stays in the middle of the picture.\n- Fixed: the sky over the level was far too bright on every planet, at night too. It is now drawn at most as bright as made, the brightness Photo Mode uses, and dimmer under a darker planet fog."
+    },
     {
      "version": "0.7.0",
      "date": "2026-11-15",
@@ -909,36 +971,6 @@
      "date": "2026-11-13",
      "channel": "stable",
      "notes": "- New: a soft camera rumble while a weapon fires, stronger for vehicle guns. It follows the Camera shake option.\n- Changed: the camera on foot sits a little lower, between the heights of 0.3.0 and 0.4.0.\n- Changed: the game's own shakes move the shoulder camera 12 cm at the most, so a run of explosions no longer shakes it all the time.\n- Fixed: the Hellpod camera did not start, because the game drops a new Helldiver in before the Helldiver counts as the player's.\n- Fixed: enemy and hit indicators stayed on screen with the third person view switched off.\n- Fixed: the red screen of an alarm still stopped short of the screen edges."
-    },
-    {
-     "version": "0.4.0",
-     "date": "2026-11-13",
-     "channel": "stable",
-     "notes": "- New: Hellpod camera. When the Helldiver drops in, the camera rides the pod down looking at the ground, shakes on the landing, then glides into the shoulder view.\n- New: Camera shake option (Off, Weak, Medium, Strong). Explosions and impacts now shake the shoulder camera too.\n- Changed: enemy indicators are one ring around the crosshair in four segments. The right, back and left segments show faintly while an enemy is within 15 m on that side and stronger within 7.5 m, and the side with the closest enemy within 7.5 m shows a warning triangle. The ring hides while the game is paused.\n- Changed: aiming no longer narrows the field of view; the camera comes in closer and in behind the head instead.\n- Changed: the camera is 1 m farther away on foot and on the Super Destroyer, and sits higher on foot.\n- Changed: beside a mech the camera sits farther to the side and about 2 m closer.\n- Changed: vehicle guns always fire level, the way they point, so a mech no longer has to look up to shoot ahead.\n- Fixed: the red screen of an alarm covers the whole screen instead of the middle.\n- Removed: the ship walls."
-    },
-    {
-     "version": "0.3.0",
-     "date": "2026-11-13",
-     "channel": "stable",
-     "notes": "- New: free movement, a lobby-wide option. In third person the Helldiver is no longer held on the shared top-down screen with the squad.\n- New: a separate camera distance for the Super Destroyer, 3 m closer than in a mission by default.\n- New: in a mech the camera sits beside the shoulder, on the same side as on foot. In any vehicle the swap key moves the camera from left to the middle to right.\n- Changed: vehicle guns fire the way they point, at the height of the crosshair, instead of straight at the crosshair point while the gun is still turning.\n- Changed: the camera on foot sits higher, while walking and while aiming.\n- Changed: the dive camera also comes down toward the Helldiver.\n- Changed: the on-foot camera distance is 4 m by default, and the vehicle field of view 70 degrees.\n- Fixed: with the shield generator pack, grenades and stratagem balls always flew the full distance."
-    },
-    {
-     "version": "0.2.1",
-     "date": "2026-11-11",
-     "channel": "stable",
-     "notes": "- Changed: enemy indicators are bigger. They scale with the hitpoints of the enemy from normal size up to one and a half times, where before they went from 0.8 to 1.2 times."
-    },
-    {
-     "version": "0.2.0",
-     "date": "2026-11-11",
-     "channel": "stable",
-     "notes": "- New: dive camera. A dive brings the camera in close, and the camera eases back out once the dive ends.\n- Changed: the shoulder swap, on H, glides across.\n- New: a wall across the open back of the ship bridge.\n- New: louder footsteps for Helldivers and enemies, with a Footsteps option.\n- New: player name cards above heads instead of at the feet.\n- New: a message when a second player joins on the same computer. Third person turns off and comes back once one player is left.\n- Changed: enemy indicators show only enemies in sight, as fading white arcs, larger for enemies with more health.\n- New: hit direction bars near the crosshair, red for health, yellow for the shield and white for vehicle hits.\n- New: `shoulder()` for other mods."
-    },
-    {
-     "version": "0.1.2",
-     "date": "2026-11-11",
-     "channel": "stable",
-     "notes": "- New: Obsidian offers updates from the GitHub repository."
     }
    ]
   },
@@ -951,7 +983,7 @@
    ],
    "verified": true,
    "description": "A crosshair mod for HELLDIVERS (2015), for the [Obsidian](https://github.com/Alomare/ObsidianLauncher) mod manager.\n\nCustom Crosshair replaces the aim cursor with a crosshair built from shapes, with one look between shots and another while aiming. Shape, size, gap, color, outline and shadow are all settings. A hitmarker flashes around the crosshair when a shot from this player hurts or kills an enemy.\n\n## How to use\n\nThe settings are in the Options tab of Custom Crosshair in Obsidian, with a live preview. A change applies at the next launch of the game.\n\nWith Unleashed Camera, the crosshair goes where shots land. Turn off **Third person crosshair** to keep the crosshair of the game there instead, or **First person crosshair** for no crosshair in first person.\n\n## Known issues\n\n- On a controller the game shows no cursor in the top-down view, so no crosshair shows there.\n- A shot that armor stops does not count as a hit.",
-   "version": "0.6.1",
+   "version": "0.6.2",
    "early": true,
    "scope": "client",
    "requires": [
@@ -1245,12 +1277,19 @@
    ],
    "repo": "Alomare/HD1-CustomCrosshair",
    "stars": 0,
+   "downloads": 32,
    "kit": false,
    "icon": null,
    "banner": null,
    "released": "2026-11-15",
    "added": "2026-11-11",
    "versions": [
+    {
+     "version": "0.6.2",
+     "date": "2026-11-15",
+     "channel": "stable",
+     "notes": "- Changed: works with Unleashed Camera 0.8.0 and later, under the new id, and still with the old one."
+    },
     {
      "version": "0.6.1",
      "date": "2026-11-15",
@@ -1328,6 +1367,7 @@
    "option_groups": [],
    "repo": "Alomare/HD1-HelldiversArcade",
    "stars": 0,
+   "downloads": 36,
    "kit": false,
    "icon": null,
    "banner": null,
