@@ -25,7 +25,7 @@
    "option_groups": [],
    "repo": "Alomare/ObsidianAPI",
    "stars": 0,
-   "downloads": 1851,
+   "downloads": 1856,
    "kit": true,
    "icon": "img/obsidian-api-icon-976df8f8d5.jpg",
    "banner": null,
@@ -170,7 +170,7 @@
    "option_groups": [],
    "repo": "Alomare/ObsidianPatches",
    "stars": 0,
-   "downloads": 740,
+   "downloads": 743,
    "kit": true,
    "icon": "img/obsidian-qol-icon-6bb7fca71d.jpg",
    "banner": null,
@@ -265,7 +265,7 @@
    "option_groups": [],
    "repo": "Alomare/ObsidianTrainer",
    "stars": 0,
-   "downloads": 1272,
+   "downloads": 1276,
    "kit": true,
    "icon": "img/obsidian-trainer-icon-717943693e.jpg",
    "banner": null,
@@ -593,7 +593,7 @@
    ],
    "verified": true,
    "description": "Better graphics and extra visual effects for HELLDIVERS (2015), for the [Obsidian](https://github.com/Alomare/ObsidianLauncher) mod manager.\n\nThe mod turns on the ambient occlusion pass that the game ships but never runs, adds sharpening and an ambient light effect, raises the resolution and distance of sun shadows, softens shadow edges, keeps detailed models farther from the camera, and can draw the scene above the screen resolution.\n\n## How to use\n\n**F9** switches between Enhanced Visuals and the plain game, to compare. The key can be changed in Obsidian.\n\nFor the game textures at twice the size, see [Upscaled Textures](https://github.com/Alomare/HD1-UpscaledTextures), a separate mod that works with or without this one.\n\n## Known issues\n\n- Third Person Camera also uses F9: with both mods on, change one of the keys. Put Enhanced Visuals after Third Person Camera in the load order, or the shadow and render scale options do nothing.\n- A shadow resolution of 8192 takes 256 MB of video memory.",
-   "version": "1.1.1",
+   "version": "1.1.2",
    "early": false,
    "scope": "client",
    "requires": [
@@ -660,13 +660,19 @@
    "option_groups": [],
    "repo": "Alomare/HD1-EnhancedVisuals",
    "stars": 0,
-   "downloads": 64,
+   "downloads": 65,
    "kit": false,
    "icon": "img/alomare-enhancedvisuals-icon-1f9486e80a.jpg",
    "banner": "img/alomare-enhancedvisuals-banner-8479c5978f.jpg",
    "released": "2026-11-15",
    "added": "2026-11-07",
    "versions": [
+    {
+     "version": "1.1.2",
+     "date": "2026-11-15",
+     "channel": "stable",
+     "notes": "- Changed: Enhanced Visuals loads after Eyes of Liberty, the new name of Unleashed Camera, which replaces the render config too."
+    },
     {
      "version": "1.1.1",
      "date": "2026-11-15",
@@ -700,26 +706,26 @@
    ]
   },
   {
-   "id": "alomare.unleashedcamera",
-   "name": "Unleashed Camera",
-   "summary": "Third person and first person cameras that keep other mods working.",
+   "id": "alomare.eyesofliberty",
+   "name": "Eyes of Liberty",
+   "summary": "A third person camera that keeps other mods working.",
    "authors": [
     "Alomare",
     "yukiorsrs"
    ],
    "verified": true,
-   "description": "Third person and first person cameras for HELLDIVERS (2015), for the [Obsidian](https://github.com/Alomare/ObsidianLauncher) mod manager. Formerly Integrated Third Person: remove that mod when installing this one. Based on [Third Person Camera (HD2 Style)](https://github.com/yukiorsrs/third-person-camera-helldivers) by **yukiorsrs**, rebuilt with the permission of the author so that other mods keep working beside it.\n\nThe camera follows the Helldiver over the shoulder on foot, in vehicles and on the ship, or from the eyes of the Helldiver in first person. Shots, grenades and stratagems go where the crosshair points. The view reaches farther, the sky over the level is filled in, a ring around the crosshair warns of enemies close by, and a bar shows where hits come from.\n\nThird Person Camera replaces 28 game scripts, so mods that change the same parts of the game stop working with it. Unleashed Camera replaces no script: every change is a hook through Obsidian.\n\n## How to use\n\n**F8** cycles the camera: the top-down camera of the game, third person, and first person. **H** swaps the shoulder. Both keys can be changed in Obsidian.\n\n## Playing with others\n\nThe camera and everything on screen work in any lobby. Four session features change the game for the whole lobby: Max weapon range, Far enemy detection, Free movement and Increased throw range. They run only when every player runs Obsidian with the same mods, and switch off when anyone else joins. With all four off, the mod counts as a client mod.\n\n## Known issues\n\n- Players on one computer share a screen, so the camera goes back to top-down while a second local player is in, and comes back after.\n- The mod stays off while Third Person Camera is installed.\n- First person is new: vehicles keep the third-person camera.\n\nMod authors can read the camera state through `obsidian.import(\"alomare.unleashedcamera\")`: `active()`, `mode()`, `crosshair()` and `shoulder()`.",
-   "version": "0.9.1",
-   "early": true,
+   "description": "A third person camera for HELLDIVERS (2015), for the [Obsidian](https://github.com/Alomare/ObsidianLauncher) mod manager. Formerly Unleashed Camera, and before that Integrated Third Person: remove either one when installing this mod. Based on [Third Person Camera (HD2 Style)](https://github.com/yukiorsrs/third-person-camera-helldivers) by **yukiorsrs**, rebuilt with the permission of the author so that other mods keep working beside it.\n\nThe camera follows the Helldiver over the shoulder on foot, in vehicles and on the ship. Shots, grenades and stratagems go where the crosshair points. The view reaches farther, the sky over the level is filled in, a ring around the crosshair warns of enemies close by, and a bar shows where hits come from. After a death the camera stays on the body, then follows a living ally until the Helldiver is back.\n\nThird Person Camera replaces 28 game scripts, so mods that change the same parts of the game stop working with it. Eyes of Liberty replaces no script: every change is a hook through Obsidian.\n\n## How to use\n\n**F8** switches between the top-down camera of the game and third person. **H** swaps the shoulder. Both keys can be changed in Obsidian. While the death cam follows allies, left and right click switch between them.\n\n## Playing with others\n\nThe camera and everything on screen work in any lobby. Four session features change the game for the whole lobby: Max weapon range, Far enemy detection, Free movement and Increased throw range. They run only when every player runs Obsidian with the same mods, and switch off when anyone else joins. With all four off, the mod counts as a client mod.\n\n## Known issues\n\n- Players on one computer share a screen, so the camera goes back to top-down while a second local player is in, and comes back after.\n- The mod stays off while Third Person Camera, Unleashed Camera or Integrated Third Person is installed.\n\nFirst person is in development for separate beta versions.\n\nMod authors can read the camera state through `obsidian.import(\"alomare.eyesofliberty\")`: `active()`, `mode()`, `crosshair()` and `shoulder()`.",
+   "version": "1.0.0",
+   "early": false,
    "scope": "session",
    "requires": [
     "obsidian.api"
    ],
-   "options": 31,
+   "options": 27,
    "option_list": [
     {
      "label": "Camera mode",
-     "description": "The camera at the start of the game. Default is the top-down camera of the game. The camera key cycles the three in a mission. In first person the camera sits in the head of the Helldiver, and the arms hold the weapon in view while the rest of the body is hidden (with Arms and weapon off, only the helmet is hidden); vehicles keep the third-person camera.",
+     "description": "The camera at the start of the game. Default is the top-down camera of the game. The camera key switches between the two in a mission.",
      "group": "camera"
     },
     {
@@ -740,6 +746,11 @@
     {
      "label": "Hellpod camera",
      "description": "When the Helldiver drops in, the camera rides down above the Hellpod looking down on it, shakes on the landing, and glides into the shoulder view once the Helldiver climbs out. The view stays still until then.",
+     "group": "camera"
+    },
+    {
+     "label": "Death cam",
+     "description": "When the Helldiver dies, the camera stays on the body, or where the body was once the game removes it, until the Helldiver drops in again or the mission ends. With allies alive, the camera moves to one of them after 4 seconds. Left and right click switch between allies, and the mouse turns the camera.",
      "group": "camera"
     },
     {
@@ -778,31 +789,6 @@
      "group": "third"
     },
     {
-     "label": "Field of view (degrees)",
-     "description": "Vertical field of view in first person.",
-     "group": "first"
-    },
-    {
-     "label": "Arms and weapon",
-     "description": "Shows the arms and the weapon in hand in first person, with motion for walking, sprinting, aiming, firing, reloading, switching weapons, diving and being downed. The rest of the body is hidden. Assault rifles and the standard pistol have holds of their own; other weapons use the rifle hold, and sidearms the pistol hold.",
-     "group": "first"
-    },
-    {
-     "label": "Eye height (m)",
-     "description": "Metres the camera sits above the middle of the head.",
-     "group": "first"
-    },
-    {
-     "label": "Eye forward (m)",
-     "description": "Metres the camera sits in front of the head, along the ground. With Arms and weapon off, looking down adds up to 0.3 m more, so the inside of the body stays out of view.",
-     "group": "first"
-    },
-    {
-     "label": "Eye side (m)",
-     "description": "Metres the camera sits to the right of the head; below 0, to the left.",
-     "group": "first"
-    },
-    {
      "label": "Distance (m)",
      "description": "Meters between the camera and the vehicle: mech, APC, bike and turrets. A mech camera sits beside the shoulder, other vehicles in the middle and high.",
      "group": "vehicles"
@@ -839,7 +825,7 @@
     },
     {
      "label": "Depth of field",
-     "description": "Game default keeps the blur of the planet. Focus on the Helldiver keeps the Helldiver sharp and blurs what lies a metre or more nearer or farther; in first person the sharp part is where the crosshair points. Off keeps the whole picture sharp. Photo Mode sets the depth of field while open.",
+     "description": "Game default keeps the blur of the planet. Focus on the Helldiver keeps the Helldiver sharp and blurs what lies a metre or more nearer or farther. Off keeps the whole picture sharp. Photo Mode sets the depth of field while open.",
      "group": "picture"
     },
     {
@@ -883,10 +869,6 @@
      "label": "Third person"
     },
     {
-     "id": "first",
-     "label": "First person"
-    },
-    {
      "id": "vehicles",
      "label": "Vehicles"
     },
@@ -903,15 +885,21 @@
      "label": "Session features"
     }
    ],
-   "repo": "Alomare/HD1-UnleashedCamera",
+   "repo": "Alomare/HD1-EyesOfLiberty",
    "stars": 0,
-   "downloads": 62,
+   "downloads": 64,
    "kit": false,
    "icon": null,
    "banner": null,
    "released": "2026-11-15",
    "added": "2026-11-11",
    "versions": [
+    {
+     "version": "1.0.0",
+     "date": "2026-11-15",
+     "channel": "stable",
+     "notes": "- Changed: Unleashed Camera is now Eyes of Liberty, under the id alomare.eyesofliberty. Remove Unleashed Camera when installing it: while Unleashed Camera or Integrated Third Person is installed, Eyes of Liberty stays off.\n- New: Death cam, on by default. When the Helldiver dies, the camera stays on the body, or where the body was once the game removes it, until the Helldiver drops in again or the mission ends. With allies alive, the camera moves to one of them after 4 seconds. Left and right click switch between allies, and the mouse turns the camera.\n- Changed: after a death in a squad, the Hellpod camera also rides down with the reinforced Helldiver.\n- Removed: first person, which moves to separate beta versions."
+    },
     {
      "version": "0.9.1",
      "date": "2026-11-15",
@@ -965,12 +953,6 @@
      "date": "2026-11-13",
      "channel": "stable",
      "notes": "- Changed: the crosshair handed to other mods also says when fire or a throw is held, so Custom Crosshair shows the aiming look while firing."
-    },
-    {
-     "version": "0.4.1",
-     "date": "2026-11-13",
-     "channel": "stable",
-     "notes": "- New: a soft camera rumble while a weapon fires, stronger for vehicle guns. It follows the Camera shake option.\n- Changed: the camera on foot sits a little lower, between the heights of 0.3.0 and 0.4.0.\n- Changed: the game's own shakes move the shoulder camera 12 cm at the most, so a run of explosions no longer shakes it all the time.\n- Fixed: the Hellpod camera did not start, because the game drops a new Helldiver in before the Helldiver counts as the player's.\n- Fixed: enemy and hit indicators stayed on screen with the third person view switched off.\n- Fixed: the red screen of an alarm still stopped short of the screen edges."
     }
    ]
   },
@@ -982,7 +964,7 @@
     "Alomare"
    ],
    "verified": true,
-   "description": "A crosshair mod for HELLDIVERS (2015), for the [Obsidian](https://github.com/Alomare/ObsidianLauncher) mod manager.\n\nCustom Crosshair replaces the aim cursor with a crosshair built from shapes, with one look between shots and another while aiming. Shape, size, gap, color, outline and shadow are all settings. A hitmarker flashes around the crosshair when a shot from this player hurts or kills an enemy.\n\n## How to use\n\nThe settings are in the Options tab of Custom Crosshair in Obsidian, with a live preview. A change applies at the next launch of the game.\n\nWith Unleashed Camera, the crosshair goes where shots land. Turn off **Third person crosshair** to keep the crosshair of the game there instead, or **First person crosshair** for no crosshair in first person.\n\n## Known issues\n\n- On a controller the game shows no cursor in the top-down view, so no crosshair shows there.\n- A shot that armor stops does not count as a hit.",
+   "description": "A crosshair mod for HELLDIVERS (2015), for the [Obsidian](https://github.com/Alomare/ObsidianLauncher) mod manager.\n\nCustom Crosshair replaces the aim cursor with a crosshair built from shapes, with one look between shots and another while aiming. Shape, size, gap, color, outline and shadow are all settings. A hitmarker flashes around the crosshair when a shot from this player hurts or kills an enemy.\n\n## How to use\n\nThe settings are in the Options tab of Custom Crosshair in Obsidian, with a live preview. A change applies at the next launch of the game.\n\nWith Eyes of Liberty, the crosshair goes where shots land. Turn off **Third person crosshair** to keep the crosshair of the game there instead, or **First person crosshair** for no crosshair in the first person camera of the Eyes of Liberty beta.\n\n## Known issues\n\n- On a controller the game shows no cursor in the top-down view, so no crosshair shows there.\n- A shot that armor stops does not count as a hit.",
    "version": "0.6.2",
    "early": true,
    "scope": "client",
@@ -1367,7 +1349,7 @@
    "option_groups": [],
    "repo": "Alomare/HD1-HelldiversArcade",
    "stars": 0,
-   "downloads": 36,
+   "downloads": 37,
    "kit": false,
    "icon": null,
    "banner": null,
