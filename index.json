@@ -689,22 +689,27 @@
   },
   {
    "id": "alomare.integratedthirdperson",
-   "name": "Integrated Third Person",
-   "summary": "An over-the-shoulder camera that keeps other mods working.",
+   "name": "Unleashed Camera",
+   "summary": "Third person and first person cameras that keep other mods working.",
    "authors": [
     "Alomare",
     "yukiorsrs"
    ],
    "verified": true,
-   "description": "An over-the-shoulder camera for HELLDIVERS (2015), for the [Obsidian](https://github.com/Alomare/ObsidianLauncher) mod manager. Based on [Third Person Camera (HD2 Style)](https://github.com/yukiorsrs/third-person-camera-helldivers) by **yukiorsrs**, rebuilt with the permission of the author so that other mods keep working beside it.\n\nThe camera follows the Helldiver on foot, in vehicles and on the ship. Shots, grenades and stratagems go where the crosshair points. The view reaches farther, the sky over the level is filled in, a ring around the crosshair warns of enemies close by, and a bar shows where hits come from.\n\nThird Person Camera replaces 28 game scripts, so mods that change the same parts of the game stop working with it. Integrated Third Person replaces no script: every change is a hook through Obsidian.\n\n## How to use\n\n**F8** switches between third person and the top-down camera, and **H** swaps the shoulder. Both keys can be changed in Obsidian.\n\n## Playing with others\n\nThe camera and everything on screen work in any lobby. Four options change the game for the whole lobby: Max weapon range, Far enemy detection, Free movement and Increased throw range. They run only when every player runs Obsidian with the same mods, and switch off when anyone else joins. With all four off, the mod counts as a client mod.\n\n## Known issues\n\n- Players on one computer share a screen, so third person turns off while a second local player is in, and comes back after.\n- The mod stays off while Third Person Camera is installed.\n\nMod authors can read the camera state through `obsidian.import(\"alomare.integratedthirdperson\")`: `active()`, `crosshair()` and `shoulder()`.",
-   "version": "0.5.0",
+   "description": "Third person and first person cameras for HELLDIVERS (2015), for the [Obsidian](https://github.com/Alomare/ObsidianLauncher) mod manager. Formerly Integrated Third Person. Based on [Third Person Camera (HD2 Style)](https://github.com/yukiorsrs/third-person-camera-helldivers) by **yukiorsrs**, rebuilt with the permission of the author so that other mods keep working beside it.\n\nThe camera follows the Helldiver over the shoulder on foot, in vehicles and on the ship, or from the eyes of the Helldiver in first person. Shots, grenades and stratagems go where the crosshair points. The view reaches farther, the sky over the level is filled in, a ring around the crosshair warns of enemies close by, and a bar shows where hits come from.\n\nThird Person Camera replaces 28 game scripts, so mods that change the same parts of the game stop working with it. Unleashed Camera replaces no script: every change is a hook through Obsidian.\n\n## How to use\n\n**F8** cycles the camera: the top-down camera of the game, third person, and first person. **H** swaps the shoulder. Both keys can be changed in Obsidian.\n\n## Playing with others\n\nThe camera and everything on screen work in any lobby. Four session features change the game for the whole lobby: Max weapon range, Far enemy detection, Free movement and Increased throw range. They run only when every player runs Obsidian with the same mods, and switch off when anyone else joins. With all four off, the mod counts as a client mod.\n\n## Known issues\n\n- Players on one computer share a screen, so the camera goes back to top-down while a second local player is in, and comes back after.\n- The mod stays off while Third Person Camera is installed.\n- First person is new: vehicles keep the third-person camera.\n\nMod authors can read the camera state through `obsidian.import(\"alomare.integratedthirdperson\")`: `active()`, `mode()`, `crosshair()` and `shoulder()`.",
+   "version": "0.7.0",
    "early": true,
    "scope": "session",
    "requires": [
     "obsidian.api"
    ],
-   "options": 26,
+   "options": 28,
    "option_list": [
+    {
+     "label": "Camera mode",
+     "description": "The camera at the start of the game. Default is the top-down camera of the game. The camera key cycles the three in a mission. In first person the camera sits in the head of the Helldiver and the helmet is hidden; vehicles keep the third-person camera.",
+     "group": "camera"
+    },
     {
      "label": "On-foot camera distance (m)",
      "description": "Meters between the camera and the Helldiver on foot in a mission.",
@@ -717,7 +722,17 @@
     },
     {
      "label": "On-foot field of view (degrees)",
-     "description": "Vertical field of view on foot.",
+     "description": "Vertical field of view on foot in third person.",
+     "group": "camera"
+    },
+    {
+     "label": "First person field of view (degrees)",
+     "description": "Vertical field of view in first person.",
+     "group": "camera"
+    },
+    {
+     "label": "Overall camera height (m)",
+     "description": "Raises or lowers the third-person camera on foot, in a dive, while down, in vehicles and on the Super Destroyer.",
      "group": "camera"
     },
     {
@@ -742,12 +757,12 @@
     },
     {
      "label": "Downed camera",
-     "description": "While the Helldiver is down and crawling, the camera sits low, near the ground, and 1 m farther back.",
+     "description": "While the Helldiver is down and crawling, the camera sits as low as in a dive, and 1 m farther back.",
      "group": "camera"
     },
     {
      "label": "Hellpod camera",
-     "description": "When the Helldiver drops in, the camera rides the Hellpod down looking at the ground, shakes on the landing, then glides into the shoulder view.",
+     "description": "When the Helldiver drops in, the camera rides the Hellpod down looking at the ground, shakes on the landing, and glides into the shoulder view once the Helldiver climbs out. The view stays still until then.",
      "group": "camera"
     },
     {
@@ -811,11 +826,6 @@
      "group": "picture"
     },
     {
-     "label": "Footsteps",
-     "description": "In third person, each footstep of Helldivers and enemies plays more than once, so steps out of view are easier to hear. Louder plays a step twice, Loudest four times. Normal leaves the steps as in the game.",
-     "group": "sound"
-    },
-    {
      "label": "Max weapon range",
      "description": "Every weapon reaches as far as the farthest one, so targets far off in the third-person view can be hit. Changes the shared game: off in lobbies with players who don't run it.",
      "group": "lobby"
@@ -858,15 +868,11 @@
      "label": "Picture"
     },
     {
-     "id": "sound",
-     "label": "Sound"
-    },
-    {
      "id": "lobby",
-     "label": "Lobby-wide changes"
+     "label": "Session features"
     }
    ],
-   "repo": "Alomare/HD1-IntegratedThirdPerson",
+   "repo": "Alomare/HD1-UnleashedCamera",
    "stars": 0,
    "kit": false,
    "icon": null,
@@ -874,6 +880,18 @@
    "released": "2026-11-15",
    "added": "2026-11-11",
    "versions": [
+    {
+     "version": "0.7.0",
+     "date": "2026-11-15",
+     "channel": "stable",
+     "notes": "- Changed: the mod is now called Unleashed Camera. Settings and installs carry over.\n- Changed: in first person the body turns with the view without the aiming walk, so the Helldiver moves at full speed and can throw, call stratagems and interact.\n- Changed: the first person camera sits higher and farther forward, and moves forward while looking down, so the inside of the body no longer shows.\n- Changed: the camera sway while sprinting is a little stronger.\n- Changed: while a flamethrower of the player fires, the Lumberer included, camera shake is 80% weaker."
+    },
+    {
+     "version": "0.6.0",
+     "date": "2026-11-15",
+     "channel": "stable",
+     "notes": "- New: first person, as a prototype. The Camera mode option picks the camera at the start (Default, Third person or First person), and the camera key cycles the three. In first person the camera sits in the head of the Helldiver and the helmet is hidden. Walking backwards steps back instead of turning round, and standing still the body turns only once the view has turned far enough.\n- New: First person field of view option.\n- New: Overall camera height option, which raises or lowers the third-person camera everywhere.\n- New: a slight camera sway while sprinting. It follows the Camera shake option.\n- New: the crosshair fades out while sprinting, Custom Crosshair included.\n- Changed: the downed camera sits as low as the dive camera.\n- Changed: the on-foot camera distance is 3 m by default.\n- Changed: the Hellpod camera sits farther from the pod, waits longer before the glide, and the view stays still until the Helldiver climbs out.\n- Changed: the lobby-wide options are named Session features.\n- Removed: the Footsteps option."
+    },
     {
      "version": "0.5.0",
      "date": "2026-11-15",
@@ -921,18 +939,6 @@
      "date": "2026-11-11",
      "channel": "stable",
      "notes": "- New: Obsidian offers updates from the GitHub repository."
-    },
-    {
-     "version": "0.1.1",
-     "date": "2026-11-11",
-     "channel": "stable",
-     "notes": "- Fixed: the view no longer flickers to top-down while the shoulder camera draws."
-    },
-    {
-     "version": "0.1.0",
-     "date": "2026-11-11",
-     "channel": "stable",
-     "notes": "- New: a shoulder camera on foot, in vehicles and on the ship, turned with the mouse or the right stick, with distance and field of view options, a shoulder swap, aim zoom and collision with rocks and walls. F8 switches between third person and the top-down camera.\n- New: shots, laser sights, grenades and stratagem balls go where the crosshair points, with a plain crosshair.\n- New: movement and vehicle steering follow the view.\n- New: a long view with distant models kept detailed, a sky in the color of the planet fog, and walls on the open side of the ship bridge.\n- New: enemy indicators, marks around the crosshair that point toward enemies in range.\n- New: Max weapon range and Far enemy detection, two lobby-wide parts that switch off when a player without them joins.\n- New: spawns, alarms and the squad leash still follow the top-down view, as in the game. The mod stays off with Third Person Camera installed."
     }
    ]
   },
@@ -944,14 +950,14 @@
     "Alomare"
    ],
    "verified": true,
-   "description": "A crosshair mod for HELLDIVERS (2015), for the [Obsidian](https://github.com/Alomare/ObsidianLauncher) mod manager.\n\nCustom Crosshair replaces the aim cursor with a crosshair built from shapes, with one look between shots and another while aiming. Shape, size, gap, color, outline and shadow are all settings. A hitmarker flashes around the crosshair when a shot from this player hurts or kills an enemy.\n\n## How to use\n\nThe settings are in the Options tab of Custom Crosshair in Obsidian, with a live preview. A change applies at the next launch of the game.\n\nWith Integrated Third Person, the crosshair goes where shots land. Turn off **Third person crosshair** to keep the crosshair of that mod instead.\n\n## Known issues\n\n- On a controller the game shows no cursor in the top-down view, so no crosshair shows there.\n- A shot that armor stops does not count as a hit.",
-   "version": "0.5.0",
+   "description": "A crosshair mod for HELLDIVERS (2015), for the [Obsidian](https://github.com/Alomare/ObsidianLauncher) mod manager.\n\nCustom Crosshair replaces the aim cursor with a crosshair built from shapes, with one look between shots and another while aiming. Shape, size, gap, color, outline and shadow are all settings. A hitmarker flashes around the crosshair when a shot from this player hurts or kills an enemy.\n\n## How to use\n\nThe settings are in the Options tab of Custom Crosshair in Obsidian, with a live preview. A change applies at the next launch of the game.\n\nWith Unleashed Camera, the crosshair goes where shots land. Turn off **Third person crosshair** to keep the crosshair of the game there instead, or **First person crosshair** for no crosshair in first person.\n\n## Known issues\n\n- On a controller the game shows no cursor in the top-down view, so no crosshair shows there.\n- A shot that armor stops does not count as a hit.",
+   "version": "0.6.1",
    "early": true,
    "scope": "client",
    "requires": [
     "obsidian.api"
    ],
-   "options": 51,
+   "options": 53,
    "option_list": [
     {
      "label": "Custom crosshair",
@@ -960,7 +966,17 @@
     },
     {
      "label": "Third person crosshair",
-     "description": "With Integrated Third Person, draws this crosshair where shots go, in place of the one from that mod. The game has no cursor in third person, so a state set to Game cursor uses the default look there.",
+     "description": "With Unleashed Camera, draws this crosshair where shots go, in place of the one from that mod. The game has no cursor in third person, so a state set to Game cursor uses the default look there.",
+     "group": "general"
+    },
+    {
+     "label": "First person crosshair",
+     "description": "In the first person camera of Unleashed Camera, draws this crosshair. Off leaves first person with no crosshair at all.",
+     "group": "general"
+    },
+    {
+     "label": "Laser spin",
+     "description": "While a laser weapon fires, the crosshair spins up to one turn a second within 0.05 seconds, and winds down over half a second once firing stops.",
      "group": "general"
     },
     {
@@ -1232,9 +1248,21 @@
    "kit": false,
    "icon": null,
    "banner": null,
-   "released": "2026-11-13",
+   "released": "2026-11-15",
    "added": "2026-11-11",
    "versions": [
+    {
+     "version": "0.6.1",
+     "date": "2026-11-15",
+     "channel": "stable",
+     "notes": "- Changed: the options name Unleashed Camera, the new name of Integrated Third Person."
+    },
+    {
+     "version": "0.6.0",
+     "date": "2026-11-15",
+     "channel": "stable",
+     "notes": "- New: the crosshair fades out while sprinting in Integrated Third Person 0.6.0 and later.\n- New: First person crosshair option, for the first person camera of Integrated Third Person. Off leaves first person with no crosshair.\n- New: Laser spin option, on by default. While a laser weapon fires, the crosshair spins up to one turn a second, and winds down over about half a second once firing stops, ending upright.\n- Changed: new default look: a dot between shots, and a longer cross with a wider gap while aiming, both with a soft shadow. The hitmarker is smaller and thicker by default, and the kill mark a little bigger.\n- Fixed: with Aiming gap scales with spread, the gap stayed open after firing until the next shot, instead of closing as the spread recovers."
+    },
     {
      "version": "0.5.0",
      "date": "2026-11-13",
