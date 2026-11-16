@@ -10,7 +10,7 @@
    ],
    "verified": true,
    "description": "A library for [Obsidian](https://github.com/Alomare/ObsidianLauncher) mods on HELLDIVERS (2015). It gives other mods the game data by name, checked changes that can be undone, and ready actions. It does nothing by itself.\n\n## How to use\n\nObsidian API comes with Obsidian, in the Obsidian Kit. Mods that need it switch it on with them.\n\nTo build on it, list it in the `obsidian.json` of the mod:\n\n```json\n\"requires\": [\"obsidian.api\"]\n```\n\nThen ask for it in the script:\n\n```lua\nlocal api = obsidian.import(\"obsidian.api\")\n\nobsidian.keybind(\"panic\", function()\n  api.player.heal()\n  api.enemies.kill_near(20)\nend)\n```\n\nActions answer `true`, or `false` and a short reason such as `\"host_only\"`. A client mod can require the API and stay a client mod: it can read game data and use the interface, sound and event calls, and anything that changes the shared game answers `false, \"needs_session\"`.\n\n[REFERENCE.md](REFERENCE.md) has every call, with guides and recipes. A copy sits in the folder of the API in the Obsidian Kit, where an AI tool working on a mod can read it.\n\n## Known issues\n\n- Tested solo and offline, not yet with a second player.",
-   "version": "1.49.0",
+   "version": "1.50.0",
    "early": false,
    "scope": "library",
    "requires": [],
@@ -25,13 +25,19 @@
    "option_groups": [],
    "repo": "Alomare/ObsidianAPI",
    "stars": 0,
-   "downloads": 1856,
+   "downloads": 1902,
    "kit": true,
    "icon": "img/obsidian-api-icon-976df8f8d5.jpg",
    "banner": null,
-   "released": "2026-11-11",
+   "released": "2026-11-15",
    "added": "2026-10-30",
    "versions": [
+    {
+     "version": "1.50.0",
+     "date": "2026-11-15",
+     "channel": "stable",
+     "notes": "- New: Script Profiler, a page of the F6 window. A panel in the top left corner, on a 20% black background, lists every running mod with the time the scripts of the mod take each frame and the FPS that costs; a name too long for the column scrolls. The page sets where it shows (hidden, pause menu only, always), the detail (basic, or with the slowest frame, calls a frame and the total), how many mods it lists, the corner and the text size. Needs Obsidian Launcher 2.0 or later; earlier versions show no page.\n- New: while the Script Profiler is not hidden, a report goes to the log of Obsidian API every 10 seconds: the frame time, and for each mod the time, slowest frame, calls and the hooks and parts the time goes to. The parts of the frame of Obsidian API are measured one by one.\n- Changed: the folder of Obsidian API in the F6 window comes after the folders of the mods.\n- Changed: with Obsidian Launcher 2.0 or later, the controller buttons that open the F6 window follow the input mode chosen for the \"Open in-game menu\" bind (tap, double tap, press, long press or release).\n- Fixed: `catalog.stratagem` and the item lists checked every item against the paid packs on each call, which cost several milliseconds a frame for a mod that looks stratagems up every frame. The answers are now kept for 5 seconds, and `catalog.stratagem` looks up one name."
+    },
     {
      "version": "1.50.0-beta.2",
      "date": "2026-11-13",
@@ -85,12 +91,6 @@
      "date": "2026-11-07",
      "channel": "stable",
      "notes": "- Changed: a fighting bot fires only once it faces the target and has held on it a moment, so a shot doesn't leave on the way round, where a teammate may stand.\n- Changed: in a mech, the bot lines up the gun on the mech's arm with the target, not the mech's middle.\n- Changed: a driving bot eases off near the point it drives to and stops within 4 meters of it, or when the point ends up close behind, instead of circling it.\n- Changed: a dead body in the way no longer stops a bot's shot.\n- Changed: `bot:use` takes out the primary when the game offers the bot a reload of the bot's own first (an empty recoilless with the recoilless backpack), so the thing it was sent to use comes through.\n- Changed: a new `fight` order looks for a target at once.\n- Changed: `bot:use_weapon` reloads an empty launcher that the bot's backpack reloads before taking back the weapon from before, so the reload plays and the launcher comes out loaded next time.\n- Fixed: with `freeze` on, a killed enemy falls and despawns while the rest stay frozen.\n- Fixed: effects no longer log an error each time they're switched on outside a mission."
-    },
-    {
-     "version": "1.38.0",
-     "date": "2026-11-07",
-     "channel": "stable",
-     "notes": "- New: `bot:hurts(target, slot)` and `api.gear.hurts(weapon, target)` answer the damage one hit does to a target after armor: square, glancing and on the weak spot, launchers included. An enemy the rifle gets 0 against is one for the anti-tank weapon.\n- New: `api.enemies.charging(unit)` reads an enemy about to shoot (the Hunter's beam, the Cyborg IFV's laser sight, the Hulk's wind-up): when it fires and where the aim line runs.\n- New: `bot:avoid_shots(true)` gets the bot out of that line, with a dive just before the shot. `bot:avoiding()` goes with it.\n- New: `fight`'s `secondary` takes `only` and `every`.\n- New: `bot:position()` answers where the bot stands.\n- New: `bot:mech_friendly_fire(false)` keeps the mech a bot pilots from hurting Helldivers. Enemies still take the hits.\n- Changed: a bot in an exosuit fires the rockets one each second, and only while it faces the target. Before, it emptied the rack at once.\n- Changed: `bot:throw()` does nothing in a vehicle seat, where the button fires the vehicle's second weapon.\n- Fixed: bots stand still while session mods are off. Before, each one kept the last buttons and sticks it was given, and the game went on reading those every frame."
     }
    ]
   },
@@ -170,7 +170,7 @@
    "option_groups": [],
    "repo": "Alomare/ObsidianPatches",
    "stars": 0,
-   "downloads": 743,
+   "downloads": 752,
    "kit": true,
    "icon": "img/obsidian-qol-icon-6bb7fca71d.jpg",
    "banner": null,
@@ -265,7 +265,7 @@
    "option_groups": [],
    "repo": "Alomare/ObsidianTrainer",
    "stars": 0,
-   "downloads": 1276,
+   "downloads": 1299,
    "kit": true,
    "icon": "img/obsidian-trainer-icon-717943693e.jpg",
    "banner": null,
@@ -343,7 +343,7 @@
    ],
    "verified": true,
    "description": "More information on the HUD of HELLDIVERS (2015), for the [Obsidian](https://github.com/Alomare/ObsidianLauncher) mod manager.\n\nBetter HUD counts the rounds left in the magazine and the grenades on each player card, puts health and stamina bars under the player cards and health bars over enemies, and shows damage numbers where hits land. A reload circle and an ammo circle sit beside the Helldiver. Enemy bars show burns, poison and stuns, and wait at the edge of the screen while the enemy is out of view.\n\n## How to use\n\nEvery part can be switched on or off in the options of Better HUD in Obsidian, or in game under **Mods → Better HUD** in the pause menu. A change in one place shows in the other.\n\n## Known issues\n\n- Players on other computers get no stamina bar: the game keeps stamina on each player's computer and never sends it.\n- Lasers and arc weapons get no round counter, since they heat or charge up instead. The ammo circle shows their heat or charge.\n\nMod authors can add meters, flashes and status icons to the HUD through Better HUD: see [docs/api.md](docs/api.md).",
-   "version": "1.17.1",
+   "version": "1.17.2",
    "early": false,
    "scope": "client",
    "requires": [
@@ -378,7 +378,7 @@
     },
     {
      "label": "Enemy health bars",
-     "description": "A bar over every enemy the player hits and every heavy that any player hurts. The bar of an enemy out of view waits at the edge of the screen. In the shoulder view of Integrated Third Person, that bar hides until the enemy is in view.",
+     "description": "A bar over every enemy the player hits and every heavy that any player hurts. The bar of an enemy out of view waits at the edge of the screen. In the shoulder view of Eyes of Liberty, that bar hides until the enemy is in view.",
      "group": null
     },
     {
@@ -420,13 +420,19 @@
    "option_groups": [],
    "repo": "Alomare/HD1-BetterHUD",
    "stars": 0,
-   "downloads": 265,
+   "downloads": 284,
    "kit": false,
    "icon": "img/alomare-betterhud-icon-f8848148c9.jpg",
    "banner": "img/alomare-betterhud-banner-249c90315b.jpg",
-   "released": "2026-11-11",
+   "released": "2026-11-15",
    "added": "2026-11-03",
    "versions": [
+    {
+     "version": "1.17.2",
+     "date": "2026-11-15",
+     "channel": "stable",
+     "notes": "- Changed: works with Eyes of Liberty, the new name of Integrated Third Person and Unleashed Camera, and still with the older ids.\n- Changed: the options name Eyes of Liberty."
+    },
     {
      "version": "1.17.1",
      "date": "2026-11-11",
@@ -480,12 +486,6 @@
      "date": "2026-11-04",
      "channel": "stable",
      "notes": "- Added French, Spanish and Brazilian Portuguese to the Mods page of the pause menu, shown in the language set in the game. Needs Obsidian API 1.16.0 or later.\n- Added Brazilian Portuguese and Chinese to the options in Obsidian."
-    },
-    {
-     "version": "1.11.0",
-     "date": "2026-11-04",
-     "channel": "stable",
-     "notes": "- Removed the dividers that split the ammo circle into a segment for each round. The circle is one band again."
     }
    ]
   },
@@ -660,7 +660,7 @@
    "option_groups": [],
    "repo": "Alomare/HD1-EnhancedVisuals",
    "stars": 0,
-   "downloads": 65,
+   "downloads": 87,
    "kit": false,
    "icon": "img/alomare-enhancedvisuals-icon-1f9486e80a.jpg",
    "banner": "img/alomare-enhancedvisuals-banner-8479c5978f.jpg",
@@ -714,8 +714,8 @@
     "yukiorsrs"
    ],
    "verified": true,
-   "description": "A third person camera for HELLDIVERS (2015), for the [Obsidian](https://github.com/Alomare/ObsidianLauncher) mod manager. Formerly Unleashed Camera, and before that Integrated Third Person: remove either one when installing this mod. Based on [Third Person Camera (HD2 Style)](https://github.com/yukiorsrs/third-person-camera-helldivers) by **yukiorsrs**, rebuilt with the permission of the author so that other mods keep working beside it.\n\nThe camera follows the Helldiver over the shoulder on foot, in vehicles and on the ship. Shots, grenades and stratagems go where the crosshair points. The view reaches farther, the sky over the level is filled in, a ring around the crosshair warns of enemies close by, and a bar shows where hits come from. After a death the camera stays on the body, then follows a living ally until the Helldiver is back.\n\nThird Person Camera replaces 28 game scripts, so mods that change the same parts of the game stop working with it. Eyes of Liberty replaces no script: every change is a hook through Obsidian.\n\n## How to use\n\n**F8** switches between the top-down camera of the game and third person. **H** swaps the shoulder. Both keys can be changed in Obsidian. While the death cam follows allies, left and right click switch between them.\n\n## Playing with others\n\nThe camera and everything on screen work in any lobby. Four session features change the game for the whole lobby: Max weapon range, Far enemy detection, Free movement and Increased throw range. They run only when every player runs Obsidian with the same mods, and switch off when anyone else joins. With all four off, the mod counts as a client mod.\n\n## Known issues\n\n- Players on one computer share a screen, so the camera goes back to top-down while a second local player is in, and comes back after.\n- The mod stays off while Third Person Camera, Unleashed Camera or Integrated Third Person is installed.\n\nFirst person is in development for separate beta versions.\n\nMod authors can read the camera state through `obsidian.import(\"alomare.eyesofliberty\")`: `active()`, `mode()`, `crosshair()` and `shoulder()`.",
-   "version": "1.0.0",
+   "description": "A third person camera for HELLDIVERS (2015), for the [Obsidian](https://github.com/Alomare/ObsidianLauncher) mod manager. Formerly Unleashed Camera, and before that Integrated Third Person: remove either one when installing this mod. Based on [Third Person Camera (HD2 Style)](https://github.com/yukiorsrs/third-person-camera-helldivers) by **yukiorsrs**, rebuilt with the permission of the author so that other mods keep working beside it.\n\nThe camera follows the Helldiver over the shoulder on foot, in vehicles and on the ship. Shots, grenades and stratagems go where the crosshair points. The view reaches farther, the sky over the level is filled in, a ring around the crosshair warns of enemies close by, and a bar shows where hits come from. After a death the camera stays on the body, then follows a living ally until the Helldiver is back.\n\nThird Person Camera replaces 28 game scripts, so mods that change the same parts of the game stop working with it. Eyes of Liberty replaces no script: every change is a hook through Obsidian.\n\n## How to use\n\n**F8** switches between the top-down camera of the game and third person. **H** swaps the shoulder. Both keys can be changed in Obsidian. On a gamepad, the right stick turns the camera and holding the left trigger aims; while aiming, the reload button throws grenades. While the death cam follows allies, left and right click switch between them.\n\n## Playing with others\n\nThe camera and everything on screen work in any lobby. Four session features change the game for the whole lobby: Max weapon range, Far enemy detection, Free movement and Increased throw range. They run only when every player runs Obsidian with the same mods, and switch off when anyone else joins. With all four off, the mod counts as a client mod.\n\n## Known issues\n\n- Players on one computer share a screen, so the camera goes back to top-down while a second local player is in, and comes back after.\n- The mod stays off while Third Person Camera, Unleashed Camera or Integrated Third Person is installed.\n\nFirst person is in development for separate beta versions.\n\nMod authors can read the camera state through `obsidian.import(\"alomare.eyesofliberty\")`: `active()`, `mode()`, `crosshair()` and `shoulder()`.",
+   "version": "1.0.2",
    "early": false,
    "scope": "session",
    "requires": [
@@ -887,13 +887,25 @@
    ],
    "repo": "Alomare/HD1-EyesOfLiberty",
    "stars": 0,
-   "downloads": 64,
+   "downloads": 95,
    "kit": false,
-   "icon": null,
-   "banner": null,
+   "icon": "img/alomare-eyesofliberty-icon-967bb15f02.jpg",
+   "banner": "img/alomare-eyesofliberty-banner-9768c10db8.jpg",
    "released": "2026-11-15",
    "added": "2026-11-11",
    "versions": [
+    {
+     "version": "1.0.2",
+     "date": "2026-11-15",
+     "channel": "stable",
+     "notes": "- New: an icon in Obsidian."
+    },
+    {
+     "version": "1.0.1",
+     "date": "2026-11-15",
+     "channel": "stable",
+     "notes": "- Changed: on a gamepad in third person, holding the left trigger aims, and the right stick only turns the camera. While aiming, the reload button throws grenades instead of reloading."
+    },
     {
      "version": "1.0.0",
      "date": "2026-11-15",
@@ -941,18 +953,6 @@
      "date": "2026-11-15",
      "channel": "stable",
      "notes": "- New: first person, as a prototype. The Camera mode option picks the camera at the start (Default, Third person or First person), and the camera key cycles the three. In first person the camera sits in the head of the Helldiver and the helmet is hidden. Walking backwards steps back instead of turning round, and standing still the body turns only once the view has turned far enough.\n- New: First person field of view option.\n- New: Overall camera height option, which raises or lowers the third-person camera everywhere.\n- New: a slight camera sway while sprinting. It follows the Camera shake option.\n- New: the crosshair fades out while sprinting, Custom Crosshair included.\n- Changed: the downed camera sits as low as the dive camera.\n- Changed: the on-foot camera distance is 3 m by default.\n- Changed: the Hellpod camera sits farther from the pod, waits longer before the glide, and the view stays still until the Helldiver climbs out.\n- Changed: the lobby-wide options are named Session features.\n- Removed: the Footsteps option."
-    },
-    {
-     "version": "0.5.0",
-     "date": "2026-11-15",
-     "channel": "stable",
-     "notes": "- New: Remove fog option, on by default. Photo Mode shows the fog while it is open.\n- New: Disable bloom option, on by default. Photo Mode shows the bloom while it is open.\n- New: Depth of field option: Game default, Focus on the Helldiver, or Off (the default). Photo Mode sets the depth of field while open.\n- New: downed camera. While the Helldiver is down, the camera sits near the ground and 1 m farther back.\n- New: Increased throw range, a lobby-wide option, on by default. Grenades and stratagem balls fly twice as far, on top of the Strong Arm perk.\n- Changed: the game's own crosshair shows in third person instead of a crosshair of the mod, and Custom Crosshair replaces it when installed.\n- Changed: the own name card is hidden in third person. The cards of other players stay.\n- Changed: the camera on foot in a mission is 1 m farther away by default.\n- Changed: the dive camera only comes down and no longer moves closer.\n- Changed: the segments of the enemy indicator ring are twice as thick.\n- Fixed: the game's hardware cursor showed in third person, away from the crosshair.\n- Fixed: marks over the crew and the terminals on the Super Destroyer trailed behind the camera."
-    },
-    {
-     "version": "0.4.2",
-     "date": "2026-11-13",
-     "channel": "stable",
-     "notes": "- Changed: the crosshair handed to other mods also says when fire or a throw is held, so Custom Crosshair shows the aiming look while firing."
     }
    ]
   },
@@ -965,7 +965,7 @@
    ],
    "verified": true,
    "description": "A crosshair mod for HELLDIVERS (2015), for the [Obsidian](https://github.com/Alomare/ObsidianLauncher) mod manager.\n\nCustom Crosshair replaces the aim cursor with a crosshair built from shapes, with one look between shots and another while aiming. Shape, size, gap, color, outline and shadow are all settings. A hitmarker flashes around the crosshair when a shot from this player hurts or kills an enemy.\n\n## How to use\n\nThe settings are in the Options tab of Custom Crosshair in Obsidian, with a live preview. A change applies at the next launch of the game.\n\nWith Eyes of Liberty, the crosshair goes where shots land. Turn off **Third person crosshair** to keep the crosshair of the game there instead, or **First person crosshair** for no crosshair in the first person camera of the Eyes of Liberty beta.\n\n## Known issues\n\n- On a controller the game shows no cursor in the top-down view, so no crosshair shows there.\n- A shot that armor stops does not count as a hit.",
-   "version": "0.6.2",
+   "version": "0.6.3",
    "early": true,
    "scope": "client",
    "requires": [
@@ -980,12 +980,12 @@
     },
     {
      "label": "Third person crosshair",
-     "description": "With Unleashed Camera, draws this crosshair where shots go, in place of the one from that mod. The game has no cursor in third person, so a state set to Game cursor uses the default look there.",
+     "description": "With Eyes of Liberty, draws this crosshair where shots go, in place of the one from that mod. The game has no cursor in third person, so a state set to Game cursor uses the default look there.",
      "group": "general"
     },
     {
      "label": "First person crosshair",
-     "description": "In the first person camera of Unleashed Camera, draws this crosshair. Off leaves first person with no crosshair at all.",
+     "description": "In the first person camera of the Eyes of Liberty beta, draws this crosshair. Off leaves first person with no crosshair at all.",
      "group": "general"
     },
     {
@@ -1259,13 +1259,19 @@
    ],
    "repo": "Alomare/HD1-CustomCrosshair",
    "stars": 0,
-   "downloads": 32,
+   "downloads": 35,
    "kit": false,
-   "icon": null,
-   "banner": null,
+   "icon": "img/alomare-customcrosshair-icon-5505107ee9.jpg",
+   "banner": "img/alomare-customcrosshair-banner-2ad3b014c3.jpg",
    "released": "2026-11-15",
    "added": "2026-11-11",
    "versions": [
+    {
+     "version": "0.6.3",
+     "date": "2026-11-15",
+     "channel": "stable",
+     "notes": "- New: an icon in Obsidian.\n- Changed: works with Eyes of Liberty, the new name of Unleashed Camera, and still with the older ids."
+    },
     {
      "version": "0.6.2",
      "date": "2026-11-15",
@@ -1319,66 +1325,6 @@
      "date": "2026-11-11",
      "channel": "stable",
      "notes": "- Changed: the idle and aiming crosshairs fade into each other in 0.08 seconds."
-    },
-    {
-     "version": "0.1.0",
-     "date": "2026-11-11",
-     "channel": "stable",
-     "notes": "- New: replaces the aim cursor of the game with a crosshair built from shapes, with one look between shots and another while aiming, in missions and on the ship.\n- New: shapes for each look: cross, cross with dot, dot, circle, circle with dot, circle with cross, T, chevron, brackets, the game cursor or none, with scale, gap, thickness, color, opacity, outline and shadow.\n- New: option groups in Obsidian with live previews of the crosshair. The groups and previews need Obsidian 2.0.0.\n- New: with Integrated Third Person, the crosshair goes where shots land."
-    }
-   ]
-  },
-  {
-   "id": "alomare.arcade",
-   "name": "Helldivers Arcade",
-   "summary": "Arcade game modes, starting with a horde survival mode.",
-   "authors": [
-    "Alomare"
-   ],
-   "verified": true,
-   "description": "Arcade game modes for HELLDIVERS (2015), for the [Obsidian](https://github.com/Alomare/ObsidianLauncher) mod manager. The first mode is Super Earth Survivors.\n\n## Super Earth Survivors\n\nA mode inspired by Vampire Survivors. The squad drops on an open map and holds out against waves that grow stronger over time. A second faction joins at 6 minutes and the third at 12, with elites, bosses and bombardments along the way.\n\nKills drop research samples. Each level up freezes the fight, refills health and lets every player pick one of three upgrade cards; every third level adds a stratagem. Some upgrades come in pairs that can evolve into a stronger one. The shuttle can be called after 15 minutes, and a summary of the run shows at the end.\n\n## How to use\n\nOpen the galaxy map and pick the **ARCADE** tab, beside Proving Grounds. Choose the faction, the difficulty and the biome, then Launch. The next drop plays the same mission again until a campaign mission is picked.\n\nArcade missions leave the Galactic Campaign as it was.\n\n## Playing with others\n\nUntil the host picks an arcade mission, the mod runs as a client mod and anyone can join. An arcade mission needs every player in the lobby to run Helldivers Arcade at the same version.",
-   "version": "1.3.0",
-   "early": false,
-   "scope": "expansion",
-   "requires": [
-    "obsidian.api",
-    "alomare.betterhud"
-   ],
-   "options": 0,
-   "option_list": [],
-   "option_groups": [],
-   "repo": "Alomare/HD1-HelldiversArcade",
-   "stars": 0,
-   "downloads": 37,
-   "kit": false,
-   "icon": null,
-   "banner": null,
-   "released": "2026-11-13",
-   "added": "2026-11-06",
-   "versions": [
-    {
-     "version": "1.3.0",
-     "date": "2026-11-13",
-     "channel": "stable",
-     "notes": "- New: a 3 second countdown after the landing, drawn like the hellpod launch countdown. When it ends, the alarm goes on and stays on. Enemies never raise an alarm, and every enemy knows where the squad is and comes for it.\n- New: a Fire elite leaves a wide fire where it dies, for 15 seconds.\n- Changed: Noxious and Fire elites move faster, by half of the Swift boost.\n- Changed: toxic ground from a Noxious elite shows a poison cloud on every machine.\n- Changed: Cluster Grenade blasts land closer together (3.5 m instead of 6 m) and follow each other faster (0.15 s instead of 0.3 s).\n- Changed: upgrades already held come up less often in the cards (twice as likely as a new one instead of three times).\n- Changed: a ground full of samples (300) sets off the sample vacuum early instead of merging the oldest.\n- Changed: the Script Profiler of Obsidian API shows the parts of the frame of a run one by one.\n- Fixed: a reinforcement that came just as the last player died could leave the defeat summary up for good. The summary now closes as soon as a player is on the way back."
-    },
-    {
-     "version": "1.2.0",
-     "date": "2026-11-13",
-     "channel": "stable",
-     "notes": "- New: Elite tools on the debug page: base unit, count and distance for spawned elites, a random kind, pausing elite spawns for the run, the next elite now, killing or removing every elite, breaking the Bulwark dome, and a status line.\n- Changed: Cluster Grenade, Carpet Bombing, Sweet Liberty and Chain Reaction blasts show the fireball and play the sound of a player grenade, on every machine. Before, they did damage unseen.\n- Changed: the first alarm is again the one the enemy raises. The first moments of a run for the host no longer count as taking over from a host that left, which raised the alarm at once.\n- Changed: Shock elites only arc while a Helldiver out of the drop pod is within range, so a landing player is no longer hit, and the arcs do half damage to other enemies.\n- Changed: the three panels of the Arcade screen span the width of the screen, staying within the middle 16:9 on wider screens.\n- Changed: the Mission Preview shows the planet name in the top right corner of the map.\n- Changed: the difficulty bar sits inside the difficulty selector, under the name.\n- Changed: the upgrade panel of the map spaces the badges more closely, and shows the rerolls and banishes in larger text under the upgrades.\n- Changed: the partner icons on an upgrade card are a tenth bigger and centred between the badge and the edge of the card.\n- Changed: the icon of an elite is half again as big with Better HUD 1.17.0."
-    },
-    {
-     "version": "1.1.0",
-     "date": "2026-11-10",
-     "channel": "stable",
-     "notes": "- New: a weapon dropped on the ground vanishes after a minute. Weapons in the crate of a stratagem stay.\n- New: on a defeat, the combat music stops and the defeat music of the game plays.\n- Changed: the first alarm is the one the enemy raises, with the scream or flare. The Arcade keeps the alarm on from then.\n- Changed: the end-of-run summary shows at once instead of 2 seconds after the end.\n- Changed: an upgrade card shows the partner icons of an evolution to the right of the badge, a fifth bigger.\n- Changed: the dome of a Bulwark elite rides on the elite instead of being placed again as it walks. Anyone walks through it, and shots from outside stop on it.\n- Changed: the level and clock in the top bar and the end-of-run summary use the body font instead of the title font.\n- Removed: chests.\n- Changed: the health bar of an elite shows all the time, with an icon for the kind in the middle of the bar, in place of the colored glow under the elite and the name over it. Needs Better HUD 1.16.0.\n- Changed: needs Obsidian API 1.48.0."
-    },
-    {
-     "version": "1.0.0",
-     "date": "2026-11-06",
-     "channel": "stable",
-     "notes": "- New: **Super Earth Survivors**, the first arcade game mode, picked from the ARCADE tab beside Proving Grounds on the galaxy map, with the starting faction, the difficulty and the map chosen there.\n- New: enemies come in waves of 30 seconds with a 20 second break, more and stronger as time goes on. A second faction joins at 6:00 and a third at 12:00, elites come from 3:00, a boss at 10:00 and 20:00 and then every 5 minutes, and red strike bombardments fall near the squad from 7:00.\n- New: kills drop research samples, and every level-up offers upgrade cards (common, rare, legendary, perk and evolution) and, every few levels, stratagems, with rerolls and banishes.\n- New: upgrades for weapons, movement, health and armor, grenades, melee and stratagems, and evolutions that join two upgrades into one with a new effect.\n- New: chests from elites, bosses and rare kills, with upgrades for every player in the squad.\n- New: the shuttle can be called after 15 minutes, and a run ends with a summary: the result, the time survived, the level, the factions, the bosses and the damage of each player by source.\n- New: up to four players, as an Obsidian expansion: everyone in the lobby runs the mod for an arcade mission, and the Galactic Campaign stays as it was."
     }
    ]
   }
