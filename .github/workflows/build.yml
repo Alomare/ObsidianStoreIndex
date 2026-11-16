@@ -6,7 +6,7 @@ on:
     branches: [main]
     paths: ["mods.json", "tools/**", ".github/workflows/build.yml"]
   schedule:
-    - cron: "17 */6 * * *"
+    - cron: "17 * * * *"
   workflow_dispatch:
 
 permissions:

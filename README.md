@@ -20,7 +20,7 @@ The list of mods the **STORE** tab of [Obsidian](https://github.com/Alomare/Obsi
 - From `dev`, else `main`, else the release, so they can change between releases: the description in `obsidian.json`, `README.md` (the text of the mod page, without the sections about installing, building, tests, credits and the license, and without pictures), the icon the manifest names and `thumbnail.jpg`.
 - The notes of the last ten releases, with the date and the channel (stable, beta and others, from the tag).
 
-The workflow in `.github/workflows/build.yml` runs the build every six hours, on a change to `mods.json` or the build, and when started by hand, and commits only what changed.
+The workflow in `.github/workflows/build.yml` runs the build every hour, on a change to `mods.json` or the build, and when started by hand, and commits only what changed.
 
 To build by hand: `pip install pillow`, then `python tools/build.py`. The build uses `GITHUB_TOKEN` when it is set, else the token of the GitHub CLI.
 
