@@ -10,28 +10,45 @@
    ],
    "verified": true,
    "description": "A library for [Obsidian](https://github.com/Alomare/ObsidianLauncher) mods on HELLDIVERS (2015). It gives other mods the game data by name, checked changes that can be undone, and ready actions. It does nothing by itself.\n\n## How to use\n\nObsidian API comes with Obsidian, in the Obsidian Kit. Mods that need it switch it on with them.\n\nTo build on it, list it in the `obsidian.json` of the mod:\n\n```json\n\"requires\": [\"obsidian.api\"]\n```\n\nThen ask for it in the script:\n\n```lua\nlocal api = obsidian.import(\"obsidian.api\")\n\nobsidian.keybind(\"panic\", function()\n  api.player.heal()\n  api.enemies.kill_near(20)\nend)\n```\n\nActions answer `true`, or `false` and a short reason such as `\"host_only\"`. A client mod can require the API and stay a client mod: it can read game data and use the interface, sound and event calls, and anything that changes the shared game answers `false, \"needs_session\"`.\n\n[REFERENCE.md](REFERENCE.md) has every call, with guides and recipes. A copy sits in the folder of the API in the Obsidian Kit, where an AI tool working on a mod can read it.\n\n## Known issues\n\n- Tested solo and offline, not yet with a second player.",
-   "version": "1.50.0",
+   "version": "1.52.0",
    "early": false,
    "scope": "library",
    "requires": [],
-   "options": 1,
+   "options": 2,
    "option_list": [
     {
      "label": "Open the menu with a controller",
      "description": "The buttons that open and close the F6 menu from a controller, pressed together. In the menu, the D-pad or the left stick moves, A selects, B goes back, Y resets a row, and LB and RB switch pages.",
+     "group": null
+    },
+    {
+     "label": "Script Profiler",
+     "description": "Adds the Script Profiler page to the F6 menu: a panel over the game with the time the scripts of each mod take every frame. On its page the panel can still be hidden. Off, nothing is measured.",
      "group": null
     }
    ],
    "option_groups": [],
    "repo": "Alomare/ObsidianAPI",
    "stars": 0,
-   "downloads": 1933,
+   "downloads": 2015,
    "kit": true,
    "icon": "img/obsidian-api-icon-976df8f8d5.jpg",
    "banner": null,
-   "released": "2026-11-15",
+   "released": "2026-11-16",
    "added": "2026-10-30",
    "versions": [
+    {
+     "version": "1.52.0",
+     "date": "2026-11-16",
+     "channel": "stable",
+     "notes": "- New: `api.mission.board(unit, reach)` takes a Helldiver aboard the landed shuttle from up to 4 metres off the door (the game alone asks for 1.9), through the boarding code of the game.\n- New: `bot:board` takes bots aboard from 4 metres by default, set with `opts.reach`.\n- New: `bot:fight` takes `secondary.only = \"armored\"` or `\"heavy\"`, for mech rockets kept for armored or heavy targets; `bot:armored(enemy)` and `bot:heavy(enemy)` answer the same test.\n- New: `bot:throw_satchel(pos)` throws one satchel charge at a point, charged to the distance.\n- New: `bot:fight` options for satchel charges: `satchel.every`, `satchel.max`, `satchel.distance` and `satchel.min`.\n- Fixed: a grenade order for a bot in a vehicle seat held the second trigger and fired the whole rocket rack of a Walker at once. A bot in a seat no longer throws grenades (`bot:throw_at` answers \"seated\").\n- Fixed: a bot fighting with a satchel charge threw every charge at once, straight down at the feet of the bot; each one now goes to the target, one at a time, never at a target nearer than 6 metres."
+    },
+    {
+     "version": "1.51.0",
+     "date": "2026-11-16",
+     "channel": "stable",
+     "notes": "- New: the Script Profiler option, off by default. Off, the Script Profiler has no page and measures nothing; on, the Script Profiler page still has Hidden.\n- New: the in-game window and the Script Profiler in Russian and Simplified Chinese; the Script Profiler texts come from the locales in every language.\n- Changed: the value field of a choice or number row takes the width of the widest value it can show, at most half the row, so the arrows stay put as the value changes.\n- Changed: `api.catalog.text` answers the name the game has in every language, Cyrillic and Chinese included."
+    },
     {
      "version": "1.50.0",
      "date": "2026-11-15",
@@ -79,18 +96,6 @@
      "date": "2026-11-07",
      "channel": "stable",
      "notes": "- Changed: the label of the F6 key says \"Open in-game menu\" in French, Spanish, Portuguese and Chinese too, as in English since 1.36.2."
-    },
-    {
-     "version": "1.39.0",
-     "date": "2026-11-07",
-     "channel": "stable",
-     "notes": "- New: `bot:operate(unit, opts, on_done)` works a terminal to the end: objective terminals, the extraction beacon and hidden objects. Arrows go in one frame each, checked before the next, and presses come at a set rate. `bot:operating()` and `bot:cancel_operate()` go with it.\n- New: `bot:deliver(unit, pos, opts, on_done)` carries a thing an objective asks for to the drop-off and puts it down there. `bot:delivering()` goes with it.\n- New: `api.mission.drop_offs(thing)` lists where carried things count as delivered.\n- New: `bot:load(unit, opts, on_done)` loads a teammate's recoilless rifle or missile launcher from the bot's backpack.\n- New: `bot:take_ammo(unit, opts, on_done)` takes ammo from a teammate's ammo backpack, or from the bot's own.\n- New: `api.bots.dead()` lists the players the next reinforcement brings back, and `bot:reinforce(pos, on_done)` calls it.\n- New: `api.mission.extraction()` reads the beacon and the shuttle, `api.mission.aboard(unit)` says who got in, and `bot:board(opts, on_done)` walks a bot into the shuttle. A bare bot aboard leaves the level.\n- New: `bot:detonate()` sets off the satchel charges the bot threw, and `bot:charges_out()` counts them.\n- New: `api.bots.hazards(pos, radius, kinds)` lists mines, burning areas and armed hellbombs near a point.\n- New: `api.mission.areas()` lists the hold and fortify areas with their radius and progress.\n- New: `bot:camera(false)`, or `api.bots.add({ free_camera = true })`, takes a player bot out of the camera's framing and the screen's edge, so it walks anywhere on the map. `bot:in_camera()` goes with it.\n- New: `use_weapon` takes `move`, to keep walking on the bot's orders while it fires, and `rest`, seconds the weapon stays put away afterwards. `bot:resting(slot)` says how long.\n- New: `bot:use` takes `force`, to have the game use the thing with no wait for the game to offer it.\n- Changed: a bot sent to use something stops a little short when the thing's own body keeps it from getting closer, as with the extraction beacon."
-    },
-    {
-     "version": "1.38.1",
-     "date": "2026-11-07",
-     "channel": "stable",
-     "notes": "- Changed: a fighting bot fires only once it faces the target and has held on it a moment, so a shot doesn't leave on the way round, where a teammate may stand.\n- Changed: in a mech, the bot lines up the gun on the mech's arm with the target, not the mech's middle.\n- Changed: a driving bot eases off near the point it drives to and stops within 4 meters of it, or when the point ends up close behind, instead of circling it.\n- Changed: a dead body in the way no longer stops a bot's shot.\n- Changed: `bot:use` takes out the primary when the game offers the bot a reload of the bot's own first (an empty recoilless with the recoilless backpack), so the thing it was sent to use comes through.\n- Changed: a new `fight` order looks for a target at once.\n- Changed: `bot:use_weapon` reloads an empty launcher that the bot's backpack reloads before taking back the weapon from before, so the reload plays and the launcher comes out loaded next time.\n- Fixed: with `freeze` on, a killed enemy falls and despawns while the rest stay frozen.\n- Fixed: effects no longer log an error each time they're switched on outside a mission."
     }
    ]
   },
@@ -103,7 +108,7 @@
    ],
    "verified": true,
    "description": "Small fixes for HELLDIVERS (2015), for the [Obsidian](https://github.com/Alomare/ObsidianLauncher) mod manager.\n\nObsidian Patches removes the black bars on wide screens, skips the intro, the login screen and the planet scans, speeds up the mission end, pauses the game in solo missions, and fixes the recoil and sprint animations.\n\n## How to use\n\nObsidian Patches comes with Obsidian, in the Obsidian Kit, switched on. Each fix is an option in Obsidian and takes effect at the next launch. Four of them can also be changed in game, under **Mods** in the pause menu, and apply at once.",
-   "version": "1.11.1",
+   "version": "1.12.0",
    "early": false,
    "scope": "client",
    "requires": [
@@ -170,13 +175,19 @@
    "option_groups": [],
    "repo": "Alomare/ObsidianPatches",
    "stars": 0,
-   "downloads": 757,
+   "downloads": 803,
    "kit": true,
    "icon": "img/obsidian-qol-icon-6bb7fca71d.jpg",
    "banner": null,
-   "released": "2026-11-06",
+   "released": "2026-11-16",
    "added": "2026-10-30",
    "versions": [
+    {
+     "version": "1.12.0",
+     "date": "2026-11-16",
+     "channel": "stable",
+     "notes": "- New: the name, description and options in Russian."
+    },
     {
      "version": "1.11.1",
      "date": "2026-11-06",
@@ -230,12 +241,6 @@
      "date": "2026-11-03",
      "channel": "stable",
      "notes": "- Changed: Weapon recoil after stratagems is now Weapon recoil animation fix, and also brings the recoil animation back after picking up a weapon from the ground.\n- Changed: Sprint pose after a dive is now Sprint pose fix.\n- Changed: Widescreen fixes and Expedite mission end come first in the option list."
-    },
-    {
-     "version": "1.7.0",
-     "date": "2026-11-03",
-     "channel": "stable",
-     "notes": "- Changed: the mod is now Obsidian Patches, in Obsidian and in the pause menu, where the page title reads the name in full.\n- New: Weapon recoil after stratagems brings back the recoil animation of the weapon in hand when a stratagem throw leaves it out. On by default.\n- New: Sprint pose after a dive keeps the running pose normal when sprinting right after getting up from a dive. On by default.\n- Changed: the French, Spanish and Portuguese pause menu rows show accented letters correctly."
     }
    ]
   },
@@ -248,7 +253,7 @@
    ],
    "verified": true,
    "description": "An in-game menu for HELLDIVERS (2015) that changes the character, weapons, stratagems, enemies, missions and game data, for the [Obsidian](https://github.com/Alomare/ObsidianLauncher) mod manager.\n\nMissions add nothing to the save while the Trainer is on, and it stays out of the Galactic War. It offers only the base game and owned DLC.\n\n## How to use\n\n1. Switch on Obsidian Trainer in the Mods tab. [Obsidian API](https://github.com/Alomare/ObsidianAPI) turns on with it.\n2. Deploy, then start the game.\n3. Press **F6** to open the menu. The key can be changed in the Keys tab of Obsidian API.\n\nThe Obsidian Trainer page in the Wiki of Obsidian lists every key and page.",
-   "version": "1.15.0",
+   "version": "1.16.1",
    "early": false,
    "scope": "session",
    "requires": [
@@ -265,13 +270,25 @@
    "option_groups": [],
    "repo": "Alomare/ObsidianTrainer",
    "stars": 0,
-   "downloads": 1312,
+   "downloads": 1376,
    "kit": true,
    "icon": "img/obsidian-trainer-icon-717943693e.jpg",
    "banner": null,
-   "released": "2026-11-09",
+   "released": "2026-11-16",
    "added": "2026-10-30",
    "versions": [
+    {
+     "version": "1.16.1",
+     "date": "2026-11-16",
+     "channel": "stable",
+     "notes": "- New: texts in every language for the new answers of Obsidian API 1.52.0 (no such unit, too far away, already aboard)."
+    },
+    {
+     "version": "1.16.0",
+     "date": "2026-11-16",
+     "channel": "stable",
+     "notes": "- New: the menu in Russian, and in Simplified Chinese from the translation by Lapeace233.\n- Changed: item, weapon and enemy names show as the game writes them in every language, Cyrillic and Chinese included. Needs the next Obsidian API."
+    },
     {
      "version": "1.15.0",
      "date": "2026-11-09",
@@ -319,18 +336,6 @@
      "date": "2026-11-04",
      "channel": "stable",
      "notes": "- Changed: a new image beside the mod in Obsidian's mod list."
-    },
-    {
-     "version": "1.9.0",
-     "date": "2026-11-03",
-     "channel": "stable",
-     "notes": "- New: Enter a stratagem on each bot's page: the bot holds the stratagem key, enters the code of a stratagem it carries and throws the flare at the cursor. Stop entering ends it.\n- New: Enter a stratagem under Every bot: each bot carrying the chosen stratagem enters it."
-    },
-    {
-     "version": "1.8.0",
-     "date": "2026-11-03",
-     "channel": "stable",
-     "notes": "- New: the mod's image, shown beside it in Obsidian's mod list."
     }
    ]
   },
@@ -420,7 +425,7 @@
    "option_groups": [],
    "repo": "Alomare/HD1-BetterHUD",
    "stars": 0,
-   "downloads": 294,
+   "downloads": 311,
    "kit": false,
    "icon": "img/alomare-betterhud-icon-f8848148c9.jpg",
    "banner": "img/alomare-betterhud-banner-249c90315b.jpg",
@@ -660,7 +665,7 @@
    "option_groups": [],
    "repo": "Alomare/HD1-EnhancedVisuals",
    "stars": 0,
-   "downloads": 97,
+   "downloads": 112,
    "kit": false,
    "icon": "img/alomare-enhancedvisuals-icon-1f9486e80a.jpg",
    "banner": "img/alomare-enhancedvisuals-banner-8479c5978f.jpg",
@@ -715,8 +720,8 @@
    ],
    "verified": true,
    "description": "A third person camera for HELLDIVERS (2015), for the [Obsidian](https://github.com/Alomare/ObsidianLauncher) mod manager. Formerly Unleashed Camera, and before that Integrated Third Person: remove either one when installing this mod. Based on [Third Person Camera (HD2 Style)](https://github.com/yukiorsrs/third-person-camera-helldivers) by **yukiorsrs**, rebuilt with the permission of the author so that other mods keep working beside it.\n\nThe camera follows the Helldiver over the shoulder on foot, in vehicles and on the ship. Shots, grenades and stratagems go where the crosshair points. The view reaches farther, the sky over the level is filled in, a ring around the crosshair warns of enemies close by, and a bar shows where hits come from. Stratagem beacons and objectives out of view show at the edge of the screen, as do allies, red while down, and a dashed line shows where a held grenade or stratagem ball would fly. After a death the camera stays on the body, then follows a living ally until the Helldiver is back. After extraction it rides the shuttle out.\n\nThird Person Camera replaces 28 game scripts, so mods that change the same parts of the game stop working with it. Eyes of Liberty replaces no script: every change is a hook through Obsidian.\n\n## How to use\n\n**F8** switches between the top-down camera of the game and third person. **H** swaps the shoulder. Both keys can be changed in Obsidian. On a gamepad, the right stick turns the camera and holding the left trigger aims; while aiming, the reload button throws grenades. A tap of the right stick swaps the shoulder. While the death cam follows allies, left and right click switch between them.\n\n## Playing with others\n\nThe camera and everything on screen work in any lobby. Four session features change the game for the whole lobby: Max weapon range, Far enemy detection, Free movement and Increased throw range. They run only when every player runs Obsidian with the same mods, and switch off when anyone else joins. With all four off, the mod counts as a client mod.\n\n## Known issues\n\n- Players on one computer share a screen, so the camera goes back to top-down while a second local player is in, and comes back after.\n- The mod stays off while Third Person Camera, Unleashed Camera or Integrated Third Person is installed.\n\nFirst person is in development for separate beta versions.\n\nMod authors can read the camera state through `obsidian.import(\"alomare.eyesofliberty\")`: `active()`, `mode()`, `crosshair()` and `shoulder()`.",
-   "version": "1.1.1",
-   "early": false,
+   "version": "0.10.0",
+   "early": true,
    "scope": "session",
    "requires": [
     "obsidian.api"
@@ -902,7 +907,7 @@
    ],
    "repo": "Alomare/HD1-EyesOfLiberty",
    "stars": 0,
-   "downloads": 99,
+   "downloads": 84,
    "kit": false,
    "icon": "img/alomare-eyesofliberty-icon-967bb15f02.jpg",
    "banner": "img/alomare-eyesofliberty-banner-9768c10db8.jpg",
@@ -910,34 +915,10 @@
    "added": "2026-11-11",
    "versions": [
     {
-     "version": "1.1.1",
+     "version": "0.10.0",
      "date": "2026-11-16",
      "channel": "stable",
-     "notes": "- Changed: Edge markers leave allies to the off-screen marker of the game, with the name. That marker now points the right way for allies behind the camera, and turns red while the ally is down.\n- Fixed: edge markers at the bottom of the screen sat behind the player panels."
-    },
-    {
-     "version": "1.1.0",
-     "date": "2026-11-16",
-     "channel": "stable",
-     "notes": "- New: Edge markers, on by default. In third person, allies, stratagem beacons and objectives out of view show at the edge of the screen, with the icons and colours of the map. Allies show as the player arrow in the colour of the player, red while downed.\n- New: Throw arc, on by default. In third person, while a grenade or a stratagem ball is held, a dashed line shows the way it would fly if thrown now, and a ring where it first lands.\n- New: Extraction camera, on by default. Once the Helldiver boards the shuttle, the camera rides with the shuttle as it takes off and flies away, until the mission ends.\n- New: on a gamepad, a tap of the right stick swaps the shoulder. Holding it to talk does not.\n- Fixed: on the ship, the \"!\" over crew members behind the camera showed mirrored on screen, as if floating in the room. Prompts and name cards behind the camera are hidden the same way."
-    },
-    {
-     "version": "1.0.2",
-     "date": "2026-11-15",
-     "channel": "stable",
-     "notes": "- New: an icon in Obsidian."
-    },
-    {
-     "version": "1.0.1",
-     "date": "2026-11-15",
-     "channel": "stable",
-     "notes": "- Changed: on a gamepad in third person, holding the left trigger aims, and the right stick only turns the camera. While aiming, the reload button throws grenades instead of reloading."
-    },
-    {
-     "version": "1.0.0",
-     "date": "2026-11-15",
-     "channel": "stable",
-     "notes": "- Changed: Unleashed Camera is now Eyes of Liberty, under the id alomare.eyesofliberty. Remove Unleashed Camera when installing it: while Unleashed Camera or Integrated Third Person is installed, Eyes of Liberty stays off.\n- New: Death cam, on by default. When the Helldiver dies, the camera stays on the body, or where the body was once the game removes it, until the Helldiver drops in again or the mission ends. With allies alive, the camera moves to one of them after 4 seconds. Left and right click switch between allies, and the mouse turns the camera.\n- Changed: after a death in a squad, the Hellpod camera also rides down with the reinforced Helldiver.\n- Removed: first person, which moves to separate beta versions."
+     "notes": "- Changed: The vehicle and mech camera sits 1.5 m higher in every view.\n- Changed: The throw arc is white, with more frequent, fainter and thinner dashes.\n- Fixed: The extraction camera follows the shuttle when it takes off.\n- Fixed: The extraction camera no longer clips into the shuttle while turning.\n- Fixed: Placing a map marker from a mech no longer fires the mech.\n- Fixed: The game crosshair returns when switching from third person to the top-down view."
     },
     {
      "version": "0.9.1",
@@ -968,6 +949,30 @@
      "date": "2026-11-15",
      "channel": "stable",
      "notes": "- Changed: the mod id is now alomare.unleashedcamera. Obsidian installs it as a new mod: remove Integrated Third Person after installing it. Settings start from the defaults again.\n- Changed: while Integrated Third Person is still installed, Unleashed Camera stays off and says so.\n- Changed: less work every frame for the game's screen checks, the weapon aim, the hidden helmet in first person and the depth of field that follows the Helldiver.\n- New: Eye height, Eye forward and Eye side options for the first person camera.\n- Changed: the options are in new groups: Camera, Third person, First person, Vehicles, Indicators and names, Picture, and Session features.\n- Changed: the Hellpod camera rides down above the pod and a little ahead, looking almost straight down, so the pod stays in the middle of the picture.\n- Fixed: the sky over the level was far too bright on every planet, at night too. It is now drawn at most as bright as made, the brightness Photo Mode uses, and dimmer under a darker planet fog."
+    },
+    {
+     "version": "0.7.0",
+     "date": "2026-11-15",
+     "channel": "stable",
+     "notes": "- Changed: the mod is now called Unleashed Camera. Settings and installs carry over.\n- Changed: in first person the body turns with the view without the aiming walk, so the Helldiver moves at full speed and can throw, call stratagems and interact.\n- Changed: the first person camera sits higher and farther forward, and moves forward while looking down, so the inside of the body no longer shows.\n- Changed: the camera sway while sprinting is a little stronger.\n- Changed: while a flamethrower of the player fires, the Lumberer included, camera shake is 80% weaker."
+    },
+    {
+     "version": "0.6.0",
+     "date": "2026-11-15",
+     "channel": "stable",
+     "notes": "- New: first person, as a prototype. The Camera mode option picks the camera at the start (Default, Third person or First person), and the camera key cycles the three. In first person the camera sits in the head of the Helldiver and the helmet is hidden. Walking backwards steps back instead of turning round, and standing still the body turns only once the view has turned far enough.\n- New: First person field of view option.\n- New: Overall camera height option, which raises or lowers the third-person camera everywhere.\n- New: a slight camera sway while sprinting. It follows the Camera shake option.\n- New: the crosshair fades out while sprinting, Custom Crosshair included.\n- Changed: the downed camera sits as low as the dive camera.\n- Changed: the on-foot camera distance is 3 m by default.\n- Changed: the Hellpod camera sits farther from the pod, waits longer before the glide, and the view stays still until the Helldiver climbs out.\n- Changed: the lobby-wide options are named Session features.\n- Removed: the Footsteps option."
+    },
+    {
+     "version": "0.5.0",
+     "date": "2026-11-15",
+     "channel": "stable",
+     "notes": "- New: Remove fog option, on by default. Photo Mode shows the fog while it is open.\n- New: Disable bloom option, on by default. Photo Mode shows the bloom while it is open.\n- New: Depth of field option: Game default, Focus on the Helldiver, or Off (the default). Photo Mode sets the depth of field while open.\n- New: downed camera. While the Helldiver is down, the camera sits near the ground and 1 m farther back.\n- New: Increased throw range, a lobby-wide option, on by default. Grenades and stratagem balls fly twice as far, on top of the Strong Arm perk.\n- Changed: the game's own crosshair shows in third person instead of a crosshair of the mod, and Custom Crosshair replaces it when installed.\n- Changed: the own name card is hidden in third person. The cards of other players stay.\n- Changed: the camera on foot in a mission is 1 m farther away by default.\n- Changed: the dive camera only comes down and no longer moves closer.\n- Changed: the segments of the enemy indicator ring are twice as thick.\n- Fixed: the game's hardware cursor showed in third person, away from the crosshair.\n- Fixed: marks over the crew and the terminals on the Super Destroyer trailed behind the camera."
+    },
+    {
+     "version": "0.4.2",
+     "date": "2026-11-13",
+     "channel": "stable",
+     "notes": "- Changed: the crosshair handed to other mods also says when fire or a throw is held, so Custom Crosshair shows the aiming look while firing."
     }
    ]
   },
@@ -1274,7 +1279,7 @@
    ],
    "repo": "Alomare/HD1-CustomCrosshair",
    "stars": 0,
-   "downloads": 37,
+   "downloads": 38,
    "kit": false,
    "icon": "img/alomare-customcrosshair-icon-5505107ee9.jpg",
    "banner": "img/alomare-customcrosshair-banner-2ad3b014c3.jpg",
