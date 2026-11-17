@@ -30,7 +30,7 @@
    "option_groups": [],
    "repo": "Alomare/ObsidianAPI",
    "stars": 0,
-   "downloads": 2054,
+   "downloads": 2089,
    "kit": true,
    "icon": "img/obsidian-api-icon-976df8f8d5.jpg",
    "banner": null,
@@ -108,7 +108,7 @@
    ],
    "verified": true,
    "description": "Small fixes for HELLDIVERS (2015), for the [Obsidian](https://github.com/Alomare/ObsidianLauncher) mod manager.\n\nObsidian Patches removes the black bars on wide screens, skips the intro, the login screen and the planet scans, speeds up the mission end, pauses the game in solo missions, and fixes the recoil and sprint animations.\n\n## How to use\n\nObsidian Patches comes with Obsidian, in the Obsidian Kit, switched on. Each fix is an option in Obsidian and takes effect at the next launch. Four of them can also be changed in game, under **Mods** in the pause menu, and apply at once.",
-   "version": "1.12.0",
+   "version": "1.12.1",
    "early": false,
    "scope": "client",
    "requires": [
@@ -175,13 +175,19 @@
    "option_groups": [],
    "repo": "Alomare/ObsidianPatches",
    "stars": 0,
-   "downloads": 840,
+   "downloads": 880,
    "kit": true,
    "icon": "img/obsidian-qol-icon-6bb7fca71d.jpg",
    "banner": null,
-   "released": "2026-11-16",
+   "released": "2026-11-17",
    "added": "2026-10-30",
    "versions": [
+    {
+     "version": "1.12.1",
+     "date": "2026-11-17",
+     "channel": "stable",
+     "notes": "- Changed: Expedite mission end on Instant no longer crashes the game at the end of a mission that completes a planet."
+    },
     {
      "version": "1.12.0",
      "date": "2026-11-16",
@@ -235,12 +241,6 @@
      "date": "2026-11-04",
      "channel": "stable",
      "notes": "- Changed: Sprint pose fix now frees the upper body when a sprint starts straight from standing, which is how a sprint starts after getting up from a dive, and after firing or a weapon switch too."
-    },
-    {
-     "version": "1.8.0",
-     "date": "2026-11-03",
-     "channel": "stable",
-     "notes": "- Changed: Weapon recoil after stratagems is now Weapon recoil animation fix, and also brings the recoil animation back after picking up a weapon from the ground.\n- Changed: Sprint pose after a dive is now Sprint pose fix.\n- Changed: Widescreen fixes and Expedite mission end come first in the option list."
     }
    ]
   },
@@ -270,7 +270,7 @@
    "option_groups": [],
    "repo": "Alomare/ObsidianTrainer",
    "stars": 0,
-   "downloads": 1416,
+   "downloads": 1449,
    "kit": true,
    "icon": "img/obsidian-trainer-icon-717943693e.jpg",
    "banner": null,
@@ -425,7 +425,7 @@
    "option_groups": [],
    "repo": "Alomare/HD1-BetterHUD",
    "stars": 0,
-   "downloads": 323,
+   "downloads": 327,
    "kit": false,
    "icon": "img/alomare-betterhud-icon-f8848148c9.jpg",
    "banner": "img/alomare-betterhud-banner-249c90315b.jpg",
@@ -665,7 +665,7 @@
    "option_groups": [],
    "repo": "Alomare/HD1-EnhancedVisuals",
    "stars": 0,
-   "downloads": 121,
+   "downloads": 126,
    "kit": false,
    "icon": "img/alomare-enhancedvisuals-icon-1f9486e80a.jpg",
    "banner": "img/alomare-enhancedvisuals-banner-8479c5978f.jpg",
@@ -907,7 +907,7 @@
    ],
    "repo": "Alomare/HD1-EyesOfLiberty",
    "stars": 0,
-   "downloads": 89,
+   "downloads": 97,
    "kit": false,
    "icon": "img/alomare-eyesofliberty-icon-967bb15f02.jpg",
    "banner": "img/alomare-eyesofliberty-banner-9768c10db8.jpg",
@@ -1345,6 +1345,42 @@
      "date": "2026-11-11",
      "channel": "stable",
      "notes": "- Changed: the idle and aiming crosshairs fade into each other in 0.08 seconds."
+    }
+   ]
+  },
+  {
+   "id": "alomare.arcade",
+   "name": "Helldivers Arcade",
+   "summary": "Arcade game modes, starting with a horde survival mode.",
+   "authors": [
+    "Alomare"
+   ],
+   "verified": true,
+   "description": "Arcade game modes for HELLDIVERS (2015), for the [Obsidian](https://github.com/Alomare/ObsidianLauncher) mod manager. The first mode is Super Earth Survivors.\n\n## Super Earth Survivors\n\nA mode inspired by Vampire Survivors. The squad drops on an open map and holds out against waves that grow stronger over time. A second faction joins at 6 minutes and the third at 12, with elites, bosses and bombardments along the way.\n\nKills drop research samples. Each level up freezes the fight, refills health and lets every player pick one of three upgrade cards; every third level adds a stratagem. Some upgrades come in pairs that can evolve into a stronger one. The shuttle can be called after 15 minutes, and a summary of the run shows at the end.\n\n## How to use\n\nOpen the galaxy map and pick the **ARCADE** tab, beside Proving Grounds. Choose the faction, the difficulty and the biome, then Launch. The next drop plays the same mission again until a campaign mission is picked.\n\nArcade missions leave the Galactic Campaign as it was.\n\n## Playing with others\n\nUntil the host picks an arcade mission, the mod runs as a client mod and anyone can join. An arcade mission needs every player in the lobby to run Helldivers Arcade at the same version.",
+   "version": "0.1.0",
+   "early": true,
+   "scope": "expansion",
+   "requires": [
+    "obsidian.api",
+    "alomare.betterhud"
+   ],
+   "options": 0,
+   "option_list": [],
+   "option_groups": [],
+   "repo": "Alomare/HD1-HelldiversArcade",
+   "stars": 0,
+   "downloads": 0,
+   "kit": false,
+   "icon": null,
+   "banner": null,
+   "released": "2026-11-17",
+   "added": "2026-11-17",
+   "versions": [
+    {
+     "version": "0.1.0",
+     "date": "2026-11-17",
+     "channel": "stable",
+     "notes": "- Changed: Helldivers Arcade is in Early Access, and the version numbers start again from 0.1.0. Installs of 1.3.0 or older are not offered this version as an update: remove the mod and install it again from the Store."
     }
    ]
   }
