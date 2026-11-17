@@ -30,7 +30,7 @@
    "option_groups": [],
    "repo": "Alomare/ObsidianAPI",
    "stars": 0,
-   "downloads": 2097,
+   "downloads": 2118,
    "kit": true,
    "icon": "img/obsidian-api-icon-976df8f8d5.jpg",
    "banner": null,
@@ -175,7 +175,7 @@
    "option_groups": [],
    "repo": "Alomare/ObsidianPatches",
    "stars": 0,
-   "downloads": 886,
+   "downloads": 907,
    "kit": true,
    "icon": "img/obsidian-qol-icon-6bb7fca71d.jpg",
    "banner": null,
@@ -270,7 +270,7 @@
    "option_groups": [],
    "repo": "Alomare/ObsidianTrainer",
    "stars": 0,
-   "downloads": 1456,
+   "downloads": 1475,
    "kit": true,
    "icon": "img/obsidian-trainer-icon-717943693e.jpg",
    "banner": null,
@@ -342,7 +342,7 @@
   {
    "id": "alomare.betterhud",
    "name": "Better HUD",
-   "summary": "Adds round counts, health bars and damage numbers to the HUD.",
+   "summary": "Adds useful and configurable HUD elements: on-character ammo count, enemy and ally health bars that show status effects and damage numbers.",
    "authors": [
     "Alomare"
    ],
@@ -425,7 +425,7 @@
    "option_groups": [],
    "repo": "Alomare/HD1-BetterHUD",
    "stars": 0,
-   "downloads": 330,
+   "downloads": 335,
    "kit": false,
    "icon": "img/alomare-betterhud-icon-f8848148c9.jpg",
    "banner": "img/alomare-betterhud-banner-249c90315b.jpg",
@@ -497,7 +497,7 @@
   {
    "id": "alomare.photomode",
    "name": "Photo Mode",
-   "summary": "Stops the game and frees the camera for pictures.",
+   "summary": "A photo mode! Default F7 to open.",
    "authors": [
     "Alomare"
    ],
@@ -520,7 +520,7 @@
    "option_groups": [],
    "repo": "Alomare/HD1-PhotoMode",
    "stars": 0,
-   "downloads": 28,
+   "downloads": 29,
    "kit": false,
    "icon": "img/alomare-photomode-icon-2a2b0ea7c2.jpg",
    "banner": "img/alomare-photomode-banner-45d6d42c2d.jpg",
@@ -592,7 +592,7 @@
   {
    "id": "alomare.enhancedvisuals",
    "name": "Enhanced Visuals",
-   "summary": "Enhances graphics and adds extra visual effects.",
+   "summary": "Adds ambient occlusion, higher shadow resolution, supersampling, ambient light and other graphical enhancements.",
    "authors": [
     "Alomare"
    ],
@@ -665,7 +665,7 @@
    "option_groups": [],
    "repo": "Alomare/HD1-EnhancedVisuals",
    "stars": 0,
-   "downloads": 126,
+   "downloads": 129,
    "kit": false,
    "icon": "img/alomare-enhancedvisuals-icon-1f9486e80a.jpg",
    "banner": "img/alomare-enhancedvisuals-banner-8479c5978f.jpg",
@@ -907,7 +907,7 @@
    ],
    "repo": "Alomare/HD1-EyesOfLiberty",
    "stars": 0,
-   "downloads": 99,
+   "downloads": 102,
    "kit": false,
    "icon": "img/alomare-eyesofliberty-icon-967bb15f02.jpg",
    "banner": "img/alomare-eyesofliberty-banner-9768c10db8.jpg",
@@ -979,7 +979,7 @@
   {
    "id": "alomare.customcrosshair",
    "name": "Custom Crosshair",
-   "summary": "Replaces the aim cursor with a custom crosshair and adds a hitmarker.",
+   "summary": "Replaces the cursor with a customizable crosshair, with separate presets for idle and aiming. Also adds a hitmarker.",
    "authors": [
     "Alomare"
    ],
@@ -1279,7 +1279,7 @@
    ],
    "repo": "Alomare/HD1-CustomCrosshair",
    "stars": 0,
-   "downloads": 41,
+   "downloads": 44,
    "kit": false,
    "icon": "img/alomare-customcrosshair-icon-5505107ee9.jpg",
    "banner": "img/alomare-customcrosshair-banner-2ad3b014c3.jpg",
@@ -1351,7 +1351,7 @@
   {
    "id": "alomare.arcade",
    "name": "Helldivers Arcade",
-   "summary": "Arcade game modes, starting with a horde survival mode.",
+   "summary": "Adds the ARCADE tab in the Galactic War terminal: alternate modes with transformative gameplay, separate from the main game.",
    "authors": [
     "Alomare"
    ],
@@ -1369,7 +1369,7 @@
    "option_groups": [],
    "repo": "Alomare/HD1-HelldiversArcade",
    "stars": 0,
-   "downloads": 3,
+   "downloads": 5,
    "kit": false,
    "icon": null,
    "banner": null,
@@ -1381,6 +1381,53 @@
      "date": "2026-11-17",
      "channel": "stable",
      "notes": "- Changed: Helldivers Arcade is in Early Access, and the version numbers start again from 0.1.0. Installs of 1.3.0 or older are not offered this version as an update: remove the mod and install it again from the Store."
+    }
+   ]
+  },
+  {
+   "id": "alomare.sharedresupply",
+   "name": "Shared Resupply",
+   "summary": "Brings the squad resupply from HELLDIVERS 2: a mission stratagem every player carries that drops 4 ammo boxes, on a 180 second cooldown shared by the whole squad. Removes the standard Resupply.",
+   "authors": [
+    "Alomare"
+   ],
+   "verified": true,
+   "description": "A mod for HELLDIVERS (2015) that brings the squad resupply from HELLDIVERS 2, for [Obsidian Mod Manager](https://github.com/Alomare/ObsidianModManager).\n\n## What it does\n\nEvery player carries a yellow Resupply stratagem in every mission. It is listed with the mission stratagems (Reinforce, SOS Beacon, Hellbomb), on top of the four picks.\n\n- Code: ↓ ↓ ↑ →.\n- Drops one crate with four ammunition boxes.\n- Call-in time is 10 seconds. No upgrades.\n- Cooldown is 180 seconds and is shared by the whole squad: when anyone calls it, everyone waits. Players who join mid-mission take the squad's current cooldown.\n\nThe standard (blue) Resupply is removed from the Arsenal, the Loadout screen and loadouts.\n\n## Option\n\n- **Preserve vanilla Resupply** (off by default): keeps the standard Resupply in the Arsenal, the Loadout screen and loadouts. It then uses the code ↓ ↓ ↑ ↑.\n\n## Playing with others\n\nEvery player in the lobby needs Shared Resupply, at the same version and with the same option. Saved loadouts that held the standard Resupply get another stratagem in place of it.\n\nNeeds Obsidian API 1.40.0 or later.",
+   "version": "1.1.0",
+   "early": false,
+   "scope": "session",
+   "requires": [
+    "obsidian.api"
+   ],
+   "options": 1,
+   "option_list": [
+    {
+     "label": "Preserve vanilla Resupply",
+     "description": "Keep the standard Resupply in the Arsenal and Loadout alongside the shared one.",
+     "group": null
+    }
+   ],
+   "option_groups": [],
+   "repo": "Alomare/HD1-SharedResupply",
+   "stars": 0,
+   "downloads": 12,
+   "kit": false,
+   "icon": "img/alomare-sharedresupply-icon-4189ebab04.jpg",
+   "banner": null,
+   "released": "2026-11-09",
+   "added": "2026-11-07",
+   "versions": [
+    {
+     "version": "1.1.0",
+     "date": "2026-11-09",
+     "channel": "stable",
+     "notes": "- Changed: the stratagem icon has soft white bullets and a white plus on the standard yellow background.\n- New: the stratagem icon is the picture Obsidian shows for the mod."
+    },
+    {
+     "version": "1.0.0",
+     "date": "2026-11-07",
+     "channel": "stable",
+     "notes": "- New: shared Resupply mission stratagem, carried by every player.\n- New: Resupply drops four ammunition boxes.\n- New: 180 second cooldown shared by the squad, kept by players who join mid-mission.\n- New: standard Resupply removed from the Arsenal and loadouts, with the Preserve vanilla Resupply option to keep it."
     }
    ]
   }
