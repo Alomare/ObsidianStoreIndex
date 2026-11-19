@@ -30,7 +30,7 @@
    "option_groups": [],
    "repo": "Alomare/ObsidianAPI",
    "stars": 0,
-   "downloads": 2343,
+   "downloads": 2353,
    "kit": true,
    "icon": "img/obsidian-api-icon-976df8f8d5.jpg",
    "banner": null,
@@ -175,7 +175,7 @@
    "option_groups": [],
    "repo": "Alomare/ObsidianPatches",
    "stars": 0,
-   "downloads": 1005,
+   "downloads": 1008,
    "kit": true,
    "icon": "img/obsidian-qol-icon-6bb7fca71d.jpg",
    "banner": null,
@@ -270,7 +270,7 @@
    "option_groups": [],
    "repo": "Alomare/ObsidianTrainer",
    "stars": 0,
-   "downloads": 1549,
+   "downloads": 1552,
    "kit": true,
    "icon": "img/obsidian-trainer-icon-717943693e.jpg",
    "banner": null,
@@ -425,7 +425,7 @@
    "option_groups": [],
    "repo": "Alomare/HD1-BetterHUD",
    "stars": 0,
-   "downloads": 410,
+   "downloads": 413,
    "kit": false,
    "icon": "img/alomare-betterhud-icon-f8848148c9.jpg",
    "banner": "img/alomare-betterhud-banner-249c90315b.jpg",
@@ -665,7 +665,7 @@
    "option_groups": [],
    "repo": "Alomare/HD1-EnhancedVisuals",
    "stars": 0,
-   "downloads": 208,
+   "downloads": 212,
    "kit": false,
    "icon": "img/alomare-enhancedvisuals-icon-1f9486e80a.jpg",
    "banner": "img/alomare-enhancedvisuals-banner-8479c5978f.jpg",
@@ -726,7 +726,7 @@
    ],
    "verified": true,
    "description": "A third person camera for HELLDIVERS (2015), for the [Obsidian](https://github.com/Alomare/ObsidianLauncher) mod manager. Formerly Unleashed Camera, and before that Integrated Third Person: remove either one when installing this mod. Based on [Third Person Camera (HD2 Style)](https://github.com/yukiorsrs/third-person-camera-helldivers) by **yukiorsrs**, rebuilt with the permission of the author so that other mods keep working beside it.\n\nThe camera follows the Helldiver over the shoulder on foot, in vehicles and on the ship. Shots, grenades and stratagems go where the crosshair points. The view reaches farther, the sky over the level is filled in, a ring around the crosshair warns of enemies close by, a bar shows where hits come from, and the edges of the screen flash red when the Helldiver is hurt. A compass at the top of the screen shows the way to the objectives found on the map. Stratagem beacons out of view show at the edge of the screen, as do allies, red while down, and a dashed line shows where a held grenade or stratagem ball would fly. The ping key marks enemies, objectives, dropped support weapons or a spot on the ground for the squad. After a death the camera stays on the body, then follows a living ally until the Helldiver is back. After extraction it rides the shuttle out.\n\nThird Person Camera replaces 28 game scripts, so mods that change the same parts of the game stop working with it. Eyes of Liberty replaces no script: every change is a hook through Obsidian.\n\n## How to use\n\n**F8** switches between the top-down camera of the game and third person. **H** swaps the shoulder. The **middle mouse button** pings what the crosshair is on. The keys can be changed in Obsidian. On a gamepad, the right stick turns the camera and holding the left trigger aims; while aiming, the reload button throws grenades. A tap of the right stick swaps the shoulder. While the death cam follows allies, left and right click switch between them.\n\n## Playing with others\n\nThe camera and everything on screen work in any lobby. Five session features change the game for the whole lobby: Ballistics revamp (every weapon reaches far, with damage falling off past the weapon's own range), Far enemy detection, Free movement, Increased throw range and Patrols stay in view. They run only when every player runs Obsidian with the same mods, and switch off when anyone else joins. With all five off, the mod counts as a client mod.\n\nPings show only for teammates who run the mod; nothing goes to the game's chat.\n\n## Known issues\n\n- Players on one computer share a screen, so the camera goes back to top-down while a second local player is in, and comes back after.\n- The mod stays off while Third Person Camera, Unleashed Camera or Integrated Third Person is installed.\n\nFirst person is in development for separate beta versions.\n\nMod authors can read the camera state through `obsidian.import(\"alomare.eyesofliberty\")`: `active()`, `mode()`, `crosshair()` and `shoulder()`.",
-   "version": "0.13.0",
+   "version": "0.13.1",
    "early": true,
    "scope": "session",
    "requires": [
@@ -861,7 +861,7 @@
     },
     {
      "label": "Reduce fog",
-     "description": "How fast the fog of the level builds up with distance: 1 is the game's fog, 0.5 half as fast, 0.1 a tenth. The fog still starts where it did. In third person and in the top-down view. Photo Mode shows the full fog while it is open.",
+     "description": "How fast the fog of the level builds up with distance: 1 is the game's fog, 0.5 half as fast, 0 no fog at all. The fog still starts where it did, and the sun side of it is kept from glaring. In third person and in the top-down view. Photo Mode shows the full fog while it is open.",
      "group": "picture"
     },
     {
@@ -933,13 +933,19 @@
    ],
    "repo": "Alomare/HD1-EyesOfLiberty",
    "stars": 0,
-   "downloads": 187,
+   "downloads": 191,
    "kit": false,
    "icon": "img/alomare-eyesofliberty-icon-cd4c740a3f.jpg",
    "banner": "img/alomare-eyesofliberty-banner-9768c10db8.jpg",
    "released": "2026-11-19",
    "added": "2026-11-11",
    "versions": [
+    {
+     "version": "0.13.1",
+     "date": "2026-11-19",
+     "channel": "stable",
+     "notes": "- Changed: Reduce fog goes down to 0, which removes the fog.\n- Fixed: Fog facing the sun no longer shows as a bright, near solid wall. Below 1, Reduce fog also thins the sunlit side of the fog and keeps it close to the brightness of the rest."
+    },
     {
      "version": "0.13.0",
      "date": "2026-11-19",
@@ -993,12 +999,6 @@
      "date": "2026-11-15",
      "channel": "stable",
      "notes": "- Changed: the mod id is now alomare.unleashedcamera. Obsidian installs it as a new mod: remove Integrated Third Person after installing it. Settings start from the defaults again.\n- Changed: while Integrated Third Person is still installed, Unleashed Camera stays off and says so.\n- Changed: less work every frame for the game's screen checks, the weapon aim, the hidden helmet in first person and the depth of field that follows the Helldiver.\n- New: Eye height, Eye forward and Eye side options for the first person camera.\n- Changed: the options are in new groups: Camera, Third person, First person, Vehicles, Indicators and names, Picture, and Session features.\n- Changed: the Hellpod camera rides down above the pod and a little ahead, looking almost straight down, so the pod stays in the middle of the picture.\n- Fixed: the sky over the level was far too bright on every planet, at night too. It is now drawn at most as bright as made, the brightness Photo Mode uses, and dimmer under a darker planet fog."
-    },
-    {
-     "version": "0.7.0",
-     "date": "2026-11-15",
-     "channel": "stable",
-     "notes": "- Changed: the mod is now called Unleashed Camera. Settings and installs carry over.\n- Changed: in first person the body turns with the view without the aiming walk, so the Helldiver moves at full speed and can throw, call stratagems and interact.\n- Changed: the first person camera sits higher and farther forward, and moves forward while looking down, so the inside of the body no longer shows.\n- Changed: the camera sway while sprinting is a little stronger.\n- Changed: while a flamethrower of the player fires, the Lumberer included, camera shake is 80% weaker."
     }
    ]
   },
@@ -1315,7 +1315,7 @@
    ],
    "repo": "Alomare/HD1-CustomCrosshair",
    "stars": 0,
-   "downloads": 85,
+   "downloads": 88,
    "kit": false,
    "icon": "img/alomare-customcrosshair-icon-5505107ee9.jpg",
    "banner": "img/alomare-customcrosshair-banner-2ad3b014c3.jpg",
@@ -1457,7 +1457,7 @@
    "option_groups": [],
    "repo": "Alomare/HD1-SharedResupply",
    "stars": 0,
-   "downloads": 54,
+   "downloads": 55,
    "kit": false,
    "icon": "img/alomare-sharedresupply-icon-4189ebab04.jpg",
    "banner": "img/alomare-sharedresupply-banner-b02b0ba6d4.jpg",
