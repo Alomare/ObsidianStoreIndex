@@ -10,7 +10,7 @@
    ],
    "verified": true,
    "description": "A library for [Obsidian](https://github.com/Alomare/ObsidianLauncher) mods on HELLDIVERS (2015). It gives other mods the game data by name, checked changes that can be undone, and ready actions. It does nothing by itself.\n\n## How to use\n\nObsidian API comes with Obsidian, in the Obsidian Kit. Mods that need it switch it on with them.\n\nTo build on it, list it in the `obsidian.json` of the mod:\n\n```json\n\"requires\": [\"obsidian.api\"]\n```\n\nThen ask for it in the script:\n\n```lua\nlocal api = obsidian.import(\"obsidian.api\")\n\nobsidian.keybind(\"panic\", function()\n  api.player.heal()\n  api.enemies.kill_near(20)\nend)\n```\n\nActions answer `true`, or `false` and a short reason such as `\"host_only\"`. A client mod can require the API and stay a client mod: it can read game data and use the interface, sound and event calls, and anything that changes the shared game answers `false, \"needs_session\"`.\n\n[REFERENCE.md](REFERENCE.md) has every call, with guides and recipes. A copy sits in the folder of the API in the Obsidian Kit, where an AI tool working on a mod can read it.\n\n## Known issues\n\n- Tested solo and offline, not yet with a second player.",
-   "version": "1.54.0",
+   "version": "1.55.0",
    "early": false,
    "scope": "library",
    "requires": [],
@@ -30,13 +30,19 @@
    "option_groups": [],
    "repo": "Alomare/ObsidianAPI",
    "stars": 0,
-   "downloads": 2250,
+   "downloads": 2275,
    "kit": true,
    "icon": "img/obsidian-api-icon-976df8f8d5.jpg",
    "banner": null,
-   "released": "2026-11-18",
+   "released": "2026-11-19",
    "added": "2026-10-30",
    "versions": [
+    {
+     "version": "1.55.0",
+     "date": "2026-11-19",
+     "channel": "stable",
+     "notes": "- New: `api.ui.chat(text)` says a line in the game's text chat as this player. Every player sees it, players without the mod too. Free to client mods.\n- New: `api.catalog.stratagem_of(unit_path)` finds the stratagem whose crate holds a weapon or a backpack, from the path of the weapon, the pack or the pickup.\n- New: `api.world.pickups` gives each pickup's `backpack` path and `stratagem` name, and is free to client mods."
+    },
     {
      "version": "1.54.0",
      "date": "2026-11-18",
@@ -90,12 +96,6 @@
      "date": "2026-11-09",
      "channel": "stable",
      "notes": "- New: `api.world.pickups` lists the weapons, backpacks and ammo lying on the ground and `api.world.remove_pickup` deletes one for every machine through the game's own destruction. The owner removes at once, the host asks the owner, any other client is refused.\n- New: effects `aim_move_speed` and `reload_move_speed` set how fast the player moves while aiming or reloading, and let a weapon that holds the player in place be walked with.\n- Fixed: a bot holds the aim for a moment before the first shot of a weapon, longer and until the barrel is level with a heavy weapon, so a recoilless rifle no longer fires at the ground.\n- Fixed: `bot:deliver` drops the thing once the game counts the drop-off as near and the bot can get no closer, and walks to a spot beside a collection point it cannot enter.\n- Fixed: a game function's nil results survive the API's hooks, so a hooked function that answers nil still answers nil.\n- Fixed: with the Third Person Camera mod, a bot behind the camera gets the off-screen arrow on the side where it stands, not a name mirrored onto the screen.\n- Fixed: with the Third Person Camera mod, bots no longer pass as a player at a pad, so the camera stays on the player and bots keep their own aim and buttons.\n- Fixed: with the Third Person Camera mod, `api.world.cursor` answers the point under the crosshair.\n- Changed: manual stratagem unlocks stay in `obsidian.storage` on a loader without `obsidian.save_data`.\n- Changed: manual unlocks of custom stratagems (`api.stratagems.unlock`) go with the save through `obsidian.save_data`. Unlocks kept before this move to the Official save only."
-    },
-    {
-     "version": "1.46.0",
-     "date": "2026-11-08",
-     "channel": "stable",
-     "notes": "- New: bare bots show the game's off-screen arrow, on every machine; the HUD card stays away.\n- New: `bot:add_ammo` adds magazines or rounds through the game's own command.\n- New: `api.brain` `engages` and `burst`; a \"threat\" fight leaves far enemies that haven't noticed the squad alone, holds fire on anything behind cover and fires automatic rifles in short bursts.\n- Changed: navigating bots keep a body-width off pit rims, stand rather than walk on with no route, look further ahead with speed, are checked last of every walk source, and return to the last solid spot when knocked over an edge.\n- Changed: a bot whose follow spot is across a pit or a long way round takes a spot on the near side of the leader.\n- New: `api.nav` finds walking routes around walls, pits, lava, deep water and danger zones with rays over a grid: `path`, `walkable`, `walk_clear`, `zones`, `available`, `search_grid`.\n- New: `api.brain`, the pure decisions bots use: weapon choice by threat, target commitment, aim window, blast and line-of-fire checks, formation spots, sprinting, grenades.\n- New: `bot:navigate` routes and guards a bot's walking; `bot:movement` adds smooth turning, spacing, varied spots, strafing and sprinting to catch up; `bot:auto_grenades` throws grenades by rule.\n- New: `fight` weapon \"threat\" saves support and heavy weapons for what deserves them, commits to one target, and never fires a blast that would catch a friend.\n- New: `api.gear.blast` gives the blast radius of what a weapon fires; `api.enemies.tentacles` lists the Impaler's tentacles, and they count in `api.bots.hazards` and `avoid_shots`'s close attacks.\n- Changed: bare bots start out of the camera's framing and the screen leash, and can spawn off the screen.\n- New: guest bots can be added from any machine, with looks, pickups and melee dodging, and a mod can tell which peers have left.\n- New: a default bot loadout, and `fight` stays within the range of the weapon, with a \"best\" weapon choice.\n- New: `api.stratagems.define` places a stratagem by type or `after` another, and takes descriptions of up to 600 characters.\n- New: `api.world.projectile` fires the game's homing missiles, with an optional target to chase from launch.\n- Changed: `api.edits` keeps settings variants that mods add."
     }
    ]
   },
@@ -175,7 +175,7 @@
    "option_groups": [],
    "repo": "Alomare/ObsidianPatches",
    "stars": 0,
-   "downloads": 978,
+   "downloads": 987,
    "kit": true,
    "icon": "img/obsidian-qol-icon-6bb7fca71d.jpg",
    "banner": null,
@@ -270,7 +270,7 @@
    "option_groups": [],
    "repo": "Alomare/ObsidianTrainer",
    "stars": 0,
-   "downloads": 1524,
+   "downloads": 1531,
    "kit": true,
    "icon": "img/obsidian-trainer-icon-717943693e.jpg",
    "banner": null,
@@ -425,7 +425,7 @@
    "option_groups": [],
    "repo": "Alomare/HD1-BetterHUD",
    "stars": 0,
-   "downloads": 393,
+   "downloads": 397,
    "kit": false,
    "icon": "img/alomare-betterhud-icon-f8848148c9.jpg",
    "banner": "img/alomare-betterhud-banner-249c90315b.jpg",
@@ -520,7 +520,7 @@
    "option_groups": [],
    "repo": "Alomare/HD1-PhotoMode",
    "stars": 0,
-   "downloads": 47,
+   "downloads": 48,
    "kit": false,
    "icon": "img/alomare-photomode-icon-2a2b0ea7c2.jpg",
    "banner": "img/alomare-photomode-banner-45d6d42c2d.jpg",
@@ -665,7 +665,7 @@
    "option_groups": [],
    "repo": "Alomare/HD1-EnhancedVisuals",
    "stars": 0,
-   "downloads": 185,
+   "downloads": 190,
    "kit": false,
    "icon": "img/alomare-enhancedvisuals-icon-1f9486e80a.jpg",
    "banner": "img/alomare-enhancedvisuals-banner-8479c5978f.jpg",
@@ -725,14 +725,14 @@
     "yukiorsrs"
    ],
    "verified": true,
-   "description": "A third person camera for HELLDIVERS (2015), for the [Obsidian](https://github.com/Alomare/ObsidianLauncher) mod manager. Formerly Unleashed Camera, and before that Integrated Third Person: remove either one when installing this mod. Based on [Third Person Camera (HD2 Style)](https://github.com/yukiorsrs/third-person-camera-helldivers) by **yukiorsrs**, rebuilt with the permission of the author so that other mods keep working beside it.\n\nThe camera follows the Helldiver over the shoulder on foot, in vehicles and on the ship. Shots, grenades and stratagems go where the crosshair points. The view reaches farther, the sky over the level is filled in, a ring around the crosshair warns of enemies close by, a bar shows where hits come from, and the edges of the screen flash red when the Helldiver is hurt. Stratagem beacons and objectives out of view show at the edge of the screen, as do allies, red while down, and a dashed line shows where a held grenade or stratagem ball would fly. After a death the camera stays on the body, then follows a living ally until the Helldiver is back. After extraction it rides the shuttle out.\n\nThird Person Camera replaces 28 game scripts, so mods that change the same parts of the game stop working with it. Eyes of Liberty replaces no script: every change is a hook through Obsidian.\n\n## How to use\n\n**F8** switches between the top-down camera of the game and third person. **H** swaps the shoulder. Both keys can be changed in Obsidian. On a gamepad, the right stick turns the camera and holding the left trigger aims; while aiming, the reload button throws grenades. A tap of the right stick swaps the shoulder. While the death cam follows allies, left and right click switch between them.\n\n## Playing with others\n\nThe camera and everything on screen work in any lobby. Five session features change the game for the whole lobby: Max weapon range, Far enemy detection, Free movement, Increased throw range and Patrols stay in view. They run only when every player runs Obsidian with the same mods, and switch off when anyone else joins. With all five off, the mod counts as a client mod.\n\n## Known issues\n\n- Players on one computer share a screen, so the camera goes back to top-down while a second local player is in, and comes back after.\n- The mod stays off while Third Person Camera, Unleashed Camera or Integrated Third Person is installed.\n\nFirst person is in development for separate beta versions.\n\nMod authors can read the camera state through `obsidian.import(\"alomare.eyesofliberty\")`: `active()`, `mode()`, `crosshair()` and `shoulder()`.",
-   "version": "0.12.0",
+   "description": "A third person camera for HELLDIVERS (2015), for the [Obsidian](https://github.com/Alomare/ObsidianLauncher) mod manager. Formerly Unleashed Camera, and before that Integrated Third Person: remove either one when installing this mod. Based on [Third Person Camera (HD2 Style)](https://github.com/yukiorsrs/third-person-camera-helldivers) by **yukiorsrs**, rebuilt with the permission of the author so that other mods keep working beside it.\n\nThe camera follows the Helldiver over the shoulder on foot, in vehicles and on the ship. Shots, grenades and stratagems go where the crosshair points. The view reaches farther, the sky over the level is filled in, a ring around the crosshair warns of enemies close by, a bar shows where hits come from, and the edges of the screen flash red when the Helldiver is hurt. A compass at the top of the screen shows the way to the objectives found on the map. Stratagem beacons out of view show at the edge of the screen, as do allies, red while down, and a dashed line shows where a held grenade or stratagem ball would fly. The ping key marks enemies, objectives, dropped support weapons or a spot on the ground for the squad. After a death the camera stays on the body, then follows a living ally until the Helldiver is back. After extraction it rides the shuttle out.\n\nThird Person Camera replaces 28 game scripts, so mods that change the same parts of the game stop working with it. Eyes of Liberty replaces no script: every change is a hook through Obsidian.\n\n## How to use\n\n**F8** switches between the top-down camera of the game and third person. **H** swaps the shoulder. The **middle mouse button** pings what the crosshair is on. The keys can be changed in Obsidian. On a gamepad, the right stick turns the camera and holding the left trigger aims; while aiming, the reload button throws grenades. A tap of the right stick swaps the shoulder. While the death cam follows allies, left and right click switch between them.\n\n## Playing with others\n\nThe camera and everything on screen work in any lobby. Five session features change the game for the whole lobby: Ballistics revamp (every weapon reaches far, with damage falling off past the weapon's own range), Far enemy detection, Free movement, Increased throw range and Patrols stay in view. They run only when every player runs Obsidian with the same mods, and switch off when anyone else joins. With all five off, the mod counts as a client mod.\n\nPings show only for teammates who run the mod; nothing goes to the game's chat.\n\n## Known issues\n\n- Players on one computer share a screen, so the camera goes back to top-down while a second local player is in, and comes back after.\n- The mod stays off while Third Person Camera, Unleashed Camera or Integrated Third Person is installed.\n\nFirst person is in development for separate beta versions.\n\nMod authors can read the camera state through `obsidian.import(\"alomare.eyesofliberty\")`: `active()`, `mode()`, `crosshair()` and `shoulder()`.",
+   "version": "0.13.0",
    "early": true,
    "scope": "session",
    "requires": [
     "obsidian.api"
    ],
-   "options": 32,
+   "options": 34,
    "option_list": [
     {
      "label": "Camera mode",
@@ -836,7 +836,17 @@
     },
     {
      "label": "Edge markers",
-     "description": "In third person, stratagem beacons and objectives out of view show at the edge of the screen, with the icons and colours of the map.",
+     "description": "In third person, stratagem beacons out of view show at the edge of the screen, with their own icons.",
+     "group": "indicators"
+    },
+    {
+     "label": "Compass",
+     "description": "In third person, a compass at the top of the screen turns with the camera and shows the way to every objective found on the map.",
+     "group": "indicators"
+    },
+    {
+     "label": "Pings",
+     "description": "In third person, the ping key marks what the crosshair is on: ground, an enemy, an objective or a dropped support weapon or pack. Teammates with the mod see the marker too and hear the chat sound; players without the mod see and hear nothing.",
      "group": "indicators"
     },
     {
@@ -850,8 +860,8 @@
      "group": "indicators"
     },
     {
-     "label": "Remove fog",
-     "description": "Removes the fog of the level, in third person and in the top-down view. Photo Mode shows the fog while it is open.",
+     "label": "Reduce fog",
+     "description": "How fast the fog of the level builds up with distance: 1 is the game's fog, 0.5 half as fast, 0.1 a tenth. The fog still starts where it did. In third person and in the top-down view. Photo Mode shows the full fog while it is open.",
      "group": "picture"
     },
     {
@@ -861,7 +871,7 @@
     },
     {
      "label": "Long view distance",
-     "description": "Pushes the fog, the far edge of the view and the detail of distant models out, so distant enemies and landmarks show.",
+     "description": "Pushes the far edge of the view and the detail of distant models out, so distant enemies and landmarks show. The fog is left to Reduce fog.",
      "group": "picture"
     },
     {
@@ -870,8 +880,8 @@
      "group": "picture"
     },
     {
-     "label": "Max weapon range",
-     "description": "Every weapon reaches as far as the farthest one, so targets far off in the third-person view can be hit. Changes the shared game: off in lobbies with players who don't run it.",
+     "label": "Ballistics revamp",
+     "description": "Every weapon reaches as far as the farthest one, so targets far off in the third-person view can be hit. Past a weapon's own range, bullets lose damage over 15 m, down to a fifth, and keep that fifth beyond. Lasers keep their damage. Changes the shared game: off in lobbies with players who don't run it.",
      "group": "lobby"
     },
     {
@@ -923,13 +933,19 @@
    ],
    "repo": "Alomare/HD1-EyesOfLiberty",
    "stars": 0,
-   "downloads": 142,
+   "downloads": 149,
    "kit": false,
    "icon": "img/alomare-eyesofliberty-icon-cd4c740a3f.jpg",
    "banner": "img/alomare-eyesofliberty-banner-9768c10db8.jpg",
-   "released": "2026-11-18",
+   "released": "2026-11-19",
    "added": "2026-11-11",
    "versions": [
+    {
+     "version": "0.13.0",
+     "date": "2026-11-19",
+     "channel": "stable",
+     "notes": "- Fixed: A crash a few seconds into the second mission of a session, when the hurt flash, the throw ring or the idle cursor drew on screen.\n- Fixed: The hurt flash no longer shows in the game's top-down view.\n- New: Pings. The ping key (middle mouse button) marks what the crosshair is on: the ground, an enemy, an objective, or a dropped support weapon or pack. Teammates with the mod see the marker and hear the chat sound; nothing goes to the game's chat. Three pings in a row, then a wait of 2.5 seconds.\n- New: A compass at the top of the screen in third person, with the heading in degrees, pointing to every objective found on the map with the white map icon.\n- New: The screen tints red after a death and fades back over two seconds.\n- Changed: Max weapon range is now Ballistics revamp: past a weapon's own range, bullets lose damage over 15 m, down to a fifth. Lasers keep their damage.\n- Changed: Objectives out of view no longer show at the edge of the screen; the compass shows them.\n- Changed: Weapon fire and hurt feedback shake the camera half as much.\n- Changed: Remove fog is now Reduce fog, a slider from 0.1 to 1 for how fast the fog builds up with distance (0.5 by default), in place of taking it away.\n- Changed: Long view distance no longer pushes the fog out; Reduce fog is the only option that changes the fog."
+    },
     {
      "version": "0.12.0",
      "date": "2026-11-18",
@@ -983,12 +999,6 @@
      "date": "2026-11-15",
      "channel": "stable",
      "notes": "- Changed: the mod is now called Unleashed Camera. Settings and installs carry over.\n- Changed: in first person the body turns with the view without the aiming walk, so the Helldiver moves at full speed and can throw, call stratagems and interact.\n- Changed: the first person camera sits higher and farther forward, and moves forward while looking down, so the inside of the body no longer shows.\n- Changed: the camera sway while sprinting is a little stronger.\n- Changed: while a flamethrower of the player fires, the Lumberer included, camera shake is 80% weaker."
-    },
-    {
-     "version": "0.6.0",
-     "date": "2026-11-15",
-     "channel": "stable",
-     "notes": "- New: first person, as a prototype. The Camera mode option picks the camera at the start (Default, Third person or First person), and the camera key cycles the three. In first person the camera sits in the head of the Helldiver and the helmet is hidden. Walking backwards steps back instead of turning round, and standing still the body turns only once the view has turned far enough.\n- New: First person field of view option.\n- New: Overall camera height option, which raises or lowers the third-person camera everywhere.\n- New: a slight camera sway while sprinting. It follows the Camera shake option.\n- New: the crosshair fades out while sprinting, Custom Crosshair included.\n- Changed: the downed camera sits as low as the dive camera.\n- Changed: the on-foot camera distance is 3 m by default.\n- Changed: the Hellpod camera sits farther from the pod, waits longer before the glide, and the view stays still until the Helldiver climbs out.\n- Changed: the lobby-wide options are named Session features.\n- Removed: the Footsteps option."
     }
    ]
   },
@@ -1305,7 +1315,7 @@
    ],
    "repo": "Alomare/HD1-CustomCrosshair",
    "stars": 0,
-   "downloads": 70,
+   "downloads": 75,
    "kit": false,
    "icon": "img/alomare-customcrosshair-icon-5505107ee9.jpg",
    "banner": "img/alomare-customcrosshair-banner-2ad3b014c3.jpg",
@@ -1395,7 +1405,7 @@
    "option_groups": [],
    "repo": "Alomare/HD1-HelldiversArcade",
    "stars": 0,
-   "downloads": 20,
+   "downloads": 22,
    "kit": false,
    "icon": null,
    "banner": null,
@@ -1447,7 +1457,7 @@
    "option_groups": [],
    "repo": "Alomare/HD1-SharedResupply",
    "stars": 0,
-   "downloads": 48,
+   "downloads": 49,
    "kit": false,
    "icon": "img/alomare-sharedresupply-icon-4189ebab04.jpg",
    "banner": "img/alomare-sharedresupply-banner-b02b0ba6d4.jpg",
