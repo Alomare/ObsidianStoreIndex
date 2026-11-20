@@ -724,7 +724,7 @@
   {
    "id": "alomare.eyesofliberty",
    "name": "Eyes of Liberty",
-   "summary": "A third person camera that keeps other mods working.",
+   "summary": "Highly compatible, customizable and transformative third-person experience. Damage feedback, camera shake, compass, pings, indicators and more!",
    "authors": [
     "Alomare",
     "yukiorsrs"
@@ -1500,7 +1500,7 @@
    "option_groups": [],
    "repo": "Alomare/HD1-HelldiversArcade",
    "stars": 0,
-   "downloads": 42,
+   "downloads": 43,
    "kit": false,
    "icon": null,
    "banner": null,
