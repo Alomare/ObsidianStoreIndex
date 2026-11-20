@@ -35,7 +35,7 @@
    "option_groups": [],
    "repo": "Alomare/ObsidianAPI",
    "stars": 0,
-   "downloads": 2487,
+   "downloads": 2489,
    "kit": true,
    "icon": "img/obsidian-api-icon-976df8f8d5.jpg",
    "banner": null,
@@ -46,7 +46,7 @@
      "version": "1.56.0",
      "date": "2026-11-20",
      "channel": "stable",
-     "notes": "- New: Memory Bridge option, off by default. While it is on, Lua sent by a developer tool runs in the game while it runs, and the answer goes back to the tool, so a mod can be tried without a restart. The tool is `tools/bridge.py` of the HD1 Lua Modding Skill, and `REFERENCE.md` has the details.\n- New: Memory Bridge code runs only alone or in a lobby that isn't public. When a lobby turns public, everything the code left running is undone.\n- New: Galactic War and leaderboard results aren't sent from a launch with the Memory Bridge on.\n- Fixed: `api.capture` no longer saves a shot while another window is in front of the game. The shot held that window instead of the game."
+     "notes": "- New: Memory Bridge option, off by default. While it is on, Lua sent by a developer tool runs in the running game, and the answer goes back to the tool, so a mod can be tried without a restart. The tool is `tools/bridge.py` of the HD1 Lua Modding Skill, and `REFERENCE.md` has the details.\n- New: Memory Bridge code runs only alone or in a lobby that isn't public. When a lobby turns public, everything the code left running is undone.\n- New: Galactic War and leaderboard results aren't sent from a launch with the Memory Bridge on.\n- Fixed: `api.capture` no longer saves a shot while another window is in front of the game. The shot held that window instead of the game."
     },
     {
      "version": "1.55.1",
@@ -731,7 +731,7 @@
    ],
    "verified": true,
    "description": "A third person camera for HELLDIVERS (2015), for the [Obsidian](https://github.com/Alomare/ObsidianLauncher) mod manager. Formerly Unleashed Camera, and before that Integrated Third Person: remove either one when installing this mod. Based on [Third Person Camera (HD2 Style)](https://github.com/yukiorsrs/third-person-camera-helldivers) by **yukiorsrs**, rebuilt with the permission of the author so that other mods keep working beside it.\n\nThe camera follows the Helldiver over the shoulder on foot, in vehicles and on the ship. Shots, grenades and stratagems go where the crosshair points. The view reaches farther, the sky over the level is filled in, a ring around the crosshair warns of enemies close by, a bar shows where hits come from, and the edges of the screen flash red when the Helldiver is hurt. A compass at the top of the screen shows the way to the objectives found on the map. Stratagem beacons out of view show at the edge of the screen, as do allies, red while down, and a dashed line shows where a held grenade or stratagem ball would fly. The ping key marks enemies, objectives, dropped support weapons or a spot on the ground for the squad. After a death the camera stays on the body, then follows a living ally until the Helldiver is back. After extraction it rides the shuttle out.\n\nThird Person Camera replaces 28 game scripts, so mods that change the same parts of the game stop working with it. Eyes of Liberty replaces no script: every change is a hook through Obsidian.\n\n## How to use\n\n**F8** switches between the top-down camera of the game and third person. **H** swaps the shoulder. **F** pings what the crosshair is on. The keys can be changed in Obsidian. On a gamepad, the right stick turns the camera and holding the left trigger aims; while aiming, the reload button throws grenades. A tap of the right stick swaps the shoulder. While the death cam follows allies, left and right click switch between them.\n\n## Playing with others\n\nThe camera and everything on screen work in any lobby. Five session features change the game for the whole lobby: Ballistics revamp (every weapon reaches far, with damage falling off past the weapon's own range), Far enemy detection, Free movement, Increased throw range and Patrols stay in view. They run only when every player runs Obsidian with the same mods, and switch off when anyone else joins. With all five off, the mod counts as a client mod.\n\nPings show only for teammates who run the mod; nothing goes to the game's chat.\n\n## Known issues\n\n- Players on one computer share a screen, so the camera goes back to top-down while a second local player is in, and comes back after.\n- The mod stays off while Third Person Camera, Unleashed Camera or Integrated Third Person is installed.\n\nFirst person is in development for separate beta versions.\n\nMod authors can read the camera state through `obsidian.import(\"alomare.eyesofliberty\")`: `active()`, `mode()`, `crosshair()` and `shoulder()`.",
-   "version": "0.15.0",
+   "version": "0.15.1",
    "early": true,
    "scope": "session",
    "requires": [
@@ -846,7 +846,7 @@
     },
     {
      "label": "Ammo bar",
-     "description": "In third person on foot, a short arc by the crosshair shows the magazine left, the heat of a laser or the charge of an arc weapon, with the colours, warnings and reload button of the Better HUD ammo circle. Weapons of 40 rounds or fewer show a faint line between rounds. Shows from a shot and fades out 8 seconds after the last one. While on, the Better HUD ammo circle stays hidden in third person.",
+     "description": "In third person on foot, a short arc by the crosshair shows the magazine left, the heat of a laser or the charge of an arc weapon, with the colours, warnings and reload button of the Better HUD ammo circle. Weapons of 50 rounds or fewer show a faint line between rounds. Shows from a shot and fades out 8 seconds after the last one. While on, the Better HUD ammo circle stays hidden in third person.",
      "group": "ammo"
     },
     {
@@ -1018,7 +1018,7 @@
    ],
    "repo": "Alomare/HD1-EyesOfLiberty",
    "stars": 0,
-   "downloads": 262,
+   "downloads": 268,
    "kit": false,
    "icon": "img/alomare-eyesofliberty-icon-c0e5f7be9b.jpg",
    "banner": "img/alomare-eyesofliberty-banner-9768c10db8.jpg",
@@ -1026,10 +1026,16 @@
    "added": "2026-11-11",
    "versions": [
     {
+     "version": "0.15.1",
+     "date": "2026-11-20",
+     "channel": "stable",
+     "notes": "- Fixed: Weapon follows aim bends the Helldiver on screen. In 0.15.0 the bend came after the frame was drawn, so the weapon stayed level.\n- Changed: The ammo bar shows a line between rounds for weapons of up to 50 rounds, up from 40."
+    },
+    {
      "version": "0.15.0",
      "date": "2026-11-20",
      "channel": "stable",
-     "notes": "- New: Weapon follows aim option, on by default. While aiming or firing on foot, the Helldiver bends up or down so the weapon points where the crosshair is.\n- New: With a mouse and no other mod drawing the crosshair, the crosshair is the game's own aiming cursor, held in the middle of the screen, with the step of the game when aiming starts and stops.\n- New: Compass options for width, background opacity and the view angle line and heading.\n- New: Pings while down, and after death until the camera moves to an ally.\n- Changed: Settings are grouped by what they change, and every setting that applies at once is also in the pause menu.\n- Changed: F is the default ping key.\n- Changed: The explosion kick is five times stronger. Hellpod landings no longer kick.\n- Changed: When another pod of the squad comes down first, the Hellpod camera waits high above it, then moves over to the pod of the Helldiver.\n- Changed: The glide from the Hellpod into the shoulder view starts 0.4 seconds sooner.\n- Changed: On a throw, the throw arc stays in place and fades out over a second.\n- Changed: Compass icons show over the compass letters.\n- Changed: Enemy indicators show only while the Helldiver is alive or down.\n- Changed: The ammo bar of a laser fills from the bottom, in a brighter yellow.\n- Changed: Patrols stay in view also keeps patrol enemies chasing a Helldiver out to 200 m, and enemies of alarms and objective waves out to 100 m, where the game removed them at 40 m.\n- Fixed: The Helldiver no longer shakes against the camera when frame times change, as with many effects on screen.\n- Fixed: Lasers fire up and down. A beam that hit nothing was drawn level.\n- Fixed: An arc weapon bolt that finds no target flies toward the crosshair.\n- Fixed: The Hellpod camera no longer follows the pods of bots."
+     "notes": "- New: Weapon follows aim option, on by default. While aiming or firing on foot, the Helldiver bends up or down so the weapon points where the crosshair is.\n- New: With a mouse and no other mod drawing the crosshair, the crosshair is the aiming cursor of the game, held in the middle of the screen, with the change the game shows when aiming starts and stops.\n- New: Compass options for width, background opacity and the view angle line and heading.\n- New: Pings while down, and after death until the camera moves to an ally.\n- Changed: Settings are grouped by what they change, and every setting that applies at once is also in the pause menu.\n- Changed: F is the default ping key.\n- Changed: The explosion kick is five times stronger. Hellpod landings no longer kick.\n- Changed: When another pod of the squad comes down first, the Hellpod camera waits high above it, then moves over to the pod of the Helldiver.\n- Changed: The glide from the Hellpod into the shoulder view starts 0.4 seconds sooner.\n- Changed: On a throw, the throw arc stays in place and fades out over a second.\n- Changed: Compass icons show over the compass letters.\n- Changed: Enemy indicators show only while the Helldiver is alive or down.\n- Changed: The ammo bar of a laser fills from the bottom, in a brighter yellow.\n- Changed: Patrols stay in view also keeps patrol enemies chasing a Helldiver out to 200 m, and enemies of alarms and objective waves out to 100 m, where the game removed them at 40 m.\n- Fixed: The Helldiver no longer shakes against the camera when frame times change, as with many effects on screen.\n- Fixed: Lasers fire up and down. A beam that hit nothing was drawn level.\n- Fixed: An arc weapon bolt that finds no target flies toward the crosshair.\n- Fixed: The Hellpod camera no longer follows the pods of bots."
     },
     {
      "version": "0.14.0",
@@ -1078,12 +1084,6 @@
      "date": "2026-11-15",
      "channel": "stable",
      "notes": "- New: first person arms. The arms hold the weapon in view, with motion for walking, sprinting, aiming, firing, reloading, melee, switching weapons, throwing, calling stratagems, diving and being downed. The option Arms and weapon, under First person, is on by default.\n- New: assault rifles and the standard pistol have holds of their own. Other weapons use the rifle hold, and other sidearms the pistol hold.\n- Changed: with the arms on, first person hides the whole body, and looking down no longer moves the camera forward.\n- Changed: new skies, drawn for each time of day: brighter toward the horizon, a sun where the light of the level comes from, clouds in perspective, and stars and a moon at night.\n- Fixed: the sky was a flat dome with clouds circling overhead."
-    },
-    {
-     "version": "0.8.2",
-     "date": "2026-11-15",
-     "channel": "stable",
-     "notes": "- Fixed: the sky was the day sky in every mission. It now follows the time of the mission: dawn, day, dusk or night.\n- Changed: the skies are the dawn, day, dusk and night skies of Photo Mode, with clouds and stars, in place of the plain skies in the colour of the planet fog."
     }
    ]
   },
@@ -1410,7 +1410,7 @@
    ],
    "repo": "Alomare/HD1-CustomCrosshair",
    "stars": 0,
-   "downloads": 114,
+   "downloads": 115,
    "kit": false,
    "icon": "img/alomare-customcrosshair-icon-5505107ee9.jpg",
    "banner": "img/alomare-customcrosshair-banner-2ad3b014c3.jpg",
