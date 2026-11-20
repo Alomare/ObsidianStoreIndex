@@ -30,7 +30,7 @@
    "option_groups": [],
    "repo": "Alomare/ObsidianAPI",
    "stars": 0,
-   "downloads": 2381,
+   "downloads": 2398,
    "kit": true,
    "icon": "img/obsidian-api-icon-976df8f8d5.jpg",
    "banner": null,
@@ -175,7 +175,7 @@
    "option_groups": [],
    "repo": "Alomare/ObsidianPatches",
    "stars": 0,
-   "downloads": 1016,
+   "downloads": 1018,
    "kit": true,
    "icon": "img/obsidian-qol-icon-6bb7fca71d.jpg",
    "banner": null,
@@ -270,7 +270,7 @@
    "option_groups": [],
    "repo": "Alomare/ObsidianTrainer",
    "stars": 0,
-   "downloads": 1559,
+   "downloads": 1561,
    "kit": true,
    "icon": "img/obsidian-trainer-icon-717943693e.jpg",
    "banner": null,
@@ -425,7 +425,7 @@
    "option_groups": [],
    "repo": "Alomare/HD1-BetterHUD",
    "stars": 0,
-   "downloads": 422,
+   "downloads": 425,
    "kit": false,
    "icon": "img/alomare-betterhud-icon-f8848148c9.jpg",
    "banner": "img/alomare-betterhud-banner-249c90315b.jpg",
@@ -665,7 +665,7 @@
    "option_groups": [],
    "repo": "Alomare/HD1-EnhancedVisuals",
    "stars": 0,
-   "downloads": 224,
+   "downloads": 229,
    "kit": false,
    "icon": "img/alomare-enhancedvisuals-icon-1f9486e80a.jpg",
    "banner": "img/alomare-enhancedvisuals-banner-8479c5978f.jpg",
@@ -933,7 +933,7 @@
    ],
    "repo": "Alomare/HD1-EyesOfLiberty",
    "stars": 0,
-   "downloads": 219,
+   "downloads": 224,
    "kit": false,
    "icon": "img/alomare-eyesofliberty-icon-cd4c740a3f.jpg",
    "banner": "img/alomare-eyesofliberty-banner-9768c10db8.jpg",
@@ -1011,13 +1011,13 @@
    ],
    "verified": true,
    "description": "A crosshair mod for HELLDIVERS (2015), for the [Obsidian](https://github.com/Alomare/ObsidianLauncher) mod manager.\n\nCustom Crosshair replaces the aim cursor with a crosshair built from shapes, with one look between shots and another while aiming. Shape, size, gap, color, outline and shadow are all settings. A hitmarker flashes around the crosshair, with a sound, when a shot from this player hurts or kills an enemy.\n\n## How to use\n\nThe settings are in the Options tab of Custom Crosshair in Obsidian, with a live preview. A change applies at the next launch of the game.\n\nWith Eyes of Liberty, the crosshair goes where shots land. Turn off **Third person crosshair** to keep the crosshair of the game there instead, or **First person crosshair** for no crosshair in the first person camera of the Eyes of Liberty beta.\n\n## Known issues\n\n- On a controller the game shows no cursor in the top-down view, so no crosshair shows there.\n- A shot that armor stops does not count as a hit.",
-   "version": "0.7.1",
-   "early": true,
+   "version": "1.0.0",
+   "early": false,
    "scope": "client",
    "requires": [
     "obsidian.api"
    ],
-   "options": 55,
+   "options": 57,
    "option_list": [
     {
      "label": "Custom crosshair",
@@ -1061,7 +1061,12 @@
     },
     {
      "label": "Idle thickness (px)",
-     "description": "Width of the lines. The dot is twice as wide.",
+     "description": "Width of the lines.",
+     "group": "idle"
+    },
+    {
+     "label": "Idle dot size (px)",
+     "description": "Width of the dot of the shapes that have one, set apart from the thickness of the lines.",
      "group": "idle"
     },
     {
@@ -1151,7 +1156,12 @@
     },
     {
      "label": "Aiming thickness (px)",
-     "description": "Width of the lines. The dot is twice as wide.",
+     "description": "Width of the lines.",
+     "group": "aim"
+    },
+    {
+     "label": "Aiming dot size (px)",
+     "description": "Width of the dot of the shapes that have one, set apart from the thickness of the lines.",
      "group": "aim"
     },
     {
@@ -1315,13 +1325,19 @@
    ],
    "repo": "Alomare/HD1-CustomCrosshair",
    "stars": 0,
-   "downloads": 94,
+   "downloads": 100,
    "kit": false,
    "icon": "img/alomare-customcrosshair-icon-5505107ee9.jpg",
    "banner": "img/alomare-customcrosshair-banner-2ad3b014c3.jpg",
-   "released": "2026-11-18",
+   "released": "2026-11-20",
    "added": "2026-11-11",
    "versions": [
+    {
+     "version": "1.0.0",
+     "date": "2026-11-20",
+     "channel": "stable",
+     "notes": "- New: Dot size options for the idle and aiming crosshairs, set apart from the line thickness.\n- Changed: In third person with Eyes of Liberty, the crosshair shows only while the Helldiver can shoot: not while dead, down, carrying, dropping in the Hellpod, putting in a stratagem or looking at the map.\n- Changed: The hitmarker sound is quieter across the whole volume range: 0.5 now plays as 0.3 did.\n- Changed: New defaults: a circle when idle, a cross with a dot when aiming, a wider aiming gap, and larger, thicker hitmarker lines at a sound volume of 0.5."
+    },
     {
      "version": "0.7.1",
      "date": "2026-11-18",
@@ -1375,12 +1391,6 @@
      "date": "2026-11-13",
      "channel": "stable",
      "notes": "- New: Aiming gap scales with spread, on by default. The aiming gap opens by up to 12 pixels as the spread of the weapon in hand grows while firing, and closes as the spread settles.\n- Changed: number settings go in steps of 0.01, and every one starts at 0. Shadow blur keeps whole pixels."
-    },
-    {
-     "version": "0.3.1",
-     "date": "2026-11-12",
-     "channel": "stable",
-     "notes": "- Fixed: the game cursor no longer shows over the crosshair in the top-down view."
     }
    ]
   },
@@ -1405,7 +1415,7 @@
    "option_groups": [],
    "repo": "Alomare/HD1-HelldiversArcade",
    "stars": 0,
-   "downloads": 34,
+   "downloads": 35,
    "kit": false,
    "icon": null,
    "banner": null,
