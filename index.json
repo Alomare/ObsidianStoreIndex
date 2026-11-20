@@ -933,7 +933,7 @@
    ],
    "repo": "Alomare/HD1-EyesOfLiberty",
    "stars": 0,
-   "downloads": 224,
+   "downloads": 226,
    "kit": false,
    "icon": "img/alomare-eyesofliberty-icon-cd4c740a3f.jpg",
    "banner": "img/alomare-eyesofliberty-banner-9768c10db8.jpg",
@@ -1011,7 +1011,7 @@
    ],
    "verified": true,
    "description": "A crosshair mod for HELLDIVERS (2015), for the [Obsidian](https://github.com/Alomare/ObsidianLauncher) mod manager.\n\nCustom Crosshair replaces the aim cursor with a crosshair built from shapes, with one look between shots and another while aiming. Shape, size, gap, color, outline and shadow are all settings. A hitmarker flashes around the crosshair, with a sound, when a shot from this player hurts or kills an enemy.\n\n## How to use\n\nThe settings are in the Options tab of Custom Crosshair in Obsidian, with a live preview. A change applies at the next launch of the game.\n\nWith Eyes of Liberty, the crosshair goes where shots land. Turn off **Third person crosshair** to keep the crosshair of the game there instead, or **First person crosshair** for no crosshair in the first person camera of the Eyes of Liberty beta.\n\n## Known issues\n\n- On a controller the game shows no cursor in the top-down view, so no crosshair shows there.\n- A shot that armor stops does not count as a hit.",
-   "version": "1.0.0",
+   "version": "1.0.1",
    "early": false,
    "scope": "client",
    "requires": [
@@ -1333,6 +1333,12 @@
    "added": "2026-11-11",
    "versions": [
     {
+     "version": "1.0.1",
+     "date": "2026-11-20",
+     "channel": "stable",
+     "notes": "- Fixed: In third person with Eyes of Liberty, the crosshair shows while the Helldiver is down or carries something, as both still allow shooting."
+    },
+    {
      "version": "1.0.0",
      "date": "2026-11-20",
      "channel": "stable",
@@ -1385,12 +1391,6 @@
      "date": "2026-11-13",
      "channel": "stable",
      "notes": "- New: Idle length and Aiming length set how long each line is, 8 pixels by default. Circles, brackets and the chevron grow with it.\n- Changed: new default look. Idle is a faint white circle 3 pixels thick; aiming is a white cross 3 pixels thick with a thin outline and a soft shadow; hit marks are white and kill marks red, with no outline. Settings already saved stay as they are.\n- Changed: in third person with Integrated Third Person 0.4.2 or later, the aiming crosshair also shows while fire or a throw is held, as in the top-down view."
-    },
-    {
-     "version": "0.4.0",
-     "date": "2026-11-13",
-     "channel": "stable",
-     "notes": "- New: Aiming gap scales with spread, on by default. The aiming gap opens by up to 12 pixels as the spread of the weapon in hand grows while firing, and closes as the spread settles.\n- Changed: number settings go in steps of 0.01, and every one starts at 0. Shadow blur keeps whole pixels."
     }
    ]
   },
