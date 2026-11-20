@@ -30,7 +30,7 @@
    "option_groups": [],
    "repo": "Alomare/ObsidianAPI",
    "stars": 0,
-   "downloads": 2398,
+   "downloads": 2402,
    "kit": true,
    "icon": "img/obsidian-api-icon-976df8f8d5.jpg",
    "banner": null,
@@ -348,7 +348,7 @@
    ],
    "verified": true,
    "description": "More information on the HUD of HELLDIVERS (2015), for the [Obsidian](https://github.com/Alomare/ObsidianLauncher) mod manager.\n\nBetter HUD counts the rounds left in the magazine and the grenades on each player card, puts health and stamina bars under the player cards and health bars over enemies, and shows damage numbers where hits land. A reload circle and an ammo circle sit beside the Helldiver. Enemy bars show burns, poison and stuns, and wait at the edge of the screen while the enemy is out of view.\n\n## How to use\n\nEvery part can be switched on or off in the options of Better HUD in Obsidian, or in game under **Mods → Better HUD** in the pause menu. A change in one place shows in the other.\n\n## Known issues\n\n- Players on other computers get no stamina bar: the game keeps stamina on each player's computer and never sends it.\n- Lasers and arc weapons get no round counter, since they heat or charge up instead. The ammo circle shows their heat or charge.\n\nMod authors can add meters, flashes and status icons to the HUD through Better HUD: see [docs/api.md](docs/api.md).",
-   "version": "1.17.3",
+   "version": "1.18.0",
    "early": false,
    "scope": "client",
    "requires": [
@@ -425,13 +425,19 @@
    "option_groups": [],
    "repo": "Alomare/HD1-BetterHUD",
    "stars": 0,
-   "downloads": 425,
+   "downloads": 426,
    "kit": false,
    "icon": "img/alomare-betterhud-icon-f8848148c9.jpg",
    "banner": "img/alomare-betterhud-banner-249c90315b.jpg",
-   "released": "2026-11-17",
+   "released": "2026-11-20",
    "added": "2026-11-03",
    "versions": [
+    {
+     "version": "1.18.0",
+     "date": "2026-11-20",
+     "channel": "stable",
+     "notes": "- Changed: The ammo and reload circles stay hidden while the Eyes of Liberty ammo bar shows in third person; the bar shows the reload instead."
+    },
     {
      "version": "1.17.3",
      "date": "2026-11-17",
@@ -485,12 +491,6 @@
      "date": "2026-11-04",
      "channel": "stable",
      "notes": "- Removed the black outline around the player health bars. The grey frame stays."
-    },
-    {
-     "version": "1.12.1",
-     "date": "2026-11-04",
-     "channel": "stable",
-     "notes": "- Changed the health numbers to sit against the right end of each player health bar.\n- Changed the enemy health bars back to the height they had before 1.9.0, with a black outline twice as thick."
     }
    ]
   },
@@ -665,7 +665,7 @@
    "option_groups": [],
    "repo": "Alomare/HD1-EnhancedVisuals",
    "stars": 0,
-   "downloads": 230,
+   "downloads": 231,
    "kit": false,
    "icon": "img/alomare-enhancedvisuals-icon-1f9486e80a.jpg",
    "banner": "img/alomare-enhancedvisuals-banner-8479c5978f.jpg",
@@ -1325,7 +1325,7 @@
    ],
    "repo": "Alomare/HD1-CustomCrosshair",
    "stars": 0,
-   "downloads": 102,
+   "downloads": 104,
    "kit": false,
    "icon": "img/alomare-customcrosshair-icon-5505107ee9.jpg",
    "banner": "img/alomare-customcrosshair-banner-2ad3b014c3.jpg",
@@ -1467,7 +1467,7 @@
    "option_groups": [],
    "repo": "Alomare/HD1-SharedResupply",
    "stars": 0,
-   "downloads": 60,
+   "downloads": 61,
    "kit": false,
    "icon": "img/alomare-sharedresupply-icon-4189ebab04.jpg",
    "banner": "img/alomare-sharedresupply-banner-b02b0ba6d4.jpg",
