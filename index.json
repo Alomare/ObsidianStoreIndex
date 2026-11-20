@@ -10,11 +10,11 @@
    ],
    "verified": true,
    "description": "A library for [Obsidian](https://github.com/Alomare/ObsidianLauncher) mods on HELLDIVERS (2015). It gives other mods the game data by name, checked changes that can be undone, and ready actions. It does nothing by itself.\n\n## How to use\n\nObsidian API comes with Obsidian, in the Obsidian Kit. Mods that need it switch it on with them.\n\nTo build on it, list it in the `obsidian.json` of the mod:\n\n```json\n\"requires\": [\"obsidian.api\"]\n```\n\nThen ask for it in the script:\n\n```lua\nlocal api = obsidian.import(\"obsidian.api\")\n\nobsidian.keybind(\"panic\", function()\n  api.player.heal()\n  api.enemies.kill_near(20)\nend)\n```\n\nActions answer `true`, or `false` and a short reason such as `\"host_only\"`. A client mod can require the API and stay a client mod: it can read game data and use the interface, sound and event calls, and anything that changes the shared game answers `false, \"needs_session\"`.\n\n[REFERENCE.md](REFERENCE.md) has every call, with guides and recipes. A copy sits in the folder of the API in the Obsidian Kit, where an AI tool working on a mod can read it.\n\n## Known issues\n\n- Tested solo and offline, not yet with a second player.",
-   "version": "1.55.1",
+   "version": "1.56.0",
    "early": false,
    "scope": "library",
    "requires": [],
-   "options": 2,
+   "options": 3,
    "option_list": [
     {
      "label": "Open the menu with a controller",
@@ -25,18 +25,29 @@
      "label": "Script Profiler",
      "description": "Adds the Script Profiler page to the F6 menu: a panel over the game with the time the scripts of each mod take every frame. On its page the panel can still be hidden. Off, nothing is measured.",
      "group": null
+    },
+    {
+     "label": "Memory Bridge",
+     "description": "For making mods. Runs Lua that a developer tool sends while the game runs, and answers it, so a mod can be tried without a restart. Code runs only alone or in a lobby that isn't public. While it is on, Galactic War and leaderboard results aren't sent. Any program on this PC can send it code: leave it off unless making mods.",
+     "group": null
     }
    ],
    "option_groups": [],
    "repo": "Alomare/ObsidianAPI",
    "stars": 0,
-   "downloads": 2465,
+   "downloads": 2481,
    "kit": true,
    "icon": "img/obsidian-api-icon-976df8f8d5.jpg",
    "banner": null,
    "released": "2026-11-20",
    "added": "2026-10-30",
    "versions": [
+    {
+     "version": "1.56.0",
+     "date": "2026-11-20",
+     "channel": "stable",
+     "notes": "- New: Memory Bridge option, off by default. While it is on, Lua sent by a developer tool runs in the game while it runs, and the answer goes back to the tool, so a mod can be tried without a restart. The tool is `tools/bridge.py` of the HD1 Lua Modding Skill, and `REFERENCE.md` has the details.\n- New: Memory Bridge code runs only alone or in a lobby that isn't public. When a lobby turns public, everything the code left running is undone.\n- New: Galactic War and leaderboard results aren't sent from a launch with the Memory Bridge on.\n- Fixed: `api.capture` no longer saves a shot while another window is in front of the game. The shot held that window instead of the game."
+    },
     {
      "version": "1.55.1",
      "date": "2026-11-20",
@@ -90,12 +101,6 @@
      "date": "2026-11-13",
      "channel": "beta",
      "notes": "- New: Script Profiler, a page of the F6 window. A panel in the top left corner, on a 20% black background, lists every running mod with the time the scripts of the mod take each frame and the FPS that costs; a name too long for the column scrolls. The page sets where it shows (hidden, pause menu only, always), the detail (basic, or with the slowest frame, calls a frame and the total), how many mods it lists, the corner and the text size. Needs a loader with `obsidian.profiler`.\n- New: while the Script Profiler is not hidden, a report goes to the log of Obsidian API every 10 seconds: the frame time, and for each mod the time, slowest frame, calls and the hooks and parts the time goes to. The parts of the frame of Obsidian API are measured one by one.\n- Changed: the folder of Obsidian API in the F6 window comes after the folders of the mods."
-    },
-    {
-     "version": "1.49.0",
-     "date": "2026-11-11",
-     "channel": "stable",
-     "notes": "- Fixed: a client mod listening through `api.events` hears events in any lobby, also while a session or hybrid mod has the API wait for a cleared lobby. Listeners of session mods still wait.\n- Changed: with a session or hybrid mod requiring the API, Mod Settings in the pause menu, screenshots, the map, music and `api.lobby` keep working in a lobby that isn't cleared; effects, edits, bots and the rest of what changes the shared game still wait for a cleared lobby."
     }
    ]
   },
@@ -175,7 +180,7 @@
    "option_groups": [],
    "repo": "Alomare/ObsidianPatches",
    "stars": 0,
-   "downloads": 1040,
+   "downloads": 1043,
    "kit": true,
    "icon": "img/obsidian-qol-icon-6bb7fca71d.jpg",
    "banner": null,
@@ -270,7 +275,7 @@
    "option_groups": [],
    "repo": "Alomare/ObsidianTrainer",
    "stars": 0,
-   "downloads": 1582,
+   "downloads": 1584,
    "kit": true,
    "icon": "img/obsidian-trainer-icon-717943693e.jpg",
    "banner": null,
@@ -425,7 +430,7 @@
    "option_groups": [],
    "repo": "Alomare/HD1-BetterHUD",
    "stars": 0,
-   "downloads": 467,
+   "downloads": 481,
    "kit": false,
    "icon": "img/alomare-betterhud-icon-f8848148c9.jpg",
    "banner": "img/alomare-betterhud-banner-249c90315b.jpg",
@@ -725,7 +730,7 @@
     "yukiorsrs"
    ],
    "verified": true,
-   "description": "A third person camera for HELLDIVERS (2015), for the [Obsidian](https://github.com/Alomare/ObsidianLauncher) mod manager. Formerly Unleashed Camera, and before that Integrated Third Person: remove either one when installing this mod. Based on [Third Person Camera (HD2 Style)](https://github.com/yukiorsrs/third-person-camera-helldivers) by **yukiorsrs**, rebuilt with the permission of the author so that other mods keep working beside it.\n\nThe camera follows the Helldiver over the shoulder on foot, in vehicles and on the ship. Shots, grenades and stratagems go where the crosshair points. The view reaches farther, the sky over the level is filled in, a ring around the crosshair warns of enemies close by, a bar shows where hits come from, and the edges of the screen flash red when the Helldiver is hurt. A compass at the top of the screen shows the way to the objectives found on the map. Stratagem beacons out of view show at the edge of the screen, as do allies, red while down, and a dashed line shows where a held grenade or stratagem ball would fly. The ping key marks enemies, objectives, dropped support weapons or a spot on the ground for the squad. After a death the camera stays on the body, then follows a living ally until the Helldiver is back. After extraction it rides the shuttle out.\n\nThird Person Camera replaces 28 game scripts, so mods that change the same parts of the game stop working with it. Eyes of Liberty replaces no script: every change is a hook through Obsidian.\n\n## How to use\n\n**F8** switches between the top-down camera of the game and third person. **H** swaps the shoulder. The **middle mouse button** pings what the crosshair is on. The keys can be changed in Obsidian. On a gamepad, the right stick turns the camera and holding the left trigger aims; while aiming, the reload button throws grenades. A tap of the right stick swaps the shoulder. While the death cam follows allies, left and right click switch between them.\n\n## Playing with others\n\nThe camera and everything on screen work in any lobby. Five session features change the game for the whole lobby: Ballistics revamp (every weapon reaches far, with damage falling off past the weapon's own range), Far enemy detection, Free movement, Increased throw range and Patrols stay in view. They run only when every player runs Obsidian with the same mods, and switch off when anyone else joins. With all five off, the mod counts as a client mod.\n\nPings show only for teammates who run the mod; nothing goes to the game's chat.\n\n## Known issues\n\n- Players on one computer share a screen, so the camera goes back to top-down while a second local player is in, and comes back after.\n- The mod stays off while Third Person Camera, Unleashed Camera or Integrated Third Person is installed.\n\nFirst person is in development for separate beta versions.\n\nMod authors can read the camera state through `obsidian.import(\"alomare.eyesofliberty\")`: `active()`, `mode()`, `crosshair()` and `shoulder()`.",
+   "description": "A third person camera for HELLDIVERS (2015), for the [Obsidian](https://github.com/Alomare/ObsidianLauncher) mod manager. Formerly Unleashed Camera, and before that Integrated Third Person: remove either one when installing this mod. Based on [Third Person Camera (HD2 Style)](https://github.com/yukiorsrs/third-person-camera-helldivers) by **yukiorsrs**, rebuilt with the permission of the author so that other mods keep working beside it.\n\nThe camera follows the Helldiver over the shoulder on foot, in vehicles and on the ship. Shots, grenades and stratagems go where the crosshair points. The view reaches farther, the sky over the level is filled in, a ring around the crosshair warns of enemies close by, a bar shows where hits come from, and the edges of the screen flash red when the Helldiver is hurt. A compass at the top of the screen shows the way to the objectives found on the map. Stratagem beacons out of view show at the edge of the screen, as do allies, red while down, and a dashed line shows where a held grenade or stratagem ball would fly. The ping key marks enemies, objectives, dropped support weapons or a spot on the ground for the squad. After a death the camera stays on the body, then follows a living ally until the Helldiver is back. After extraction it rides the shuttle out.\n\nThird Person Camera replaces 28 game scripts, so mods that change the same parts of the game stop working with it. Eyes of Liberty replaces no script: every change is a hook through Obsidian.\n\n## How to use\n\n**F8** switches between the top-down camera of the game and third person. **H** swaps the shoulder. **F** pings what the crosshair is on. The keys can be changed in Obsidian. On a gamepad, the right stick turns the camera and holding the left trigger aims; while aiming, the reload button throws grenades. A tap of the right stick swaps the shoulder. While the death cam follows allies, left and right click switch between them.\n\n## Playing with others\n\nThe camera and everything on screen work in any lobby. Five session features change the game for the whole lobby: Ballistics revamp (every weapon reaches far, with damage falling off past the weapon's own range), Far enemy detection, Free movement, Increased throw range and Patrols stay in view. They run only when every player runs Obsidian with the same mods, and switch off when anyone else joins. With all five off, the mod counts as a client mod.\n\nPings show only for teammates who run the mod; nothing goes to the game's chat.\n\n## Known issues\n\n- Players on one computer share a screen, so the camera goes back to top-down while a second local player is in, and comes back after.\n- The mod stays off while Third Person Camera, Unleashed Camera or Integrated Third Person is installed.\n\nFirst person is in development for separate beta versions.\n\nMod authors can read the camera state through `obsidian.import(\"alomare.eyesofliberty\")`: `active()`, `mode()`, `crosshair()` and `shoulder()`.",
    "version": "0.14.0",
    "early": true,
    "scope": "session",
@@ -977,7 +982,7 @@
    ],
    "repo": "Alomare/HD1-EyesOfLiberty",
    "stars": 0,
-   "downloads": 247,
+   "downloads": 259,
    "kit": false,
    "icon": "img/alomare-eyesofliberty-icon-c0e5f7be9b.jpg",
    "banner": "img/alomare-eyesofliberty-banner-9768c10db8.jpg",
@@ -1369,7 +1374,7 @@
    ],
    "repo": "Alomare/HD1-CustomCrosshair",
    "stars": 0,
-   "downloads": 111,
+   "downloads": 114,
    "kit": false,
    "icon": "img/alomare-customcrosshair-icon-5505107ee9.jpg",
    "banner": "img/alomare-customcrosshair-banner-2ad3b014c3.jpg",
@@ -1459,7 +1464,7 @@
    "option_groups": [],
    "repo": "Alomare/HD1-HelldiversArcade",
    "stars": 0,
-   "downloads": 38,
+   "downloads": 40,
    "kit": false,
    "icon": null,
    "banner": null,
@@ -1511,7 +1516,7 @@
    "option_groups": [],
    "repo": "Alomare/HD1-SharedResupply",
    "stars": 0,
-   "downloads": 63,
+   "downloads": 65,
    "kit": false,
    "icon": "img/alomare-sharedresupply-icon-4189ebab04.jpg",
    "banner": "img/alomare-sharedresupply-banner-b02b0ba6d4.jpg",
