@@ -35,7 +35,7 @@
    "option_groups": [],
    "repo": "Alomare/ObsidianAPI",
    "stars": 0,
-   "downloads": 2481,
+   "downloads": 2487,
    "kit": true,
    "icon": "img/obsidian-api-icon-976df8f8d5.jpg",
    "banner": null,
@@ -180,7 +180,7 @@
    "option_groups": [],
    "repo": "Alomare/ObsidianPatches",
    "stars": 0,
-   "downloads": 1043,
+   "downloads": 1045,
    "kit": true,
    "icon": "img/obsidian-qol-icon-6bb7fca71d.jpg",
    "banner": null,
@@ -275,7 +275,7 @@
    "option_groups": [],
    "repo": "Alomare/ObsidianTrainer",
    "stars": 0,
-   "downloads": 1584,
+   "downloads": 1586,
    "kit": true,
    "icon": "img/obsidian-trainer-icon-717943693e.jpg",
    "banner": null,
@@ -430,7 +430,7 @@
    "option_groups": [],
    "repo": "Alomare/HD1-BetterHUD",
    "stars": 0,
-   "downloads": 481,
+   "downloads": 482,
    "kit": false,
    "icon": "img/alomare-betterhud-icon-f8848148c9.jpg",
    "banner": "img/alomare-betterhud-banner-249c90315b.jpg",
@@ -670,7 +670,7 @@
    "option_groups": [],
    "repo": "Alomare/HD1-EnhancedVisuals",
    "stars": 0,
-   "downloads": 239,
+   "downloads": 240,
    "kit": false,
    "icon": "img/alomare-enhancedvisuals-icon-1f9486e80a.jpg",
    "banner": "img/alomare-enhancedvisuals-banner-8479c5978f.jpg",
@@ -731,13 +731,13 @@
    ],
    "verified": true,
    "description": "A third person camera for HELLDIVERS (2015), for the [Obsidian](https://github.com/Alomare/ObsidianLauncher) mod manager. Formerly Unleashed Camera, and before that Integrated Third Person: remove either one when installing this mod. Based on [Third Person Camera (HD2 Style)](https://github.com/yukiorsrs/third-person-camera-helldivers) by **yukiorsrs**, rebuilt with the permission of the author so that other mods keep working beside it.\n\nThe camera follows the Helldiver over the shoulder on foot, in vehicles and on the ship. Shots, grenades and stratagems go where the crosshair points. The view reaches farther, the sky over the level is filled in, a ring around the crosshair warns of enemies close by, a bar shows where hits come from, and the edges of the screen flash red when the Helldiver is hurt. A compass at the top of the screen shows the way to the objectives found on the map. Stratagem beacons out of view show at the edge of the screen, as do allies, red while down, and a dashed line shows where a held grenade or stratagem ball would fly. The ping key marks enemies, objectives, dropped support weapons or a spot on the ground for the squad. After a death the camera stays on the body, then follows a living ally until the Helldiver is back. After extraction it rides the shuttle out.\n\nThird Person Camera replaces 28 game scripts, so mods that change the same parts of the game stop working with it. Eyes of Liberty replaces no script: every change is a hook through Obsidian.\n\n## How to use\n\n**F8** switches between the top-down camera of the game and third person. **H** swaps the shoulder. **F** pings what the crosshair is on. The keys can be changed in Obsidian. On a gamepad, the right stick turns the camera and holding the left trigger aims; while aiming, the reload button throws grenades. A tap of the right stick swaps the shoulder. While the death cam follows allies, left and right click switch between them.\n\n## Playing with others\n\nThe camera and everything on screen work in any lobby. Five session features change the game for the whole lobby: Ballistics revamp (every weapon reaches far, with damage falling off past the weapon's own range), Far enemy detection, Free movement, Increased throw range and Patrols stay in view. They run only when every player runs Obsidian with the same mods, and switch off when anyone else joins. With all five off, the mod counts as a client mod.\n\nPings show only for teammates who run the mod; nothing goes to the game's chat.\n\n## Known issues\n\n- Players on one computer share a screen, so the camera goes back to top-down while a second local player is in, and comes back after.\n- The mod stays off while Third Person Camera, Unleashed Camera or Integrated Third Person is installed.\n\nFirst person is in development for separate beta versions.\n\nMod authors can read the camera state through `obsidian.import(\"alomare.eyesofliberty\")`: `active()`, `mode()`, `crosshair()` and `shoulder()`.",
-   "version": "0.14.0",
+   "version": "0.15.0",
    "early": true,
    "scope": "session",
    "requires": [
     "obsidian.api"
    ],
-   "options": 42,
+   "options": 46,
    "option_list": [
     {
      "label": "Camera mode",
@@ -755,98 +755,148 @@
      "group": "camera"
     },
     {
-     "label": "Camera shake",
-     "description": "How much explosions, impacts and the Hellpod landing shake the shoulder camera.",
-     "group": "camera"
-    },
-    {
-     "label": "Explosion kick",
-     "description": "In third person, an explosion nearby knocks the camera: it rolls away from the blast, tips up and rises, then springs back. Grenades kick lightly and only up close; bigger blasts kick harder and from farther, a Hellbomb from about 35 m. Blasts in quick succession kick less each time. Follows the Camera shake setting.",
-     "group": "camera"
-    },
-    {
-     "label": "Hellpod camera",
-     "description": "When the Helldiver drops in, the camera rides down above the Hellpod looking down on it, shakes on the landing, and glides into the shoulder view once the Helldiver climbs out. The view stays still until then.",
-     "group": "camera"
-    },
-    {
-     "label": "Death cam",
-     "description": "When the Helldiver dies, the camera stays on the body, or where the body was once the game removes it, until the Helldiver drops in again or the mission ends. With allies alive, the camera moves to one of them after 4 seconds. Left and right click switch between allies, and the mouse turns the camera.",
-     "group": "camera"
-    },
-    {
-     "label": "Extraction camera",
-     "description": "Once the Helldiver boards the shuttle, the camera rides with the shuttle as it takes off and flies away, until the mission ends. The mouse turns the camera.",
-     "group": "camera"
-    },
-    {
      "label": "Shoulder",
      "description": "The side of the Helldiver the camera sits on. The swap key, or a tap of the right stick on a gamepad, changes it in a mission. A mech camera starts on the same side; in any vehicle the swap key moves the camera from left to the middle to right.",
-     "group": "third"
+     "group": "camera"
     },
     {
      "label": "Distance on foot (m)",
      "description": "Meters between the camera and the Helldiver on foot in a mission.",
-     "group": "third"
+     "group": "camera"
     },
     {
      "label": "Scroll camera distance",
      "description": "On foot with a mouse, the wheel moves the camera closer or farther, from 1 to 10 m, and no longer switches weapons. Number keys still switch weapons. Changing the distance on foot above starts over from that distance.",
-     "group": "third"
+     "group": "camera"
     },
     {
      "label": "Field of view on foot (degrees)",
      "description": "Vertical field of view on foot in third person.",
-     "group": "third"
+     "group": "camera"
     },
     {
      "label": "Overall camera height (m)",
      "description": "Raises or lowers the third-person camera on foot, in a dive, while down, in vehicles and on the Super Destroyer.",
-     "group": "third"
+     "group": "camera"
     },
     {
      "label": "Distance on the Super Destroyer (m)",
      "description": "Meters between the camera and the Helldiver on the Super Destroyer.",
-     "group": "third"
+     "group": "camera"
+    },
+    {
+     "label": "Hellpod camera",
+     "description": "When the Helldiver drops in, the camera rides down above the Hellpod looking down on it, shakes on the landing, and glides into the shoulder view once the Helldiver climbs out. The view stays still until then. When another pod of the squad comes down first, the camera waits high above it, then moves over to the pod of the Helldiver.",
+     "group": "events"
     },
     {
      "label": "Dive camera",
      "description": "Brings the camera down during a dive, quickly but smoothly, and eases it back up once the dive ends.",
-     "group": "third"
+     "group": "events"
     },
     {
      "label": "Downed camera",
      "description": "While the Helldiver is down and crawling, the camera sits as low as in a dive, and 1 m farther back.",
-     "group": "third"
+     "group": "events"
     },
     {
-     "label": "Distance (m)",
+     "label": "Death cam",
+     "description": "When the Helldiver dies, the camera stays on the body, or where the body was once the game removes it, until the Helldiver drops in again or the mission ends. With allies alive, the camera moves to one of them after 4 seconds. Left and right click switch between allies, and the mouse turns the camera. Until the camera moves to an ally, the ping key still marks what the middle of the screen is on.",
+     "group": "events"
+    },
+    {
+     "label": "Extraction camera",
+     "description": "Once the Helldiver boards the shuttle, the camera rides with the shuttle as it takes off and flies away, until the mission ends. The mouse turns the camera.",
+     "group": "events"
+    },
+    {
+     "label": "Camera shake strength",
+     "description": "How much explosions, impacts and the Hellpod landing shake the shoulder camera.",
+     "group": "shake"
+    },
+    {
+     "label": "Explosion kick",
+     "description": "In third person, an explosion nearby knocks the camera: it rolls away from the blast, tips up and rises, then springs back. Grenades kick lightly and only up close; bigger blasts kick harder and from farther, a Hellbomb from about 35 m. Blasts in quick succession kick less each time. Hellpod landings don't kick. Follows the Camera shake setting.",
+     "group": "shake"
+    },
+    {
+     "label": "Vehicle camera distance (m)",
      "description": "Meters between the camera and the vehicle: mech, APC, bike and turrets. A mech camera sits beside the shoulder, other vehicles in the middle and high.",
      "group": "vehicles"
     },
     {
-     "label": "Field of view (degrees)",
+     "label": "Vehicle field of view (degrees)",
      "description": "Vertical field of view in a vehicle.",
      "group": "vehicles"
     },
     {
+     "label": "Throw arc",
+     "description": "In third person, while a grenade or a stratagem ball is held, a dashed line shows the way it would fly if thrown now, and a ring where it first lands. On the throw, both stay in place and fade out over a second.",
+     "group": "aim"
+    },
+    {
+     "label": "Blocked shot mark",
+     "description": "In third person on foot, while the crosshair shows, a small red X marks where shots would land when something within 6 m of the weapon, between it and the crosshair, would stop them.",
+     "group": "aim"
+    },
+    {
+     "label": "Weapon follows aim",
+     "description": "In third person on foot, while aiming or firing, the Helldiver bends up or down so the weapon points where the crosshair is. Only on this screen: other players see the pose of the game.",
+     "group": "aim"
+    },
+    {
+     "label": "Ammo bar",
+     "description": "In third person on foot, a short arc by the crosshair shows the magazine left, the heat of a laser or the charge of an arc weapon, with the colours, warnings and reload button of the Better HUD ammo circle. Weapons of 40 rounds or fewer show a faint line between rounds. Shows from a shot and fades out 8 seconds after the last one. While on, the Better HUD ammo circle stays hidden in third person.",
+     "group": "ammo"
+    },
+    {
+     "label": "Ammo bar position",
+     "description": "Where the ammo bar sits around the crosshair. The sides follow the camera when the shoulder swaps.",
+     "group": "ammo"
+    },
+    {
+     "label": "Curved ammo bar",
+     "description": "On, the ammo bar curves around the crosshair. Off, the bar is straight.",
+     "group": "ammo"
+    },
+    {
+     "label": "Ammo bar scale",
+     "description": "The size of the ammo bar and how far it sits from the crosshair.",
+     "group": "ammo"
+    },
+    {
+     "label": "Compass",
+     "description": "In third person, a compass at the top of the screen turns with the camera and shows the way to every objective found on the map and to every map marker a player has placed, in the colour of that player.",
+     "group": "navigation"
+    },
+    {
+     "label": "Compass width",
+     "description": "How wide the compass is. A wider compass shows more of the way around, with the letters as far apart as before.",
+     "group": "navigation"
+    },
+    {
+     "label": "Compass background opacity",
+     "description": "How solid the panel behind the compass is: 1 is solid, 0 leaves only the frame, the letters and the icons.",
+     "group": "navigation"
+    },
+    {
+     "label": "Show view angle",
+     "description": "The line in the middle of the compass and the heading in degrees under it.",
+     "group": "navigation"
+    },
+    {
+     "label": "Pings",
+     "description": "In third person, the ping key marks what the crosshair is on: ground, an enemy, an objective or a dropped support weapon or pack, also while down, and after death until the camera moves to an ally. Teammates with the mod see the marker too and hear the chat sound; players without the mod see and hear nothing.",
+     "group": "navigation"
+    },
+    {
      "label": "Enemy indicators",
-     "description": "A ring around the crosshair in four segments. The right, back and left segments show faintly while an enemy is in range on that side, and stronger within half the range. The side with the closest enemy within half the range also shows a warning triangle. Hidden while the game is paused.",
+     "description": "A ring around the crosshair in four segments. The right, back and left segments show faintly while an enemy is in range on that side, and stronger within half the range. The side with the closest enemy within half the range also shows a warning triangle. Shows only while the Helldiver is alive or down, and is hidden while the game is paused.",
      "group": "indicators"
     },
     {
-     "label": "Indicator range (m)",
+     "label": "Enemy indicator range (m)",
      "description": "Enemies closer than this show on the ring; within half of it, the segment is stronger.",
-     "group": "indicators"
-    },
-    {
-     "label": "Hurt indicator",
-     "description": "A bar near the crosshair points toward where a hit came from and fades within 2 seconds: red when health is lost, yellow when the personal shield takes it, white when the vehicle does. A bar for an enemy follows the enemy.",
-     "group": "indicators"
-    },
-    {
-     "label": "Hurt feedback",
-     "description": "When the Helldiver loses health, the edges of the screen flash red and the camera shakes briefly, both stronger for a bigger hit. The shake follows the Camera shake option and shows in third person only.",
      "group": "indicators"
     },
     {
@@ -855,54 +905,24 @@
      "group": "indicators"
     },
     {
-     "label": "Compass",
-     "description": "In third person, a compass at the top of the screen turns with the camera and shows the way to every objective found on the map and to every map marker a player has placed, in the colour of that player.",
-     "group": "indicators"
-    },
-    {
-     "label": "Pings",
-     "description": "In third person, the ping key marks what the crosshair is on: ground, an enemy, an objective or a dropped support weapon or pack. Teammates with the mod see the marker too and hear the chat sound; players without the mod see and hear nothing.",
-     "group": "indicators"
-    },
-    {
-     "label": "Blocked shot mark",
-     "description": "In third person on foot, while the crosshair shows, a small red X marks where shots would land when something within 6 m of the weapon, between it and the crosshair, would stop them.",
-     "group": "indicators"
-    },
-    {
-     "label": "Alarm effect",
-     "description": "In third person, an alarm makes the screen edges pulse red once and flashes broad red stripes up both sides, in place of the red overlay of the game. Off shows the overlay of the game.",
-     "group": "indicators"
-    },
-    {
-     "label": "Throw arc",
-     "description": "In third person, while a grenade or a stratagem ball is held, a dashed line shows the way it would fly if thrown now, and a ring where it first lands.",
-     "group": "indicators"
-    },
-    {
      "label": "Names above heads",
      "description": "In third person, the name cards of players show above their heads instead of at their feet.",
      "group": "indicators"
     },
     {
-     "label": "Ammo bar",
-     "description": "In third person on foot, a short arc by the crosshair shows the magazine left, the heat of a laser or the charge of an arc weapon, with the colours, warnings and reload button of the Better HUD ammo circle. Weapons of 40 rounds or fewer show a faint line between rounds. Shows from a shot and fades out 8 seconds after the last one. While on, the Better HUD ammo circle stays hidden in third person.",
-     "group": "ammo"
+     "label": "Hurt indicator",
+     "description": "A bar near the crosshair points toward where a hit came from and fades within 2 seconds: red when health is lost, yellow when the personal shield takes it, white when the vehicle does. A bar for an enemy follows the enemy.",
+     "group": "damage"
     },
     {
-     "label": "Position",
-     "description": "Where the ammo bar sits around the crosshair. The sides follow the camera when the shoulder swaps.",
-     "group": "ammo"
+     "label": "Hurt feedback",
+     "description": "When the Helldiver loses health, the edges of the screen flash red and the camera shakes briefly, both stronger for a bigger hit. The shake follows the Camera shake option and shows in third person only.",
+     "group": "damage"
     },
     {
-     "label": "Curved",
-     "description": "On, the ammo bar curves around the crosshair. Off, the bar is straight.",
-     "group": "ammo"
-    },
-    {
-     "label": "Scale",
-     "description": "The size of the ammo bar and how far it sits from the crosshair.",
-     "group": "ammo"
+     "label": "Alarm effect",
+     "description": "In third person, an alarm makes the screen edges pulse red once and flashes broad red stripes up both sides, in place of the red overlay of the game. Off shows the overlay of the game.",
+     "group": "damage"
     },
     {
      "label": "Reduce fog",
@@ -946,7 +966,7 @@
     },
     {
      "label": "Patrols stay in view",
-     "description": "The game removes a patrol a few seconds after it leaves the top-down screen and brings it back, climbing out of the ground or dropping in, when it comes close again. Patrols within 100 m of a Helldiver now stay. New patrols still arrive only at the edge of the top-down screen, as in the game. Changes the shared game: off in lobbies with players who don't run it.",
+     "description": "The game removes a patrol a few seconds after it leaves the top-down screen and brings it back, climbing out of the ground or dropping in, when it comes close again. Patrols within 100 m of a Helldiver now stay, and patrol enemies chasing a Helldiver stay out to 200 m. Enemies of an alarm or an objective wave, which the game removes 40 m from every Helldiver, stay out to 100 m. Kept enemies still count toward the limits of the game. New patrols still arrive only at the edge of the top-down screen, as in the game. Changes the shared game: off in lobbies with players who don't run it.",
      "group": "lobby"
     }
    ],
@@ -956,20 +976,36 @@
      "label": "Camera"
     },
     {
-     "id": "third",
-     "label": "Third person"
+     "id": "events",
+     "label": "Camera events"
+    },
+    {
+     "id": "shake",
+     "label": "Camera shake"
     },
     {
      "id": "vehicles",
      "label": "Vehicles"
     },
     {
-     "id": "indicators",
-     "label": "Indicators and names"
+     "id": "aim",
+     "label": "Aiming"
     },
     {
      "id": "ammo",
      "label": "Ammo bar"
+    },
+    {
+     "id": "navigation",
+     "label": "Compass and pings"
+    },
+    {
+     "id": "indicators",
+     "label": "Indicators"
+    },
+    {
+     "id": "damage",
+     "label": "Damage and alarms"
     },
     {
      "id": "picture",
@@ -982,13 +1018,19 @@
    ],
    "repo": "Alomare/HD1-EyesOfLiberty",
    "stars": 0,
-   "downloads": 259,
+   "downloads": 262,
    "kit": false,
    "icon": "img/alomare-eyesofliberty-icon-c0e5f7be9b.jpg",
    "banner": "img/alomare-eyesofliberty-banner-9768c10db8.jpg",
    "released": "2026-11-20",
    "added": "2026-11-11",
    "versions": [
+    {
+     "version": "0.15.0",
+     "date": "2026-11-20",
+     "channel": "stable",
+     "notes": "- New: Weapon follows aim option, on by default. While aiming or firing on foot, the Helldiver bends up or down so the weapon points where the crosshair is.\n- New: With a mouse and no other mod drawing the crosshair, the crosshair is the game's own aiming cursor, held in the middle of the screen, with the step of the game when aiming starts and stops.\n- New: Compass options for width, background opacity and the view angle line and heading.\n- New: Pings while down, and after death until the camera moves to an ally.\n- Changed: Settings are grouped by what they change, and every setting that applies at once is also in the pause menu.\n- Changed: F is the default ping key.\n- Changed: The explosion kick is five times stronger. Hellpod landings no longer kick.\n- Changed: When another pod of the squad comes down first, the Hellpod camera waits high above it, then moves over to the pod of the Helldiver.\n- Changed: The glide from the Hellpod into the shoulder view starts 0.4 seconds sooner.\n- Changed: On a throw, the throw arc stays in place and fades out over a second.\n- Changed: Compass icons show over the compass letters.\n- Changed: Enemy indicators show only while the Helldiver is alive or down.\n- Changed: The ammo bar of a laser fills from the bottom, in a brighter yellow.\n- Changed: Patrols stay in view also keeps patrol enemies chasing a Helldiver out to 200 m, and enemies of alarms and objective waves out to 100 m, where the game removed them at 40 m.\n- Fixed: The Helldiver no longer shakes against the camera when frame times change, as with many effects on screen.\n- Fixed: Lasers fire up and down. A beam that hit nothing was drawn level.\n- Fixed: An arc weapon bolt that finds no target flies toward the crosshair.\n- Fixed: The Hellpod camera no longer follows the pods of bots."
+    },
     {
      "version": "0.14.0",
      "date": "2026-11-20",
@@ -1042,12 +1084,6 @@
      "date": "2026-11-15",
      "channel": "stable",
      "notes": "- Fixed: the sky was the day sky in every mission. It now follows the time of the mission: dawn, day, dusk or night.\n- Changed: the skies are the dawn, day, dusk and night skies of Photo Mode, with clouds and stars, in place of the plain skies in the colour of the planet fog."
-    },
-    {
-     "version": "0.8.1",
-     "date": "2026-11-15",
-     "channel": "stable",
-     "notes": "- Fixed: Focus on the Helldiver showed almost no blur: the sharp zone was so deep that only things far past the Helldiver blurred, and barely. It is now 2 m deep around the Helldiver, at full blur outside it. In first person it is around the crosshair point.\n- Removed: the Disable bloom option. The bloom was bright mostly because of the sky, which 0.8.0 fixed."
     }
    ]
   },
@@ -1464,7 +1500,7 @@
    "option_groups": [],
    "repo": "Alomare/HD1-HelldiversArcade",
    "stars": 0,
-   "downloads": 40,
+   "downloads": 41,
    "kit": false,
    "icon": null,
    "banner": null,
