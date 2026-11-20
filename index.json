@@ -10,7 +10,7 @@
    ],
    "verified": true,
    "description": "A library for [Obsidian](https://github.com/Alomare/ObsidianLauncher) mods on HELLDIVERS (2015). It gives other mods the game data by name, checked changes that can be undone, and ready actions. It does nothing by itself.\n\n## How to use\n\nObsidian API comes with Obsidian, in the Obsidian Kit. Mods that need it switch it on with them.\n\nTo build on it, list it in the `obsidian.json` of the mod:\n\n```json\n\"requires\": [\"obsidian.api\"]\n```\n\nThen ask for it in the script:\n\n```lua\nlocal api = obsidian.import(\"obsidian.api\")\n\nobsidian.keybind(\"panic\", function()\n  api.player.heal()\n  api.enemies.kill_near(20)\nend)\n```\n\nActions answer `true`, or `false` and a short reason such as `\"host_only\"`. A client mod can require the API and stay a client mod: it can read game data and use the interface, sound and event calls, and anything that changes the shared game answers `false, \"needs_session\"`.\n\n[REFERENCE.md](REFERENCE.md) has every call, with guides and recipes. A copy sits in the folder of the API in the Obsidian Kit, where an AI tool working on a mod can read it.\n\n## Known issues\n\n- Tested solo and offline, not yet with a second player.",
-   "version": "1.55.0",
+   "version": "1.55.1",
    "early": false,
    "scope": "library",
    "requires": [],
@@ -34,9 +34,15 @@
    "kit": true,
    "icon": "img/obsidian-api-icon-976df8f8d5.jpg",
    "banner": null,
-   "released": "2026-11-19",
+   "released": "2026-11-20",
    "added": "2026-10-30",
    "versions": [
+    {
+     "version": "1.55.1",
+     "date": "2026-11-20",
+     "channel": "stable",
+     "notes": "- Fixed: `api.world.pickups` failed when another mod called it, and `api.world.shoot` with `power` left enemies unhurt."
+    },
     {
      "version": "1.55.0",
      "date": "2026-11-19",
@@ -90,12 +96,6 @@
      "date": "2026-11-11",
      "channel": "stable",
      "notes": "- Fixed: a client mod listening through `api.events` hears events in any lobby, also while a session or hybrid mod has the API wait for a cleared lobby. Listeners of session mods still wait.\n- Changed: with a session or hybrid mod requiring the API, Mod Settings in the pause menu, screenshots, the map, music and `api.lobby` keep working in a lobby that isn't cleared; effects, edits, bots and the rest of what changes the shared game still wait for a cleared lobby."
-    },
-    {
-     "version": "1.48.0",
-     "date": "2026-11-09",
-     "channel": "stable",
-     "notes": "- New: `api.world.pickups` lists the weapons, backpacks and ammo lying on the ground and `api.world.remove_pickup` deletes one for every machine through the game's own destruction. The owner removes at once, the host asks the owner, any other client is refused.\n- New: effects `aim_move_speed` and `reload_move_speed` set how fast the player moves while aiming or reloading, and let a weapon that holds the player in place be walked with.\n- Fixed: a bot holds the aim for a moment before the first shot of a weapon, longer and until the barrel is level with a heavy weapon, so a recoilless rifle no longer fires at the ground.\n- Fixed: `bot:deliver` drops the thing once the game counts the drop-off as near and the bot can get no closer, and walks to a spot beside a collection point it cannot enter.\n- Fixed: a game function's nil results survive the API's hooks, so a hooked function that answers nil still answers nil.\n- Fixed: with the Third Person Camera mod, a bot behind the camera gets the off-screen arrow on the side where it stands, not a name mirrored onto the screen.\n- Fixed: with the Third Person Camera mod, bots no longer pass as a player at a pad, so the camera stays on the player and bots keep their own aim and buttons.\n- Fixed: with the Third Person Camera mod, `api.world.cursor` answers the point under the crosshair.\n- Changed: manual stratagem unlocks stay in `obsidian.storage` on a loader without `obsidian.save_data`.\n- Changed: manual unlocks of custom stratagems (`api.stratagems.unlock`) go with the save through `obsidian.save_data`. Unlocks kept before this move to the Official save only."
     }
    ]
   },
