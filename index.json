@@ -30,7 +30,7 @@
    "option_groups": [],
    "repo": "Alomare/ObsidianAPI",
    "stars": 0,
-   "downloads": 2402,
+   "downloads": 2410,
    "kit": true,
    "icon": "img/obsidian-api-icon-976df8f8d5.jpg",
    "banner": null,
@@ -175,7 +175,7 @@
    "option_groups": [],
    "repo": "Alomare/ObsidianPatches",
    "stars": 0,
-   "downloads": 1018,
+   "downloads": 1025,
    "kit": true,
    "icon": "img/obsidian-qol-icon-6bb7fca71d.jpg",
    "banner": null,
@@ -270,7 +270,7 @@
    "option_groups": [],
    "repo": "Alomare/ObsidianTrainer",
    "stars": 0,
-   "downloads": 1561,
+   "downloads": 1566,
    "kit": true,
    "icon": "img/obsidian-trainer-icon-717943693e.jpg",
    "banner": null,
@@ -425,7 +425,7 @@
    "option_groups": [],
    "repo": "Alomare/HD1-BetterHUD",
    "stars": 0,
-   "downloads": 426,
+   "downloads": 434,
    "kit": false,
    "icon": "img/alomare-betterhud-icon-f8848148c9.jpg",
    "banner": "img/alomare-betterhud-banner-249c90315b.jpg",
@@ -726,13 +726,13 @@
    ],
    "verified": true,
    "description": "A third person camera for HELLDIVERS (2015), for the [Obsidian](https://github.com/Alomare/ObsidianLauncher) mod manager. Formerly Unleashed Camera, and before that Integrated Third Person: remove either one when installing this mod. Based on [Third Person Camera (HD2 Style)](https://github.com/yukiorsrs/third-person-camera-helldivers) by **yukiorsrs**, rebuilt with the permission of the author so that other mods keep working beside it.\n\nThe camera follows the Helldiver over the shoulder on foot, in vehicles and on the ship. Shots, grenades and stratagems go where the crosshair points. The view reaches farther, the sky over the level is filled in, a ring around the crosshair warns of enemies close by, a bar shows where hits come from, and the edges of the screen flash red when the Helldiver is hurt. A compass at the top of the screen shows the way to the objectives found on the map. Stratagem beacons out of view show at the edge of the screen, as do allies, red while down, and a dashed line shows where a held grenade or stratagem ball would fly. The ping key marks enemies, objectives, dropped support weapons or a spot on the ground for the squad. After a death the camera stays on the body, then follows a living ally until the Helldiver is back. After extraction it rides the shuttle out.\n\nThird Person Camera replaces 28 game scripts, so mods that change the same parts of the game stop working with it. Eyes of Liberty replaces no script: every change is a hook through Obsidian.\n\n## How to use\n\n**F8** switches between the top-down camera of the game and third person. **H** swaps the shoulder. The **middle mouse button** pings what the crosshair is on. The keys can be changed in Obsidian. On a gamepad, the right stick turns the camera and holding the left trigger aims; while aiming, the reload button throws grenades. A tap of the right stick swaps the shoulder. While the death cam follows allies, left and right click switch between them.\n\n## Playing with others\n\nThe camera and everything on screen work in any lobby. Five session features change the game for the whole lobby: Ballistics revamp (every weapon reaches far, with damage falling off past the weapon's own range), Far enemy detection, Free movement, Increased throw range and Patrols stay in view. They run only when every player runs Obsidian with the same mods, and switch off when anyone else joins. With all five off, the mod counts as a client mod.\n\nPings show only for teammates who run the mod; nothing goes to the game's chat.\n\n## Known issues\n\n- Players on one computer share a screen, so the camera goes back to top-down while a second local player is in, and comes back after.\n- The mod stays off while Third Person Camera, Unleashed Camera or Integrated Third Person is installed.\n\nFirst person is in development for separate beta versions.\n\nMod authors can read the camera state through `obsidian.import(\"alomare.eyesofliberty\")`: `active()`, `mode()`, `crosshair()` and `shoulder()`.",
-   "version": "0.13.1",
+   "version": "0.14.0",
    "early": true,
    "scope": "session",
    "requires": [
     "obsidian.api"
    ],
-   "options": 34,
+   "options": 42,
    "option_list": [
     {
      "label": "Camera mode",
@@ -752,6 +752,11 @@
     {
      "label": "Camera shake",
      "description": "How much explosions, impacts and the Hellpod landing shake the shoulder camera.",
+     "group": "camera"
+    },
+    {
+     "label": "Explosion kick",
+     "description": "In third person, an explosion nearby knocks the camera: it rolls away from the blast, tips up and rises, then springs back. Grenades kick lightly and only up close; bigger blasts kick harder and from farther, a Hellbomb from about 35 m. Blasts in quick succession kick less each time. Follows the Camera shake setting.",
      "group": "camera"
     },
     {
@@ -777,6 +782,11 @@
     {
      "label": "Distance on foot (m)",
      "description": "Meters between the camera and the Helldiver on foot in a mission.",
+     "group": "third"
+    },
+    {
+     "label": "Scroll camera distance",
+     "description": "On foot with a mouse, the wheel moves the camera closer or farther, from 1 to 10 m, and no longer switches weapons. Number keys still switch weapons. Changing the distance on foot above starts over from that distance.",
      "group": "third"
     },
     {
@@ -841,12 +851,22 @@
     },
     {
      "label": "Compass",
-     "description": "In third person, a compass at the top of the screen turns with the camera and shows the way to every objective found on the map.",
+     "description": "In third person, a compass at the top of the screen turns with the camera and shows the way to every objective found on the map and to every map marker a player has placed, in the colour of that player.",
      "group": "indicators"
     },
     {
      "label": "Pings",
      "description": "In third person, the ping key marks what the crosshair is on: ground, an enemy, an objective or a dropped support weapon or pack. Teammates with the mod see the marker too and hear the chat sound; players without the mod see and hear nothing.",
+     "group": "indicators"
+    },
+    {
+     "label": "Blocked shot mark",
+     "description": "In third person on foot, while the crosshair shows, a small red X marks where shots would land when something within 6 m of the weapon, between it and the crosshair, would stop them.",
+     "group": "indicators"
+    },
+    {
+     "label": "Alarm effect",
+     "description": "In third person, an alarm makes the screen edges pulse red once and flashes broad red stripes up both sides, in place of the red overlay of the game. Off shows the overlay of the game.",
      "group": "indicators"
     },
     {
@@ -858,6 +878,26 @@
      "label": "Names above heads",
      "description": "In third person, the name cards of players show above their heads instead of at their feet.",
      "group": "indicators"
+    },
+    {
+     "label": "Ammo bar",
+     "description": "In third person on foot, a short arc by the crosshair shows the magazine left, the heat of a laser or the charge of an arc weapon, with the colours, warnings and reload button of the Better HUD ammo circle. Weapons of 40 rounds or fewer show a faint line between rounds. Shows from a shot and fades out 8 seconds after the last one. While on, the Better HUD ammo circle stays hidden in third person.",
+     "group": "ammo"
+    },
+    {
+     "label": "Position",
+     "description": "Where the ammo bar sits around the crosshair. The sides follow the camera when the shoulder swaps.",
+     "group": "ammo"
+    },
+    {
+     "label": "Curved",
+     "description": "On, the ammo bar curves around the crosshair. Off, the bar is straight.",
+     "group": "ammo"
+    },
+    {
+     "label": "Scale",
+     "description": "The size of the ammo bar and how far it sits from the crosshair.",
+     "group": "ammo"
     },
     {
      "label": "Reduce fog",
@@ -923,6 +963,10 @@
      "label": "Indicators and names"
     },
     {
+     "id": "ammo",
+     "label": "Ammo bar"
+    },
+    {
      "id": "picture",
      "label": "Picture"
     },
@@ -933,13 +977,19 @@
    ],
    "repo": "Alomare/HD1-EyesOfLiberty",
    "stars": 0,
-   "downloads": 226,
+   "downloads": 228,
    "kit": false,
-   "icon": "img/alomare-eyesofliberty-icon-cd4c740a3f.jpg",
+   "icon": "img/alomare-eyesofliberty-icon-c0e5f7be9b.jpg",
    "banner": "img/alomare-eyesofliberty-banner-9768c10db8.jpg",
-   "released": "2026-11-19",
+   "released": "2026-11-20",
    "added": "2026-11-11",
    "versions": [
+    {
+     "version": "0.14.0",
+     "date": "2026-11-20",
+     "channel": "stable",
+     "notes": "- New: Ammo bar. A short arc by the crosshair shows the magazine, laser heat or arc charge and the reload, in the style of the Better HUD ammo and reload circles, with options for position, shape and scale. With Better HUD 1.18.0 or later, both circles stay hidden while the bar is on.\n- New: Explosion kick. A blast nearby knocks the camera: it rolls away, tips up and rises, then springs back. Bigger blasts kick harder and from farther; blasts in a row kick less each time.\n- New: Alarm effect. During an alarm, the screen edges pulse red once, and broad red stripes flash up both sides of the screen and settle to a faint glow. It replaces the red overlay of the game, which often showed shrunk in third person. An option turns it off.\n- New: Map markers show on the compass and in the level as pings, one per player, with the map marker icon in the colour of that player, for as long as the marker is on the map.\n- New: Blocked shot mark. A small red X marks where shots would land when something within 6 m of the weapon, between it and the crosshair, would stop them.\n- New: Scroll camera distance option, off by default. The mouse wheel moves the camera closer or farther on foot instead of switching weapons.\n- New: The Helldiver is hidden while the camera is pressed against it, by a wall or in a tight corner.\n- Changed: The crosshair shows only while the Helldiver can shoot: not while dead, dropping in the Hellpod, putting in a stratagem or looking at the map.\n- Changed: Compass icons slide out at the ends of the compass instead of waiting there, and a small white triangle outside each end points to anything past it.\n- Changed: Enemy pings and map marker pings show without the vertical line.\n- Changed: Pings on dropped weapons and packs sit lower, with a larger icon.\n- Changed: While the crosshair is near a ping, the line and marker fade to half, so the words and what lies behind stay readable.\n- Changed: A new icon.\n- Fixed: Reduce fog now thins the fog as set. The fog of the level was read before it settled, and low settings still left much of the fog.\n- Fixed: Pinging a dropped support weapon or pack marks it again. Needs Obsidian API 1.55.1.\n- Fixed: The Helldiver no longer disappears high in a jump pack flight while the backpack and weapons stay."
+    },
     {
      "version": "0.13.1",
      "date": "2026-11-19",
@@ -993,12 +1043,6 @@
      "date": "2026-11-15",
      "channel": "stable",
      "notes": "- Fixed: Focus on the Helldiver showed almost no blur: the sharp zone was so deep that only things far past the Helldiver blurred, and barely. It is now 2 m deep around the Helldiver, at full blur outside it. In first person it is around the crosshair point.\n- Removed: the Disable bloom option. The bloom was bright mostly because of the sky, which 0.8.0 fixed."
-    },
-    {
-     "version": "0.8.0",
-     "date": "2026-11-15",
-     "channel": "stable",
-     "notes": "- Changed: the mod id is now alomare.unleashedcamera. Obsidian installs it as a new mod: remove Integrated Third Person after installing it. Settings start from the defaults again.\n- Changed: while Integrated Third Person is still installed, Unleashed Camera stays off and says so.\n- Changed: less work every frame for the game's screen checks, the weapon aim, the hidden helmet in first person and the depth of field that follows the Helldiver.\n- New: Eye height, Eye forward and Eye side options for the first person camera.\n- Changed: the options are in new groups: Camera, Third person, First person, Vehicles, Indicators and names, Picture, and Session features.\n- Changed: the Hellpod camera rides down above the pod and a little ahead, looking almost straight down, so the pod stays in the middle of the picture.\n- Fixed: the sky over the level was far too bright on every planet, at night too. It is now drawn at most as bright as made, the brightness Photo Mode uses, and dimmer under a darker planet fog."
     }
    ]
   },
@@ -1325,7 +1369,7 @@
    ],
    "repo": "Alomare/HD1-CustomCrosshair",
    "stars": 0,
-   "downloads": 104,
+   "downloads": 107,
    "kit": false,
    "icon": "img/alomare-customcrosshair-icon-5505107ee9.jpg",
    "banner": "img/alomare-customcrosshair-banner-2ad3b014c3.jpg",
