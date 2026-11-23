@@ -35,7 +35,7 @@
    "option_groups": [],
    "repo": "Alomare/ObsidianAPI",
    "stars": 0,
-   "downloads": 2849,
+   "downloads": 2851,
    "kit": true,
    "icon": "img/obsidian-api-icon-976df8f8d5.jpg",
    "banner": null,
@@ -190,7 +190,7 @@
    "option_groups": [],
    "repo": "Alomare/ObsidianPatches",
    "stars": 0,
-   "downloads": 1108,
+   "downloads": 1113,
    "kit": true,
    "icon": "img/obsidian-qol-icon-6bb7fca71d.jpg",
    "banner": null,
@@ -285,7 +285,7 @@
    "option_groups": [],
    "repo": "Alomare/ObsidianTrainer",
    "stars": 0,
-   "downloads": 1632,
+   "downloads": 1634,
    "kit": true,
    "icon": "img/obsidian-trainer-icon-717943693e.jpg",
    "banner": null,
@@ -440,7 +440,7 @@
    "option_groups": [],
    "repo": "Alomare/HD1-BetterHUD",
    "stars": 2,
-   "downloads": 596,
+   "downloads": 597,
    "kit": false,
    "icon": "img/alomare-betterhud-icon-f8848148c9.jpg",
    "banner": "img/alomare-betterhud-banner-249c90315b.jpg",
@@ -741,13 +741,13 @@
    ],
    "verified": true,
    "description": "A third person camera for HELLDIVERS (2015), for the [Obsidian](https://github.com/Alomare/ObsidianLauncher) mod manager. Formerly Unleashed Camera, and before that Integrated Third Person: remove either one when installing this mod. Based on [Third Person Camera (HD2 Style)](https://github.com/yukiorsrs/third-person-camera-helldivers) by **yukiorsrs**, rebuilt with the permission of the author so that other mods keep working beside it.\n\nThe camera follows the Helldiver over the shoulder on foot, in vehicles and on the ship. Shots leave along the way the weapon points, and the weapon swings onto the crosshair while aiming or firing; the crosshair shows where it points meanwhile. Grenades and stratagems go where the crosshair points. The view reaches farther, the sky over the level is filled in, a ring around the crosshair warns of enemies close by, a bar shows where hits come from, and the edges of the screen flash red when the Helldiver is hurt. A compass at the top of the screen shows the way to the objectives found on the map. Stratagem beacons out of view show at the edge of the screen, as do allies, red while down, and a dashed line shows where a held grenade or stratagem ball would fly. The ping key marks enemies, objectives, dropped support weapons or a spot on the ground for the squad. After a death the camera stays on the body, then follows a living ally until the Helldiver is back. After extraction it rides the shuttle out.\n\nThird Person Camera replaces 28 game scripts, so mods that change the same parts of the game stop working with it. Eyes of Liberty replaces no script: every change is a hook through Obsidian.\n\n## How to use\n\n**F8** switches between the top-down camera of the game and third person. **H** swaps the shoulder. **F** pings what the crosshair is on. The keys can be changed in Obsidian. On a gamepad, the right stick turns the camera and holding the left trigger aims; while aiming, the reload button throws grenades. A tap of the right stick swaps the shoulder. While the death cam follows allies, left and right click switch between them.\n\n## Playing with others\n\nThe camera and everything on screen work in any lobby. Five session features change the game for the whole lobby: Ballistics revamp (every weapon reaches far, with damage falling off past the weapon's own range), Far enemy detection, Free movement, Increased throw range and Patrols stay in view. They run only when every player runs Obsidian with the same mods, and switch off when anyone else joins. With all five off, the mod counts as a client mod.\n\nPings show only for teammates who run the mod; nothing goes to the game's chat.\n\n## Known issues\n\n- Players on one computer share a screen, so the camera goes back to top-down while a second local player is in, and comes back after.\n- The mod stays off while Third Person Camera, Unleashed Camera or Integrated Third Person is installed.\n\nFirst person is in development for separate beta versions.\n\nMod authors can read the camera state through `obsidian.import(\"alomare.eyesofliberty\")`: `active()`, `mode()`, `crosshair()` and `shoulder()`.",
-   "version": "1.1.1",
+   "version": "1.2.0",
    "early": false,
    "scope": "session",
    "requires": [
     "obsidian.api"
    ],
-   "options": 48,
+   "options": 52,
    "option_list": [
     {
      "label": "Camera mode",
@@ -836,7 +836,7 @@
     },
     {
      "label": "Explosion kick",
-     "description": "In third person, an explosion nearby knocks the camera: it rolls away from the blast, tips up and rises, then springs back. Grenades kick lightly and only up close; bigger blasts kick harder and from farther, a Hellbomb from about 35 m. Blasts in quick succession kick less each time. Hellpod landings don't kick. Follows the Camera shake setting.",
+     "description": "In third person, an explosion nearby knocks the camera: it rolls away from the blast, tips up and rises, then eases back. Grenades kick lightly, within about 9 m; bigger blasts kick harder and from farther, a Hellbomb from about 50 m. Blasts in quick succession kick less each time. Hellpod landings don't kick. Follows the Camera shake setting.",
      "group": "shake"
     },
     {
@@ -851,7 +851,7 @@
     },
     {
      "label": "Throw arc",
-     "description": "In third person, while a grenade or a stratagem ball is held, a dashed line shows the way it would fly if thrown now, and a ring where it first lands. On the throw, both stay in place and fade out over a second.",
+     "description": "In third person, while a grenade or a stratagem ball is held, a dashed line shows the way it would fly if thrown now, and a ring where it first lands. On the throw, both stay in place and fade out over a second. While aiming the Rumbler or the Obliterator, the line shows the flight of the shell, and a circle the blast of each shell.",
      "group": "aim"
     },
     {
@@ -866,7 +866,7 @@
     },
     {
      "label": "Ammo bar",
-     "description": "In third person on foot, a short arc by the crosshair shows the magazine left, the heat of a laser or the charge of an arc weapon, with the colours, warnings and reload button of the Better HUD ammo circle. Weapons of 50 rounds or fewer show a faint line between rounds. Shows from a shot and fades out 8 seconds after the last one. While on, the Better HUD ammo circle stays hidden in third person.",
+     "description": "In third person on foot, a short arc by the crosshair shows the magazine left, the heat of a laser or the charge of an arc weapon, with the colours, warnings and reload button of the Better HUD ammo circle. With the Rumbler, a thin white band beside it fills as the charge builds. Shows from a shot and fades out 8 seconds after the last one. While on, the Better HUD ammo circle stays hidden in third person.",
      "group": "ammo"
     },
     {
@@ -882,6 +882,11 @@
     {
      "label": "Ammo bar scale",
      "description": "The size of the ammo bar and how far it sits from the crosshair.",
+     "group": "ammo"
+    },
+    {
+     "label": "Ammo bar length",
+     "description": "How long the ammo bar is, as a multiple of the default length, a sixth of a circle around the crosshair.",
      "group": "ammo"
     },
     {
@@ -925,6 +930,11 @@
      "group": "indicators"
     },
     {
+     "label": "Stratagem beacon icon",
+     "description": "In third person, with the crosshair on the light beam of a stratagem beacon, the icon of the stratagem shows on the beam at the height of the crosshair.",
+     "group": "indicators"
+    },
+    {
      "label": "Names above heads",
      "description": "In third person, the name cards of players show above their heads instead of at their feet.",
      "group": "indicators"
@@ -965,6 +975,11 @@
      "group": "picture"
     },
     {
+     "label": "Ship in the sky",
+     "description": "In third person during a mission, the Super Destroyer of the loading screen hangs in the sky, side on, high over the horizon on the side away from the sun.",
+     "group": "picture"
+    },
+    {
      "label": "Ballistics revamp",
      "description": "Every weapon reaches as far as the farthest one, so targets far off in the third-person view can be hit. Past a weapon's own range, bullets lose damage over 15 m, down to a fifth, and keep that fifth beyond. Lasers keep their damage. Changes the shared game: off in lobbies with players who don't run it.",
      "group": "lobby"
@@ -987,6 +1002,11 @@
     {
      "label": "Patrols stay in view",
      "description": "The game removes a patrol a few seconds after it leaves the top-down screen and brings it back, climbing out of the ground or dropping in, when it comes close again. Patrols within 100 m of a Helldiver now stay, and patrol enemies chasing a Helldiver stay out to 200 m. Enemies of an alarm or an objective wave, which the game removes 40 m from every Helldiver, stay out to 100 m. Kept enemies still count toward the limits of the game. New patrols still arrive only at the edge of the top-down screen, as in the game. Changes the shared game: off in lobbies with players who don't run it.",
+     "group": "lobby"
+    },
+    {
+     "label": "Ship-bound stratagems",
+     "description": "Hellpods fall from the Super Destroyer in the sky, tilted toward it until they land, and orbital barrages, precision strikes, missile strikes and Railcannon shots come down along the way from the ship, falling from high up and hitting what stands in between. The orbital laser beam reaches up to the ship as well. Eagles stay as they are. Changes the shared game: off in lobbies with players who don't run it.",
      "group": "lobby"
     }
    ],
@@ -1042,9 +1062,15 @@
    "kit": false,
    "icon": "img/alomare-eyesofliberty-icon-c0e5f7be9b.jpg",
    "banner": "img/alomare-eyesofliberty-banner-076933b3cf.jpg",
-   "released": "2026-11-21",
+   "released": "2026-11-23",
    "added": "2026-11-11",
    "versions": [
+    {
+     "version": "1.2.0",
+     "date": "2026-11-23",
+     "channel": "stable",
+     "notes": "- New: Ship in the sky option, on by default. In third person during a mission, the Super Destroyer hangs high in the sky.\n- New: Ship-bound stratagems option, on by default, a lobby option. Hellpods fall from the Super Destroyer in the sky, and orbital barrages, precision strikes, missile strikes and Railcannon shots come down from it, fast and from high up, hitting whatever stands in the way. The orbital laser beam reaches up to the ship too.\n- New: Stratagem beacon icon option, on by default. With the crosshair on the light beam of a stratagem beacon, the stratagem icon shows on the beam at the height of the crosshair.\n- New: While aiming the Rumbler or the Obliterator, the throw arc shows the flight of each shell and a circle as wide as the blast.\n- New: The Rumbler charge shows as a thin white band on the inner side of the ammo bar, full at the longest shot.\n- New: Ammo bar length option, from half to twice the default length.\n- Changed: Obliterator shells fly on an arc that lands on the crosshair point, as far as the weapon reaches.\n- Changed: After a Rumbler shot, the arc and circles stay in place and fade out while the shells fly, until the next charge starts.\n- Changed: The ammo bar is a quarter thinner.\n- Changed: Explosion kick settles smoothly without bouncing, and distant blasts kick harder than before, so the kick fades more evenly with distance.\n- Fixed: The laser of the Recoilless Rifle and of the Laser sight perk points at the crosshair instead of straight ahead of the Helldiver.\n- Fixed: Firing the Recoilless Rifle no longer kicks the camera as if an explosion had gone off.\n- Fixed: The cape no longer jitters while the Helldiver bends to aim up or down.\n- Fixed: A Rumbler or Obliterator shot aimed high no longer lands on the Helldiver. The Rumbler fires toward the crosshair at the same angle as in the top-down view, and the charge sets the distance.\n- Fixed: Eyes of Liberty no longer switches off after a few missions when another mod asks for screen positions at the end of a mission."
+    },
     {
      "version": "1.1.1",
      "date": "2026-11-21",
@@ -1098,12 +1124,6 @@
      "date": "2026-11-20",
      "channel": "stable",
      "notes": "- New: Weapon follows aim option, on by default. While aiming or firing on foot, the Helldiver bends up or down so the weapon points where the crosshair is.\n- New: With a mouse and no other mod drawing the crosshair, the crosshair is the aiming cursor of the game, held in the middle of the screen, with the change the game shows when aiming starts and stops.\n- New: Compass options for width, background opacity and the view angle line and heading.\n- New: Pings while down, and after death until the camera moves to an ally.\n- Changed: Settings are grouped by what they change, and every setting that applies at once is also in the pause menu.\n- Changed: F is the default ping key.\n- Changed: The explosion kick is five times stronger. Hellpod landings no longer kick.\n- Changed: When another pod of the squad comes down first, the Hellpod camera waits high above it, then moves over to the pod of the Helldiver.\n- Changed: The glide from the Hellpod into the shoulder view starts 0.4 seconds sooner.\n- Changed: On a throw, the throw arc stays in place and fades out over a second.\n- Changed: Compass icons show over the compass letters.\n- Changed: Enemy indicators show only while the Helldiver is alive or down.\n- Changed: The ammo bar of a laser fills from the bottom, in a brighter yellow.\n- Changed: Patrols stay in view also keeps patrol enemies chasing a Helldiver out to 200 m, and enemies of alarms and objective waves out to 100 m, where the game removed them at 40 m.\n- Fixed: The Helldiver no longer shakes against the camera when frame times change, as with many effects on screen.\n- Fixed: Lasers fire up and down. A beam that hit nothing was drawn level.\n- Fixed: An arc weapon bolt that finds no target flies toward the crosshair.\n- Fixed: The Hellpod camera no longer follows the pods of bots."
-    },
-    {
-     "version": "0.14.0",
-     "date": "2026-11-20",
-     "channel": "stable",
-     "notes": "- New: Ammo bar. A short arc by the crosshair shows the magazine, laser heat or arc charge and the reload, in the style of the Better HUD ammo and reload circles, with options for position, shape and scale. With Better HUD 1.18.0 or later, both circles stay hidden while the bar is on.\n- New: Explosion kick. A blast nearby knocks the camera: it rolls away, tips up and rises, then springs back. Bigger blasts kick harder and from farther; blasts in a row kick less each time.\n- New: Alarm effect. During an alarm, the screen edges pulse red once, and broad red stripes flash up both sides of the screen and settle to a faint glow. It replaces the red overlay of the game, which often showed shrunk in third person. An option turns it off.\n- New: Map markers show on the compass and in the level as pings, one per player, with the map marker icon in the colour of that player, for as long as the marker is on the map.\n- New: Blocked shot mark. A small red X marks where shots would land when something within 6 m of the weapon, between it and the crosshair, would stop them.\n- New: Scroll camera distance option, off by default. The mouse wheel moves the camera closer or farther on foot instead of switching weapons.\n- New: The Helldiver is hidden while the camera is pressed against it, by a wall or in a tight corner.\n- Changed: The crosshair shows only while the Helldiver can shoot: not while dead, dropping in the Hellpod, putting in a stratagem or looking at the map.\n- Changed: Compass icons slide out at the ends of the compass instead of waiting there, and a small white triangle outside each end points to anything past it.\n- Changed: Enemy pings and map marker pings show without the vertical line.\n- Changed: Pings on dropped weapons and packs sit lower, with a larger icon.\n- Changed: While the crosshair is near a ping, the line and marker fade to half, so the words and what lies behind stay readable.\n- Changed: A new icon.\n- Fixed: Reduce fog now thins the fog as set. The fog of the level was read before it settled, and low settings still left much of the fog.\n- Fixed: Pinging a dropped support weapon or pack marks it again. Needs Obsidian API 1.55.1.\n- Fixed: The Helldiver no longer disappears high in a jump pack flight while the backpack and weapons stay."
     }
    ]
   },
@@ -1430,7 +1450,7 @@
    ],
    "repo": "Alomare/HD1-CustomCrosshair",
    "stars": 1,
-   "downloads": 177,
+   "downloads": 178,
    "kit": false,
    "icon": "img/alomare-customcrosshair-icon-5505107ee9.jpg",
    "banner": "img/alomare-customcrosshair-banner-2ad3b014c3.jpg",
@@ -1645,7 +1665,7 @@
    "option_groups": [],
    "repo": "Alomare/HD1-Stims",
    "stars": 0,
-   "downloads": 83,
+   "downloads": 85,
    "kit": false,
    "icon": "img/alomare-stims-icon-2b77c4ec7d.jpg",
    "banner": "img/alomare-stims-banner-7dcee03c58.jpg",
