@@ -35,7 +35,7 @@
    "option_groups": [],
    "repo": "Alomare/ObsidianAPI",
    "stars": 0,
-   "downloads": 2801,
+   "downloads": 2819,
    "kit": true,
    "icon": "img/obsidian-api-icon-976df8f8d5.jpg",
    "banner": null,
@@ -180,7 +180,7 @@
    "option_groups": [],
    "repo": "Alomare/ObsidianPatches",
    "stars": 0,
-   "downloads": 1079,
+   "downloads": 1080,
    "kit": true,
    "icon": "img/obsidian-qol-icon-6bb7fca71d.jpg",
    "banner": null,
@@ -275,7 +275,7 @@
    "option_groups": [],
    "repo": "Alomare/ObsidianTrainer",
    "stars": 0,
-   "downloads": 1619,
+   "downloads": 1620,
    "kit": true,
    "icon": "img/obsidian-trainer-icon-717943693e.jpg",
    "banner": null,
@@ -430,7 +430,7 @@
    "option_groups": [],
    "repo": "Alomare/HD1-BetterHUD",
    "stars": 1,
-   "downloads": 580,
+   "downloads": 588,
    "kit": false,
    "icon": "img/alomare-betterhud-icon-f8848148c9.jpg",
    "banner": "img/alomare-betterhud-banner-249c90315b.jpg",
@@ -525,7 +525,7 @@
    "option_groups": [],
    "repo": "Alomare/HD1-PhotoMode",
    "stars": 0,
-   "downloads": 64,
+   "downloads": 65,
    "kit": false,
    "icon": "img/alomare-photomode-icon-2a2b0ea7c2.jpg",
    "banner": "img/alomare-photomode-banner-45d6d42c2d.jpg",
@@ -670,7 +670,7 @@
    "option_groups": [],
    "repo": "Alomare/HD1-EnhancedVisuals",
    "stars": 0,
-   "downloads": 314,
+   "downloads": 322,
    "kit": false,
    "icon": "img/alomare-enhancedvisuals-icon-1f9486e80a.jpg",
    "banner": "img/alomare-enhancedvisuals-banner-8479c5978f.jpg",
@@ -1028,7 +1028,7 @@
    ],
    "repo": "Alomare/HD1-EyesOfLiberty",
    "stars": 1,
-   "downloads": 455,
+   "downloads": 463,
    "kit": false,
    "icon": "img/alomare-eyesofliberty-icon-c0e5f7be9b.jpg",
    "banner": "img/alomare-eyesofliberty-banner-076933b3cf.jpg",
@@ -1420,7 +1420,7 @@
    ],
    "repo": "Alomare/HD1-CustomCrosshair",
    "stars": 0,
-   "downloads": 172,
+   "downloads": 176,
    "kit": false,
    "icon": "img/alomare-customcrosshair-icon-5505107ee9.jpg",
    "banner": "img/alomare-customcrosshair-banner-2ad3b014c3.jpg",
@@ -1562,7 +1562,7 @@
    "option_groups": [],
    "repo": "Alomare/HD1-SharedResupply",
    "stars": 0,
-   "downloads": 84,
+   "downloads": 88,
    "kit": false,
    "icon": "img/alomare-sharedresupply-icon-4189ebab04.jpg",
    "banner": "img/alomare-sharedresupply-banner-b02b0ba6d4.jpg",
@@ -1635,7 +1635,7 @@
    "option_groups": [],
    "repo": "Alomare/HD1-Stims",
    "stars": 0,
-   "downloads": 70,
+   "downloads": 79,
    "kit": false,
    "icon": "img/alomare-stims-icon-2b77c4ec7d.jpg",
    "banner": "img/alomare-stims-banner-7dcee03c58.jpg",
@@ -1659,6 +1659,45 @@
      "date": "2026-11-21",
      "channel": "stable",
      "notes": "- New: Stims: up to three per Helldiver by default, a full set on each drop and respawn, two more from each ammo box.\n- New: Maximum stim count option, from one to four.\n- New: A stim key (V by default) raises the left fist and stabs the injector into the neck, then gives four seconds of endless stamina and 60 health a second.\n- New: Stims work standing, moving and prone.\n- New: Allow downed stim option, on by default: a downed Helldiver can use a stim to get back up and heal.\n- New: Passive health regeneration is off, so health comes back through stims and other healing. The Preserve passive healing option keeps it.\n- New: The Helldiver moves at aiming speed while the injection plays.\n- New: Another stim can start three seconds after the last one took effect, which restarts the four seconds.\n- New: The screen edges glow light blue while a stim lasts, and a small spark shows at the stab.\n- New: \"Out of stims!\" shows over the Helldiver when the key finds none left, in the game language.\n- New: A syringe on the loadout card shows the stims each player carries, one charge per stim, spent from the needle down.\n- New: Other players see each stim and hear it nearby.\n- New: Stim sound volume option."
+    }
+   ]
+  },
+  {
+   "id": "rank-cap-500",
+   "name": "Rank Cap 500",
+   "summary": "Raises the maximum rank from 50 to 500, with a unique title for every new rank (450 names in English and Russian) and a gentler XP curve. Mission XP is multiplied so the ladder stays reachable; pick the multiplier in the mod options.",
+   "authors": [
+    "bbb.exe"
+   ],
+   "verified": false,
+   "description": "**English** · [Русский](#rank-cap-500--helldivers-1-1)\n\nA mod for **HELLDIVERS 1** (Steam) that raises the maximum rank from **50 to 500**.\nEvery one of the 450 new ranks gets its own title and its own badge, in English and Russian.\n\nAuthor: **bbb.exe** · Version: **1.6.6** (see `obsidian.json`)\n\n## Features\n\n- **450 new ranks (51–500).** The vanilla progression table is extended, not replaced, so ranks 1–50 and their rewards behave exactly as before.\n- **A unique title for every rank** – 450 hand-written names in English and Russian, from *Supreme Admiral of Super Earth* to *Eternal Admiral-God of Super Earth* at rank 500.\n- **A unique badge for every rank.** All 450 crests are built from the real vanilla rank icons (43–50 and their variants) and differ in **both shape and colour**: a gold → orange → red ramp ending in bright scarlet at rank 500.\n- **A gentler XP curve.** Rank 51 costs 7,139,381 total XP and rank 500 costs 42,498,131, spread evenly over 450 ranks.\n- **Configurable mission XP multiplier:** 1x, 2x, **3x (default)**, 4x, 5x or 10x.\n\n## Requirements\n\n- HELLDIVERS 1 (Steam)\n- [Obsidian Mod Manager](https://github.com/obsidian-mod-manager/obsidian-mod-manager)\n\n## Repository layout\n\n| Path | Purpose |\n| --- | --- |\n| `main.lua` | Entry point: extends `ProgressionSettings.ranks`, installs localisation hooks and the badge lookup |\n| `titles.lua` | Module with all 450 rank titles (English + Russian) |\n| `obsidian.json` | Mod metadata, options and the list of 900 texture/material resources |\n| `res/icons/` | 450+ exported `.texture` badge assets used by the mod |\n| `res/icons.material` | Single material resource with 450 named sub-materials (`rank500_icon_NNN`) |\n| `internal/` | Development-only sheets and preview images |\n| `tools/` | Python generators: icons, sheets, banner, material, previews, release packer and verifier |\n| `banner.png`, `banner-nexus-1300x372.png`, `image.png` | Mod page artwork / mod icon |\n\n### Building from source\n\nThe generators in `tools/` need Python 3.12+ with `Pillow` and `numpy`. Note that the scripts\nuse absolute paths to the installed mod folder (`C:/Users/username/AppData/Local/ObsidianModManager/...`)\nand to the release directory (`E:/HD1-Mods`); adjust the constants at the top of each script\nfor your machine.\n\n```powershell\npython tools/build_rank_icons.py          # generate per-rank badge textures\npython tools/build_combined_material.py   # merge them into res/icons.material\npython tools/build_previews.py            # regenerate internal/previews/*\npython tools/pack_release.py              # build the release zip\npython tools/verify_release.py            # check the archive\n```\n\n## Multiplayer\n\nScope is `client`: the extended ranks, titles and badges live in your game.\nA player **with the same mod** receives your real rank number and resolves it through the same 1–500 table, so they see the correct rank and title. A player **without** the mod has no rank entry above 50 and sees a clamped/vanilla value; titles are localisation keys on each client, so nothing custom is shown on their screen.\n\n## Notes and uninstall\n\n- Do not run the \"16 Players\" mod together with this one.\n- If a deploy fails, delete the mod folder, re-extract it and deploy again.\n- To uninstall: disable the mod, press **Deploy** once, then delete `Rank-Cap-500`.\n\n---\n\n# Rank Cap 500 – HELLDIVERS 1 (русский)\n\n[English](#rank-cap-500--helldivers-1) · **Русский**\n\nМод для **HELLDIVERS 1** (Steam), который повышает максимальный ранг с **50 до 500**.\nКаждый из 450 новых рангов получил своё звание и свой значок – на английском и русском языках.\n\nАвтор: **bbb.exe** · Версия: **1.6.6** (см. `obsidian.json`)\n\n## Что делает мод\n\n- **450 новых рангов (51–500).** Ванильная таблица прогрессии расширяется, а не заменяется: ранги 1–50 и их награды работают точно так же, как раньше.\n- **Уникальное звание для каждого ранга** – 450 вручную написанных названий на английском и русском: от *Supreme Admiral of Super Earth* до *Eternal Admiral-God of Super Earth* на 500-м ранге.\n- **Уникальный значок для каждого ранга.** Все 450 эмблем собраны из настоящих ванильных иконок рангов (43–50 и их вариантов) и отличаются **и формой, и цветом**: плавный переход золото → оранжевый → красный, который заканчивается ярко-алым на 500-м ранге.\n- **Более мягкая кривая опыта.** Ранг 51 требует 7 139 381 очка опыта, ранг 500 – 42 498 131; это равномерно распределено на 450 рангов.\n- **Настраиваемый множитель опыта за миссии:** 1x, 2x, **3x (по умолчанию)**, 4x, 5x или 10x.\n\n## Требования\n\n- HELLDIVERS 1 (Steam)\n- [Obsidian Mod Manager](https://github.com/obsidian-mod-manager/obsidian-mod-manager)\n\n## Установка\n\n1. Закройте HELLDIVERS 1.\n2. Откройте **Obsidian Mod Manager → Mods**.\n3. Нажмите **Add mods** и выберите архив релиза (`hd1-rank-cap-500-v1.6.6.zip`).\n   Вручную: распакуйте архив в `%LOCALAPPDATA%/ObsidianModManager/mods/` так, чтобы появилась папка `Rank-Cap-500` – менеджер подхватит её так же.\n4. Включите **Rank Cap 500** в списке модов.\n5. Выберите множитель опыта в настройках мода (по умолчанию 3x).\n6. Нажмите **Deploy**, затем **PLAY**.",
+   "version": "1.6.6",
+   "early": false,
+   "scope": "client",
+   "requires": [],
+   "options": 1,
+   "option_list": [
+    {
+     "label": "Mission XP multiplier",
+     "description": "Multiplies XP from every mission. 3x is the default: each rank past 50 takes a couple of good missions, while the whole climb to 500 still means something.",
+     "group": null
+    }
+   ],
+   "option_groups": [],
+   "repo": "bbbEXE/Rank-Cap-500",
+   "stars": 0,
+   "downloads": 7,
+   "kit": false,
+   "icon": "img/rank-cap-500-icon-068ab55e2a.jpg",
+   "banner": null,
+   "released": "2026-11-23",
+   "added": "2026-11-23",
+   "versions": [
+    {
+     "version": "1.6.6",
+     "date": "2026-11-23",
+     "channel": "stable",
+     "notes": "Rank Cap 500 v1.6.6 for HELLDIVERS 1 (Obsidian Mod Manager).\n\n**EN:** Raises the maximum rank from 50 to 500. All 450 new ranks have their own title and badge in English and Russian, a gentler XP curve and a configurable mission XP multiplier (3x by default). Install the zip in Obsidian Mod Manager, enable the mod and press Deploy.\n\n**RU:** Повышает максимальный ранг с 50 до 500. У всех 450 новых рангов свои звания и значки на английском и русском языках, более мягкая кривая опыта и настраиваемый множитель опыта за миссии (по умолчанию 3x). Добавьте архив в Obsidian Mod Manager, включите мод и нажмите Deploy."
     }
    ]
   }
