@@ -35,7 +35,7 @@
    "option_groups": [],
    "repo": "Alomare/ObsidianAPI",
    "stars": 0,
-   "downloads": 2819,
+   "downloads": 2836,
    "kit": true,
    "icon": "img/obsidian-api-icon-976df8f8d5.jpg",
    "banner": null,
@@ -113,7 +113,7 @@
    ],
    "verified": true,
    "description": "Small fixes for HELLDIVERS (2015), for the [Obsidian](https://github.com/Alomare/ObsidianLauncher) mod manager.\n\nObsidian Patches removes the black bars on wide screens, skips the intro, the login screen and the planet scans, speeds up the mission end, pauses the game in solo missions, and fixes the recoil and sprint animations.\n\n## How to use\n\nObsidian Patches comes with Obsidian, in the Obsidian Kit, switched on. Each fix is an option in Obsidian and takes effect at the next launch. Four of them can also be changed in game, under **Mods** in the pause menu, and apply at once.",
-   "version": "1.12.1",
+   "version": "1.13.0",
    "early": false,
    "scope": "client",
    "requires": [
@@ -138,12 +138,12 @@
     },
     {
      "label": "Skip login screen",
-     "description": "Starts on the ship, still online, with keyboard and mouse as the player 1 controls.",
+     "description": "Starts on the ship, still online. With a gamepad connected, the first press on the title screen picks the player 1 controls; without one, keyboard and mouse.",
      "group": null
     },
     {
      "label": "Skip war briefs",
-     "description": "Hides the war briefs at login and on the galaxy map, including the updates shown as the war moves. The end of a war still plays.",
+     "description": "Hides the war briefs on the ship and the galaxy map, at login and as the war moves. The end of a war still plays.",
      "group": null
     },
     {
@@ -180,13 +180,19 @@
    "option_groups": [],
    "repo": "Alomare/ObsidianPatches",
    "stars": 0,
-   "downloads": 1080,
+   "downloads": 1087,
    "kit": true,
    "icon": "img/obsidian-qol-icon-6bb7fca71d.jpg",
    "banner": null,
-   "released": "2026-11-17",
+   "released": "2026-11-23",
    "added": "2026-10-30",
    "versions": [
+    {
+     "version": "1.13.0",
+     "date": "2026-11-23",
+     "channel": "stable",
+     "notes": "- Changed: **Skip login screen** starts off. With a gamepad connected, the first press on the title screen picks the player 1 controls; with keyboard and mouse alone, the login still needs no press.\n- Changed: **Skip war briefs** also hides the war briefs on the ship: the title of an event that ended (such as ENEMY HOMEWORLD LIBERATED), the ship announcement of each war event, and the notice that the front has left the sector of an operation in progress."
+    },
     {
      "version": "1.12.1",
      "date": "2026-11-17",
@@ -240,12 +246,6 @@
      "date": "2026-11-04",
      "channel": "stable",
      "notes": "- Changed: a new image beside the mod in Obsidian's mod list."
-    },
-    {
-     "version": "1.8.1",
-     "date": "2026-11-04",
-     "channel": "stable",
-     "notes": "- Changed: Sprint pose fix now frees the upper body when a sprint starts straight from standing, which is how a sprint starts after getting up from a dive, and after firing or a weapon switch too."
     }
    ]
   },
@@ -275,7 +275,7 @@
    "option_groups": [],
    "repo": "Alomare/ObsidianTrainer",
    "stars": 0,
-   "downloads": 1620,
+   "downloads": 1627,
    "kit": true,
    "icon": "img/obsidian-trainer-icon-717943693e.jpg",
    "banner": null,
@@ -429,8 +429,8 @@
    ],
    "option_groups": [],
    "repo": "Alomare/HD1-BetterHUD",
-   "stars": 1,
-   "downloads": 588,
+   "stars": 2,
+   "downloads": 591,
    "kit": false,
    "icon": "img/alomare-betterhud-icon-f8848148c9.jpg",
    "banner": "img/alomare-betterhud-banner-249c90315b.jpg",
@@ -524,7 +524,7 @@
    ],
    "option_groups": [],
    "repo": "Alomare/HD1-PhotoMode",
-   "stars": 0,
+   "stars": 1,
    "downloads": 65,
    "kit": false,
    "icon": "img/alomare-photomode-icon-2a2b0ea7c2.jpg",
@@ -670,7 +670,7 @@
    "option_groups": [],
    "repo": "Alomare/HD1-EnhancedVisuals",
    "stars": 0,
-   "downloads": 322,
+   "downloads": 325,
    "kit": false,
    "icon": "img/alomare-enhancedvisuals-icon-1f9486e80a.jpg",
    "banner": "img/alomare-enhancedvisuals-banner-8479c5978f.jpg",
@@ -1027,8 +1027,8 @@
     }
    ],
    "repo": "Alomare/HD1-EyesOfLiberty",
-   "stars": 1,
-   "downloads": 463,
+   "stars": 2,
+   "downloads": 466,
    "kit": false,
    "icon": "img/alomare-eyesofliberty-icon-c0e5f7be9b.jpg",
    "banner": "img/alomare-eyesofliberty-banner-076933b3cf.jpg",
@@ -1419,7 +1419,7 @@
     }
    ],
    "repo": "Alomare/HD1-CustomCrosshair",
-   "stars": 0,
+   "stars": 1,
    "downloads": 176,
    "kit": false,
    "icon": "img/alomare-customcrosshair-icon-5505107ee9.jpg",
@@ -1510,7 +1510,7 @@
    "option_groups": [],
    "repo": "Alomare/HD1-HelldiversArcade",
    "stars": 0,
-   "downloads": 61,
+   "downloads": 65,
    "kit": false,
    "icon": null,
    "banner": null,
@@ -1562,7 +1562,7 @@
    "option_groups": [],
    "repo": "Alomare/HD1-SharedResupply",
    "stars": 0,
-   "downloads": 88,
+   "downloads": 90,
    "kit": false,
    "icon": "img/alomare-sharedresupply-icon-4189ebab04.jpg",
    "banner": "img/alomare-sharedresupply-banner-b02b0ba6d4.jpg",
@@ -1635,7 +1635,7 @@
    "option_groups": [],
    "repo": "Alomare/HD1-Stims",
    "stars": 0,
-   "downloads": 79,
+   "downloads": 82,
    "kit": false,
    "icon": "img/alomare-stims-icon-2b77c4ec7d.jpg",
    "banner": "img/alomare-stims-banner-7dcee03c58.jpg",
@@ -1685,8 +1685,8 @@
    ],
    "option_groups": [],
    "repo": "bbbEXE/Rank-Cap-500",
-   "stars": 0,
-   "downloads": 7,
+   "stars": 1,
+   "downloads": 15,
    "kit": false,
    "icon": "img/rank-cap-500-icon-068ab55e2a.jpg",
    "banner": null,
