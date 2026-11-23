@@ -35,7 +35,7 @@
    "option_groups": [],
    "repo": "Alomare/ObsidianAPI",
    "stars": 0,
-   "downloads": 2844,
+   "downloads": 2849,
    "kit": true,
    "icon": "img/obsidian-api-icon-976df8f8d5.jpg",
    "banner": null,
@@ -113,17 +113,17 @@
    ],
    "verified": true,
    "description": "Small fixes for HELLDIVERS (2015), for the [Obsidian](https://github.com/Alomare/ObsidianLauncher) mod manager.\n\nObsidian Patches removes the black bars on wide screens, skips the intro, the login screen and the planet scans, speeds up the mission end, pauses the game in solo missions, and fixes the recoil and sprint animations.\n\n## How to use\n\nObsidian Patches comes with Obsidian, in the Obsidian Kit, switched on. Each fix is an option in Obsidian and takes effect at the next launch. Four of them can also be changed in game, under **Mods** in the pause menu, and apply at once.",
-   "version": "1.13.0",
+   "version": "1.14.0",
    "early": false,
    "scope": "client",
    "requires": [
     "obsidian.api"
    ],
-   "options": 11,
+   "options": 13,
    "option_list": [
     {
      "label": "Widescreen fixes",
-     "description": "No black bars on screens wider than 16:9, and the objective list, dialogue boxes and galaxy map panels at the real edges of the screen.",
+     "description": "No black bars on screens wider than 16:9, dialogue boxes and galaxy map panels at the real edges of the screen, and the objective list halfway out toward the right edge.",
      "group": null
     },
     {
@@ -175,18 +175,34 @@
      "label": "Sprint pose fix",
      "description": "Sprinting right after getting up from a dive shows the normal running pose, instead of an upper body stuck until the sprint starts over.",
      "group": null
+    },
+    {
+     "label": "Rumbler echo fix",
+     "description": "A Rumbler burst plays the firing sound and flash once, without a second shot with no shell about a second later.",
+     "group": null
+    },
+    {
+     "label": "Borderless white frame fix",
+     "description": "In borderless fullscreen, the thin white line around the screen goes, and the picture fills the whole screen.",
+     "group": null
     }
    ],
    "option_groups": [],
    "repo": "Alomare/ObsidianPatches",
    "stars": 0,
-   "downloads": 1099,
+   "downloads": 1108,
    "kit": true,
    "icon": "img/obsidian-qol-icon-6bb7fca71d.jpg",
    "banner": null,
    "released": "2026-11-23",
    "added": "2026-10-30",
    "versions": [
+    {
+     "version": "1.14.0",
+     "date": "2026-11-23",
+     "channel": "stable",
+     "notes": "- New: **Rumbler echo fix**, on by default. A Rumbler burst no longer plays a second firing sound and flash, with no shell, about a second after the burst.\n- New: **Borderless white frame fix**, on by default. In borderless fullscreen, the thin white line around the screen goes, and the picture fills the whole screen.\n- Changed: **Widescreen fixes** puts the objective list halfway between the game's place and the right edge, so long objectives are no longer cut off."
+    },
     {
      "version": "1.13.0",
      "date": "2026-11-23",
@@ -240,12 +256,6 @@
      "date": "2026-11-04",
      "channel": "stable",
      "notes": "- New: **Dynamic input switch**, off by default. With a keyboard and a gamepad connected, both control the first Helldiver and the button prompts follow the last one used; the gamepad joins as a second Helldiver only when its join button is held for 1.5 seconds, and the prompt reads HOLD instead of PRESS."
-    },
-    {
-     "version": "1.8.2",
-     "date": "2026-11-04",
-     "channel": "stable",
-     "notes": "- Changed: a new image beside the mod in Obsidian's mod list."
     }
    ]
   },
@@ -275,7 +285,7 @@
    "option_groups": [],
    "repo": "Alomare/ObsidianTrainer",
    "stars": 0,
-   "downloads": 1629,
+   "downloads": 1632,
    "kit": true,
    "icon": "img/obsidian-trainer-icon-717943693e.jpg",
    "banner": null,
@@ -430,7 +440,7 @@
    "option_groups": [],
    "repo": "Alomare/HD1-BetterHUD",
    "stars": 2,
-   "downloads": 593,
+   "downloads": 596,
    "kit": false,
    "icon": "img/alomare-betterhud-icon-f8848148c9.jpg",
    "banner": "img/alomare-betterhud-banner-249c90315b.jpg",
@@ -670,7 +680,7 @@
    "option_groups": [],
    "repo": "Alomare/HD1-EnhancedVisuals",
    "stars": 0,
-   "downloads": 326,
+   "downloads": 327,
    "kit": false,
    "icon": "img/alomare-enhancedvisuals-icon-1f9486e80a.jpg",
    "banner": "img/alomare-enhancedvisuals-banner-8479c5978f.jpg",
@@ -1028,7 +1038,7 @@
    ],
    "repo": "Alomare/HD1-EyesOfLiberty",
    "stars": 2,
-   "downloads": 468,
+   "downloads": 470,
    "kit": false,
    "icon": "img/alomare-eyesofliberty-icon-c0e5f7be9b.jpg",
    "banner": "img/alomare-eyesofliberty-banner-076933b3cf.jpg",
@@ -1420,7 +1430,7 @@
    ],
    "repo": "Alomare/HD1-CustomCrosshair",
    "stars": 1,
-   "downloads": 176,
+   "downloads": 177,
    "kit": false,
    "icon": "img/alomare-customcrosshair-icon-5505107ee9.jpg",
    "banner": "img/alomare-customcrosshair-banner-2ad3b014c3.jpg",
@@ -1686,7 +1696,7 @@
    "option_groups": [],
    "repo": "bbbEXE/Rank-Cap-500",
    "stars": 1,
-   "downloads": 15,
+   "downloads": 16,
    "kit": false,
    "icon": "img/rank-cap-500-icon-068ab55e2a.jpg",
    "banner": null,
