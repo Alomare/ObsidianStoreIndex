@@ -35,7 +35,7 @@
    "option_groups": [],
    "repo": "Alomare/ObsidianAPI",
    "stars": 0,
-   "downloads": 2928,
+   "downloads": 2937,
    "kit": true,
    "icon": "img/obsidian-api-icon-976df8f8d5.jpg",
    "banner": null,
@@ -190,7 +190,7 @@
    "option_groups": [],
    "repo": "Alomare/ObsidianPatches",
    "stars": 0,
-   "downloads": 1256,
+   "downloads": 1268,
    "kit": true,
    "icon": "img/obsidian-qol-icon-6bb7fca71d.jpg",
    "banner": null,
@@ -285,7 +285,7 @@
    "option_groups": [],
    "repo": "Alomare/ObsidianTrainer",
    "stars": 0,
-   "downloads": 1660,
+   "downloads": 1663,
    "kit": true,
    "icon": "img/obsidian-trainer-icon-717943693e.jpg",
    "banner": null,
@@ -362,7 +362,7 @@
     "Alomare"
    ],
    "verified": true,
-   "description": "More information on the HUD of HELLDIVERS (2015), for the [Obsidian](https://github.com/Alomare/ObsidianLauncher) mod manager.\n\nBetter HUD counts the rounds left in the magazine and the grenades on each player card, puts health and stamina bars under the player cards and health bars over enemies, and shows damage numbers where hits land. A reload circle and an ammo circle sit beside the Helldiver. Enemy bars show burns, poison and stuns, and wait at the edge of the screen while the enemy is out of view.\n\n## How to use\n\nEvery part can be switched on or off in the options of Better HUD in Obsidian, or in game under **Mods → Better HUD** in the pause menu. A change in one place shows in the other.\n\n## Known issues\n\n- Players on other computers get no stamina bar: the game keeps stamina on each player's computer and never sends it.\n- Lasers and arc weapons get no round counter, since they heat or charge up instead. The ammo circle shows their heat or charge.\n\nMod authors can add meters, flashes and status icons to the HUD through Better HUD: see [docs/api.md](docs/api.md).",
+   "description": "More information on the HUD of HELLDIVERS (2015), for the [Obsidian](https://github.com/Alomare/ObsidianLauncher) mod manager.\n\nPlayer cards show the rounds left in the magazine and the grenade count, with health and stamina bars underneath. Enemies get health bars, and hits show damage numbers where they land. A reload circle and an ammo circle sit beside the Helldiver. Enemy bars show burns, poison and stuns, and stay at the edge of the screen while the enemy is out of view.\n\n## How to use\n\nEvery part can be switched on or off in the Better HUD options in Obsidian, or in game from the pause menu under **Mods → Better HUD**. Changes in one place show in the other.\n\n## Known issues\n\n- Players on other computers get no stamina bar. The game keeps stamina on each computer and never sends it.\n- Lasers and arc weapons heat or charge up instead of using rounds, so they get no round counter. The ammo circle shows their heat or charge.\n\nMod authors can add meters, flashes and status icons to the HUD through Better HUD: see [docs/api.md](docs/api.md).",
    "version": "1.18.0",
    "early": false,
    "scope": "client",
@@ -440,7 +440,7 @@
    "option_groups": [],
    "repo": "Alomare/HD1-BetterHUD",
    "stars": 2,
-   "downloads": 619,
+   "downloads": 622,
    "kit": false,
    "icon": "img/alomare-betterhud-icon-f8848148c9.jpg",
    "banner": "img/alomare-betterhud-banner-249c90315b.jpg",
@@ -517,7 +517,7 @@
     "Alomare"
    ],
    "verified": true,
-   "description": "A photo mode for HELLDIVERS (2015), for the [Obsidian](https://github.com/Alomare/ObsidianLauncher) mod manager.\n\nPhoto Mode stops the mission, clears the HUD and hands over the camera. A panel of controls sets the lens, depth of field, filters, fog, the time of day and the sun, places up to eight lights, and poses the Helldiver. Pictures are saved to `Pictures\\Helldivers`.\n\n## How to use\n\nPress **F7**, or pick **PHOTO MODE** in the pause menu, during a mission or on the ship. Esc or F7 leaves, and everything goes back as it was.\n\n| Key | What it does |\n|---|---|\n| W A S D, Q E | Move the camera |\n| Right mouse button | Look around |\n| Mouse wheel | Field of view, distance or zoom |\n| Shift, Alt | Faster, slower |\n| Left mouse button, twice | Focus on the point under the cursor |\n| P | Take a picture |\n| H | Hide or show the panel |\n\nP, H and F7 can be changed in the Keys tab of Photo Mode in Obsidian.\n\n## Known issues\n\n- With other players in the lobby the game keeps running, as pausing one game would split it from the others.\n- In exclusive fullscreen, pictures can come out black. Borderless or windowed mode works.\n- Photo Mode does not open while Third Person Camera is installed.",
+   "description": "A photo mode for HELLDIVERS (2015), for the [Obsidian](https://github.com/Alomare/ObsidianLauncher) mod manager.\n\nPhoto Mode stops the mission, clears the HUD and hands you the camera. A control panel sets the lens, depth of field, filters, fog, time of day and sun, places up to 8 lights, and poses the Helldiver. Pictures are saved to `Pictures\\Helldivers`.\n\n## How to use\n\nPress **F7**, or pick **PHOTO MODE** in the pause menu, during a mission or on the ship. Press Esc or F7 to leave, and everything goes back as it was.\n\n| Key | What it does |\n|---|---|\n| W A S D, Q E | Move the camera |\n| Right mouse button | Look around |\n| Mouse wheel | Field of view, distance or zoom |\n| Shift, Alt | Faster, slower |\n| Left mouse button, twice | Focus on the point under the cursor |\n| P | Take a picture |\n| H | Hide or show the panel |\n\nP, H and F7 can be changed in the Keys tab of Photo Mode in Obsidian.\n\n## Known issues\n\n- With other players in the lobby, the game keeps running: pausing one game would split it from the others.\n- In exclusive fullscreen, pictures can come out black. Use borderless or windowed mode.\n- Photo Mode does not open while Third Person Camera is installed.",
    "version": "1.6.4",
    "early": false,
    "scope": "client",
@@ -612,7 +612,7 @@
     "Alomare"
    ],
    "verified": true,
-   "description": "Better graphics and extra visual effects for HELLDIVERS (2015), for the [Obsidian](https://github.com/Alomare/ObsidianLauncher) mod manager.\n\nThe mod turns on the ambient occlusion pass that the game ships but never runs, adds sharpening and an ambient light effect, raises the resolution and distance of sun shadows, softens shadow edges, keeps detailed models farther from the camera, and can draw the scene above the screen resolution.\n\n## How to use\n\n**F9** switches between Enhanced Visuals and the plain game, to compare. The key can be changed in Obsidian.\n\nFor the game textures at twice the size, see [Upscaled Textures](https://github.com/Alomare/HD1-UpscaledTextures), a separate mod that works with or without this one.\n\n## Known issues\n\n- Third Person Camera also uses F9: with both mods on, change one of the keys. Put Enhanced Visuals after Third Person Camera in the load order, or the shadow and render scale options do nothing.\n- A shadow resolution of 8192 takes 256 MB of video memory.",
+   "description": "Better graphics and extra visual effects for HELLDIVERS (2015), for the [Obsidian](https://github.com/Alomare/ObsidianLauncher) mod manager.\n\nThe mod turns on the ambient occlusion pass that the game ships but never runs. It adds sharpening and an ambient light effect, raises the resolution and distance of sun shadows, softens shadow edges, keeps detailed models at longer distances, and can render the scene above screen resolution.\n\n## How to use\n\nPress **F9** to switch between Enhanced Visuals and the plain game. The key can be changed in Obsidian.\n\nFor textures at 2x the size, see [Upscaled Textures](https://github.com/Alomare/HD1-UpscaledTextures), a separate mod that works with or without this one.\n\n## Known issues\n\n- Third Person Camera also uses F9. With both mods on, change one of the keys. Put Enhanced Visuals after Third Person Camera in the load order, or the shadow and render scale options do nothing.\n- A shadow resolution of 8192 takes 256 MB of video memory.",
    "version": "1.1.3",
    "early": false,
    "scope": "client",
@@ -680,7 +680,7 @@
    "option_groups": [],
    "repo": "Alomare/HD1-EnhancedVisuals",
    "stars": 0,
-   "downloads": 351,
+   "downloads": 354,
    "kit": false,
    "icon": "img/alomare-enhancedvisuals-icon-1f9486e80a.jpg",
    "banner": "img/alomare-enhancedvisuals-banner-8479c5978f.jpg",
@@ -740,8 +740,8 @@
     "yukiorsrs"
    ],
    "verified": true,
-   "description": "A third person camera for HELLDIVERS (2015), for the [Obsidian](https://github.com/Alomare/ObsidianLauncher) mod manager. Formerly Unleashed Camera, and before that Integrated Third Person: remove either one when installing this mod. Based on [Third Person Camera (HD2 Style)](https://github.com/yukiorsrs/third-person-camera-helldivers) by **yukiorsrs**, rebuilt with the permission of the author so that other mods keep working beside it.\n\nThe camera follows the Helldiver over the shoulder on foot, in vehicles and on the ship. Shots leave along the way the weapon points, and the weapon swings onto the crosshair while aiming or firing; the crosshair shows where it points meanwhile. Grenades and stratagems go where the crosshair points. The view reaches farther, the sky over the level is filled in, a ring around the crosshair warns of enemies close by, a bar shows where hits come from, and the edges of the screen flash red when the Helldiver is hurt. A compass at the top of the screen shows the way to the objectives found on the map. Stratagem beacons out of view show at the edge of the screen, as do allies, red while down, and a dashed line shows where a held grenade or stratagem ball would fly. The ping key marks enemies, objectives, dropped support weapons or a spot on the ground for the squad. After a death the camera stays on the body, then follows a living ally until the Helldiver is back. After extraction it rides the shuttle out.\n\nThird Person Camera replaces 28 game scripts, so mods that change the same parts of the game stop working with it. Eyes of Liberty replaces no script: every change is a hook through Obsidian.\n\n## How to use\n\n**F8** switches between the top-down camera of the game and third person. **H** swaps the shoulder. **F** pings what the crosshair is on. The keys can be changed in Obsidian. On a gamepad, the right stick turns the camera and holding the left trigger aims; while aiming, the reload button throws grenades. A tap of the right stick swaps the shoulder. While the death cam follows allies, left and right click switch between them.\n\n## Playing with others\n\nThe camera and everything on screen work in any lobby. Five session features change the game for the whole lobby: Ballistics revamp (every weapon reaches far, with damage falling off past the weapon's own range), Far enemy detection, Free movement, Increased throw range and Patrols stay in view. They run only when every player runs Obsidian with the same mods, and switch off when anyone else joins. With all five off, the mod counts as a client mod.\n\nPings show only for teammates who run the mod; nothing goes to the game's chat.\n\n## Known issues\n\n- Players on one computer share a screen, so the camera goes back to top-down while a second local player is in, and comes back after.\n- The mod stays off while Third Person Camera, Unleashed Camera or Integrated Third Person is installed.\n\nFirst person is in development for separate beta versions.\n\nMod authors can read the camera state through `obsidian.import(\"alomare.eyesofliberty\")`: `active()`, `mode()`, `crosshair()` and `shoulder()`.",
-   "version": "1.2.0",
+   "description": "A third person camera for HELLDIVERS (2015), for the [Obsidian](https://github.com/Alomare/ObsidianLauncher) mod manager. Formerly Unleashed Camera, and before that Integrated Third Person: remove either one when installing this mod. Based on [Third Person Camera (HD2 Style)](https://github.com/yukiorsrs/third-person-camera-helldivers) by **yukiorsrs**, rebuilt with permission from the author so other mods keep working beside it.\n\nThe camera follows the Helldiver over the shoulder on foot, in vehicles and on the ship. Shots go where the weapon points, and the weapon swings onto the crosshair while aiming or firing. Until then, the crosshair shows where the weapon points. Grenades and stratagems go where the crosshair points.\n\nThe view reaches farther, and the sky over the level is filled in. On screen:\n\n- A ring around the crosshair warns of nearby enemies.\n- A bar shows where hits come from, and the screen edges flash red when the Helldiver is hurt.\n- A compass at the top shows the way to objectives found on the map.\n- Off-screen stratagem beacons and allies show at the screen edge. Downed allies show in red.\n- A dashed line shows where a held grenade or stratagem ball would fly.\n\nThe ping key marks enemies, objectives, dropped support weapons or a spot on the ground for the squad. After a death, the camera stays on the body, then follows a living ally until the Helldiver is back. After extraction, it rides the shuttle out.\n\nThird Person Camera replaces 28 game scripts, so mods that change the same parts of the game stop working with it. Eyes of Liberty replaces none: every change is a hook through Obsidian.\n\n## How to use\n\n**F8** switches between the top-down camera and third person. **H** swaps shoulders. **F** pings what the crosshair is on. The keys can be changed in Obsidian.\n\nOn gamepads, the right stick turns the camera and holding the left trigger aims. While aiming, the reload button throws grenades. Tapping the right stick swaps shoulders. While the death cam follows allies, left and right click switch between them.\n\n## Playing with others\n\nThe camera and everything on screen work in any lobby. 5 session features change the game for the whole lobby:\n\n- Ballistics revamp: every weapon reaches far, with damage falling off past the normal range of the weapon.\n- Far enemy detection.\n- Free movement.\n- Increased throw range.\n- Patrols stay in view.\n\nThese run only when every player runs Obsidian with the same mods, and switch off when anyone else joins. With all 5 off, the mod counts as a client mod.\n\nPings show only for teammates with the mod. Nothing goes to the game chat.\n\n## Known issues\n\n- Local co-op players share one screen, so the camera goes back to top-down while a second local player is in, and comes back after.\n- The mod stays off while Third Person Camera, Unleashed Camera or Integrated Third Person is installed.\n\nFirst person is in development, for separate beta versions.\n\nMod authors can read the camera state through `obsidian.import(\"alomare.eyesofliberty\")`: `active()`, `mode()`, `crosshair()` and `shoulder()`.",
+   "version": "1.2.1",
    "early": false,
    "scope": "session",
    "requires": [
@@ -886,7 +886,7 @@
     },
     {
      "label": "Ammo bar length",
-     "description": "How long the ammo bar is, as a multiple of the default length, a sixth of a circle around the crosshair.",
+     "description": "How long the ammo bar is, as a multiple of the default length, an eighth of a circle around the crosshair.",
      "group": "ammo"
     },
     {
@@ -1058,13 +1058,19 @@
    ],
    "repo": "Alomare/HD1-EyesOfLiberty",
    "stars": 2,
-   "downloads": 570,
+   "downloads": 579,
    "kit": false,
    "icon": "img/alomare-eyesofliberty-icon-c0e5f7be9b.jpg",
    "banner": "img/alomare-eyesofliberty-banner-076933b3cf.jpg",
-   "released": "2026-11-23",
+   "released": "2026-11-25",
    "added": "2026-11-11",
    "versions": [
+    {
+     "version": "1.2.1",
+     "date": "2026-11-25",
+     "channel": "stable",
+     "notes": "- Fixed: The crosshair no longer lags behind and snaps back while turning, most of all at low frame rates. It is now drawn with the game images, including the steps between idle and aiming.\n- Fixed: The Helldiver no longer wobbles on screen when turning while moving.\n- Fixed: With a controller, the left stick pans the map along the screen, whichever way the Helldiver faces.\n- Fixed: The loose tripod leg of the Rumbler no longer flickers in third person. It stays folded, in hand and on the back.\n- Fixed: With free movement in online games and the squad spread out, patrols spawn and ranged enemies such as the Illusionist and the Cyborg Initiate open fire near every Helldiver.\n- Changed: The ammo bar is back to the thickness of 1.1.1 and a quarter shorter.\n- Fixed: The diamond of a ping in the world now covers the line, so the tip of the line no longer shows inside it."
+    },
     {
      "version": "1.2.0",
      "date": "2026-11-23",
@@ -1118,12 +1124,6 @@
      "date": "2026-11-20",
      "channel": "stable",
      "notes": "- Fixed: Weapon follows aim bends the Helldiver on screen. In 0.15.0 the bend came after the frame was drawn, so the weapon stayed level.\n- Changed: The ammo bar shows a line between rounds for weapons of up to 50 rounds, up from 40."
-    },
-    {
-     "version": "0.15.0",
-     "date": "2026-11-20",
-     "channel": "stable",
-     "notes": "- New: Weapon follows aim option, on by default. While aiming or firing on foot, the Helldiver bends up or down so the weapon points where the crosshair is.\n- New: With a mouse and no other mod drawing the crosshair, the crosshair is the aiming cursor of the game, held in the middle of the screen, with the change the game shows when aiming starts and stops.\n- New: Compass options for width, background opacity and the view angle line and heading.\n- New: Pings while down, and after death until the camera moves to an ally.\n- Changed: Settings are grouped by what they change, and every setting that applies at once is also in the pause menu.\n- Changed: F is the default ping key.\n- Changed: The explosion kick is five times stronger. Hellpod landings no longer kick.\n- Changed: When another pod of the squad comes down first, the Hellpod camera waits high above it, then moves over to the pod of the Helldiver.\n- Changed: The glide from the Hellpod into the shoulder view starts 0.4 seconds sooner.\n- Changed: On a throw, the throw arc stays in place and fades out over a second.\n- Changed: Compass icons show over the compass letters.\n- Changed: Enemy indicators show only while the Helldiver is alive or down.\n- Changed: The ammo bar of a laser fills from the bottom, in a brighter yellow.\n- Changed: Patrols stay in view also keeps patrol enemies chasing a Helldiver out to 200 m, and enemies of alarms and objective waves out to 100 m, where the game removed them at 40 m.\n- Fixed: The Helldiver no longer shakes against the camera when frame times change, as with many effects on screen.\n- Fixed: Lasers fire up and down. A beam that hit nothing was drawn level.\n- Fixed: An arc weapon bolt that finds no target flies toward the crosshair.\n- Fixed: The Hellpod camera no longer follows the pods of bots."
     }
    ]
   },
@@ -1135,7 +1135,7 @@
     "Alomare"
    ],
    "verified": true,
-   "description": "A crosshair mod for HELLDIVERS (2015), for the [Obsidian](https://github.com/Alomare/ObsidianLauncher) mod manager.\n\nCustom Crosshair replaces the aim cursor with a crosshair built from shapes, with one look between shots and another while aiming. Shape, size, gap, color, outline and shadow are all settings. A hitmarker flashes around the crosshair, with a sound, when a shot from this player hurts or kills an enemy.\n\n## How to use\n\nThe settings are in the Options tab of Custom Crosshair in Obsidian, with a live preview. A change applies at the next launch of the game.\n\nWith Eyes of Liberty, the crosshair goes where shots land. Turn off **Third person crosshair** to keep the crosshair of the game there instead, or **First person crosshair** for no crosshair in the first person camera of the Eyes of Liberty beta.\n\n## Known issues\n\n- On a controller the game shows no cursor in the top-down view, so no crosshair shows there.\n- A shot that armor stops does not count as a hit.",
+   "description": "A crosshair mod for HELLDIVERS (2015), for the [Obsidian](https://github.com/Alomare/ObsidianLauncher) mod manager.\n\nCustom Crosshair replaces the aim cursor with a crosshair made of shapes, with separate looks for idle and aiming. Shape, size, gap, color, outline and shadow are all settings. A hitmarker flashes around the crosshair, with a sound, when your shots hurt or kill enemies.\n\n## How to use\n\nSettings are in the Options tab of Custom Crosshair in Obsidian, with a live preview. Changes apply at the next game launch.\n\nWith Eyes of Liberty, the crosshair shows where shots land. Turn off **Third person crosshair** to keep the game crosshair there instead. Turn off **First person crosshair** to hide the crosshair in the first person camera of the Eyes of Liberty beta.\n\n## Known issues\n\n- On controllers the game shows no cursor in the top-down view, so no crosshair shows there either.\n- Shots stopped by armor don't count as hits.",
    "version": "1.0.1",
    "early": false,
    "scope": "client",
@@ -1450,7 +1450,7 @@
    ],
    "repo": "Alomare/HD1-CustomCrosshair",
    "stars": 1,
-   "downloads": 190,
+   "downloads": 192,
    "kit": false,
    "icon": "img/alomare-customcrosshair-icon-5505107ee9.jpg",
    "banner": "img/alomare-customcrosshair-banner-2ad3b014c3.jpg",
@@ -1527,7 +1527,7 @@
     "Alomare"
    ],
    "verified": true,
-   "description": "Arcade game modes for HELLDIVERS (2015), for the [Obsidian](https://github.com/Alomare/ObsidianLauncher) mod manager. The first mode is Super Earth Survivors.\n\n## Super Earth Survivors\n\nA mode inspired by Vampire Survivors. The squad drops on an open map and holds out against waves that grow stronger over time. A second faction joins at 6 minutes and the third at 12, with elites, bosses and bombardments along the way.\n\nKills drop research samples. Each level up freezes the fight, refills health and lets every player pick one of three upgrade cards; every third level adds a stratagem. Some upgrades come in pairs that can evolve into a stronger one. The shuttle can be called after 15 minutes, and a summary of the run shows at the end.\n\n## How to use\n\nOpen the galaxy map and pick the **ARCADE** tab, beside Proving Grounds. Choose the faction, the difficulty and the biome, then Launch. The next drop plays the same mission again until a campaign mission is picked.\n\nArcade missions leave the Galactic Campaign as it was.\n\n## Playing with others\n\nUntil the host picks an arcade mission, the mod runs as a client mod and anyone can join. An arcade mission needs every player in the lobby to run Helldivers Arcade at the same version.",
+   "description": "Arcade game modes for HELLDIVERS (2015), for the [Obsidian](https://github.com/Alomare/ObsidianLauncher) mod manager. The first mode is Super Earth Survivors.\n\n## Super Earth Survivors\n\nA mode inspired by Vampire Survivors. Squads drop on an open map and hold out against waves that grow stronger over time. A second faction joins at 6 minutes and a third at 12, with elites, bosses and bombardments along the way.\n\nKills drop research samples. Each level up pauses the fight, refills health and lets every player pick 1 of 3 upgrade cards. Every 3rd level adds a stratagem. Some upgrades pair up and evolve into a stronger one. The shuttle can be called after 15 minutes, and a run summary shows at the end.\n\n## How to use\n\nOpen the galaxy map and pick the **ARCADE** tab, next to Proving Grounds. Choose the faction, difficulty and biome, then Launch. The next drop replays the same mission until you pick a campaign mission.\n\nArcade missions don't change the Galactic Campaign.\n\n## Playing with others\n\nUntil the host picks an arcade mission, the mod acts as a client mod and anyone can join. Arcade missions need every player in the lobby to run Helldivers Arcade at the same version.",
    "version": "0.1.1",
    "early": true,
    "scope": "expansion",
@@ -1540,7 +1540,7 @@
    "option_groups": [],
    "repo": "Alomare/HD1-HelldiversArcade",
    "stars": 0,
-   "downloads": 74,
+   "downloads": 76,
    "kit": false,
    "icon": null,
    "banner": null,
@@ -1569,7 +1569,7 @@
     "Alomare"
    ],
    "verified": true,
-   "description": "A mod for HELLDIVERS (2015) that brings the squad resupply from HELLDIVERS 2, for [Obsidian Mod Manager](https://github.com/Alomare/ObsidianModManager).\n\n## What it does\n\nEvery player carries a yellow Resupply stratagem in every mission. It is listed with the mission stratagems (Reinforce, SOS Beacon, Hellbomb), on top of the four picks.\n\n- Code: ↓ ↓ ↑ →.\n- Drops one crate with four ammunition boxes (2 to 4 with the Ammo box count option).\n- Call-in time is 10 seconds. No upgrades.\n- Cooldown is 180 seconds and is shared by the whole squad: when anyone calls it, everyone waits. Players who join mid-mission take the squad's current cooldown.\n\nThe standard (blue) Resupply is removed from the Arsenal, the Loadout screen and loadouts.\n\n## Options\n\n- **Preserve vanilla Resupply** (off by default): keeps the standard Resupply in the Arsenal, the Loadout screen and loadouts. It then uses the code ↓ ↓ ↑ ↑.\n- **Ammo box count** (4 by default): how many ammunition boxes the crate holds, from 2 to 4. The setting of the player who calls the Resupply decides.\n\n## Playing with others\n\nEvery player in the lobby needs Shared Resupply, at the same version and with the same Preserve vanilla Resupply setting. Saved loadouts that held the standard Resupply get another stratagem in place of it, or keep it in the slot when no other stratagem fits; it is left out in missions.\n\nNeeds Obsidian API 1.40.0 or later.",
+   "description": "Brings the squad resupply from HELLDIVERS 2 to HELLDIVERS (2015), for the [Obsidian](https://github.com/Alomare/ObsidianLauncher) mod manager.\n\n## What it does\n\nEvery player carries a yellow Resupply stratagem in every mission. It sits with the mission stratagems (Reinforce, SOS Beacon, Hellbomb), on top of the 4 picks.\n\n- Code: ↓ ↓ ↑ →.\n- Drops 1 crate with 4 ammo boxes (2 to 4 with the Ammo box count option).\n- 10 second call-in. No upgrades.\n- 180 second cooldown, shared by the whole squad: when anyone calls it, everyone waits. Players who join mid-mission get the current squad cooldown.\n\nThe standard (blue) Resupply is removed from the Arsenal, the Loadout screen and loadouts.\n\n## Options\n\n- **Preserve vanilla Resupply** (off by default): keeps the standard Resupply in the Arsenal, the Loadout screen and loadouts, with the code ↓ ↓ ↑ ↑.\n- **Ammo box count** (4 by default): ammo boxes per crate, from 2 to 4. The setting of whoever calls the Resupply applies.\n\n## Playing with others\n\nEvery player in the lobby needs Shared Resupply, at the same version and with the same Preserve vanilla Resupply setting. Saved loadouts with the standard Resupply get another stratagem instead, or keep it in the slot when no other stratagem fits. Missions leave it out either way.\n\nNeeds Obsidian API 1.40.0 or later.",
    "version": "1.2.0",
    "early": false,
    "scope": "session",
@@ -1592,7 +1592,7 @@
    "option_groups": [],
    "repo": "Alomare/HD1-SharedResupply",
    "stars": 0,
-   "downloads": 98,
+   "downloads": 100,
    "kit": false,
    "icon": "img/alomare-sharedresupply-icon-4189ebab04.jpg",
    "banner": "img/alomare-sharedresupply-banner-b02b0ba6d4.jpg",
@@ -1627,7 +1627,7 @@
     "Alomare"
    ],
    "verified": true,
-   "description": "Stim injectors for HELLDIVERS. Each Helldiver carries up to two stims by default (one to four with the Maximum stim count option) and starts every drop and respawn with a full set. An ammo box gives two more, and can be picked up for stims alone when every weapon is full.\n\nA stim takes the key (V by default): the Helldiver raises the left fist and stabs the injector into the neck, standing, moving or prone. Unless a knockdown, a reload, a throw or a melee cuts the motion short, the stim gives four seconds of endless stamina and 60 health a second, up to full health. The Helldiver moves at aiming speed while the injection plays, the screen edges glow light blue while the stim lasts, and another stim can start once the four seconds of the last one are over. With none left, \"Out of stims!\" shows over the Helldiver.\n\nWhile a stim lasts, the Helldiver takes no status effects such as fire, poison, stun, slow or confusion, and the stim clears the ones already on. Slows from water, snow and carried objectives stay. The Status effect immunity option turns this off.\n\nA downed Helldiver can use a stim to get back up and heal, unless the Allow downed stim option is off.\n\nPassive health regeneration is off: health comes back through stims and other healing. The Preserve passive healing option keeps it. With the Autoinjector perk, the extra regeneration of the perk stays either way.\n\nThe loadout card shows a syringe right of the weapon, one charge per stim, spent from the needle down. Other players see the motion and the count of each Helldiver.\n\n## Requirements\n\n- Obsidian API 1.57.0 or later.\n- Every player in the lobby runs the mod, at the same version and option values.\n\n## Options\n\n| Option | Default | What it does |\n|---|---|---|\n| Maximum stim count | 2 | Stims each Helldiver carries, and starts each drop and respawn with (1 to 4). |\n| Preserve passive healing | Off | Keeps the slow health regeneration of the game. The Autoinjector perk bonus stays either way. |\n| Status effect immunity | On | No status effects while a stim lasts, apart from water, snow and carry slows. |\n| Allow downed stim | On | A downed Helldiver can use a stim to get back up and heal. |\n| Stim sound volume | 0.7 | How loud the stim sound plays. Other players' stims nearby play quieter. |\n| Use a stim (key) | V | The key that uses a stim. |\n\n## Notes\n\n- The stim sound plays through Windows, outside the game's own volume settings.\n- Other players see a stim about a second after it happens.",
+   "description": "The stims from HELLDIVERS 2, adapted to HELLDIVERS. Each Helldiver carries up to 2 stims by default (1 to 4 with the Maximum stim count option) and starts every drop and respawn with a full set. Ammo boxes give 2. Helldivers with full weapons can still pick up an ammo box for the stims.\n\nPress V to stim. Helldivers raise the left fist and stab the injector into the neck, standing, moving or prone. Each stim gives 4 seconds of endless stamina and 60 health per second, up to full health. Knockdowns, reloads, throws and melee attacks cancel the motion before the stim takes effect. Helldivers move at aiming speed during the injection, and the screen edges glow light blue while the stim lasts. The next stim can start once the 4 seconds are over. With no stims left, \"Out of stims!\" shows over the Helldiver.\n\nBy default, you can stim while downed to get back up and heal.\n\nStims also grant status effect immunity for their duration: no fire, poison, stun, slow or confusion, and any already on are cleared. Slows from water, snow and carried objectives still apply.\n\nPassive health regeneration is off, so health comes back through stims and other healing. The Autoinjector perk keeps the extra regeneration either way.\n\nThe loadout card shows a syringe next to the weapon, with one charge per stim. Charges are spent from the needle down. Other players see every stim and the stim count of every Helldiver.\n\n## Requirements\n\n- Obsidian API 1.57.0 or later.\n- Every player in the lobby needs the mod, with the same version and options.\n\n## Options\n\n| Option | Default | What it does |\n|---|---|---|\n| Maximum stim count | 2 | Stims each Helldiver carries and starts with (1 to 4). |\n| Preserve passive healing | Off | Keeps the slow health regeneration of the game. The Autoinjector perk bonus stays either way. |\n| Status effect immunity | On | No status effects while a stim lasts, except slows from water, snow and carried objectives. |\n| Allow downed stim | On | Downed Helldivers can stim to get back up and heal. |\n| Stim sound volume | 0.7 | Volume of the stim sound. Stims of other players nearby play quieter. |\n| Use a stim (key) | V | The stim key. |\n\n## Notes\n\n- The stim sound plays through Windows, so the volume settings of the game don't change it.\n- Other players see stims about 1 second late.",
    "version": "1.0.0",
    "early": false,
    "scope": "session",
@@ -1665,7 +1665,7 @@
    "option_groups": [],
    "repo": "Alomare/HD1-Stims",
    "stars": 0,
-   "downloads": 103,
+   "downloads": 106,
    "kit": false,
    "icon": "img/alomare-stims-icon-2b77c4ec7d.jpg",
    "banner": "img/alomare-stims-banner-7dcee03c58.jpg",
@@ -1716,7 +1716,7 @@
    "option_groups": [],
    "repo": "bbbEXE/Rank-Cap-500",
    "stars": 1,
-   "downloads": 26,
+   "downloads": 27,
    "kit": false,
    "icon": "img/rank-cap-500-icon-068ab55e2a.jpg",
    "banner": null,
