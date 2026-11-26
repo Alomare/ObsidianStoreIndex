@@ -10,7 +10,7 @@
    ],
    "verified": true,
    "description": "A library for [Obsidian](https://github.com/Alomare/ObsidianLauncher) mods on HELLDIVERS (2015). It gives other mods the game data by name, checked changes that can be undone, and ready actions. It does nothing by itself.\n\n## How to use\n\nObsidian API comes with Obsidian, in the Obsidian Kit. Mods that need it switch it on with them.\n\nTo build on it, list it in the `obsidian.json` of the mod:\n\n```json\n\"requires\": [\"obsidian.api\"]\n```\n\nThen ask for it in the script:\n\n```lua\nlocal api = obsidian.import(\"obsidian.api\")\n\nobsidian.keybind(\"panic\", function()\n  api.player.heal()\n  api.enemies.kill_near(20)\nend)\n```\n\nActions answer `true`, or `false` and a short reason such as `\"host_only\"`. A client mod can require the API and stay a client mod: it can read game data and use the interface, sound and event calls, and anything that changes the shared game answers `false, \"needs_session\"`.\n\n[REFERENCE.md](REFERENCE.md) has every call, with guides and recipes. A copy sits in the folder of the API in the Obsidian Kit, where an AI tool working on a mod can read it.\n\n## Known issues\n\n- Tested solo and offline, not yet with a second player.",
-   "version": "1.58.1",
+   "version": "1.58.2",
    "early": false,
    "scope": "library",
    "requires": [],
@@ -35,13 +35,19 @@
    "option_groups": [],
    "repo": "Alomare/ObsidianAPI",
    "stars": 0,
-   "downloads": 2952,
+   "downloads": 2953,
    "kit": true,
    "icon": "img/obsidian-api-icon-976df8f8d5.jpg",
    "banner": null,
-   "released": "2026-11-21",
+   "released": "2026-11-26",
    "added": "2026-10-30",
    "versions": [
+    {
+     "version": "1.58.2",
+     "date": "2026-11-26",
+     "channel": "stable",
+     "notes": "- Fixed: The reference for `api.world.shading` said a value goes on again in each new mission. It goes on again at every change of screen, the ship and the title screen included."
+    },
     {
      "version": "1.58.1",
      "date": "2026-11-21",
@@ -95,12 +101,6 @@
      "date": "2026-11-16",
      "channel": "stable",
      "notes": "- New: the Script Profiler option, off by default. Off, the Script Profiler has no page and measures nothing; on, the Script Profiler page still has Hidden.\n- New: the in-game window and the Script Profiler in Russian and Simplified Chinese; the Script Profiler texts come from the locales in every language.\n- Changed: the value field of a choice or number row takes the width of the widest value it can show, at most half the row, so the arrows stay put as the value changes.\n- Changed: `api.catalog.text` answers the name the game has in every language, Cyrillic and Chinese included."
-    },
-    {
-     "version": "1.50.0",
-     "date": "2026-11-15",
-     "channel": "stable",
-     "notes": "- New: Script Profiler, a page of the F6 window. A panel in the top left corner, on a 20% black background, lists every running mod with the time the scripts of the mod take each frame and the FPS that costs; a name too long for the column scrolls. The page sets where it shows (hidden, pause menu only, always), the detail (basic, or with the slowest frame, calls a frame and the total), how many mods it lists, the corner and the text size. Needs Obsidian Launcher 2.0 or later; earlier versions show no page.\n- New: while the Script Profiler is not hidden, a report goes to the log of Obsidian API every 10 seconds: the frame time, and for each mod the time, slowest frame, calls and the hooks and parts the time goes to. The parts of the frame of Obsidian API are measured one by one.\n- Changed: the folder of Obsidian API in the F6 window comes after the folders of the mods.\n- Changed: with Obsidian Launcher 2.0 or later, the controller buttons that open the F6 window follow the input mode chosen for the \"Open in-game menu\" bind (tap, double tap, press, long press or release).\n- Fixed: `catalog.stratagem` and the item lists checked every item against the paid packs on each call, which cost several milliseconds a frame for a mod that looks stratagems up every frame. The answers are now kept for 5 seconds, and `catalog.stratagem` looks up one name."
     }
    ]
   },
@@ -741,7 +741,7 @@
    ],
    "verified": true,
    "description": "A third person camera for HELLDIVERS (2015), for the [Obsidian](https://github.com/Alomare/ObsidianLauncher) mod manager. Formerly Unleashed Camera, and before that Integrated Third Person: remove either one when installing this mod. Based on [Third Person Camera (HD2 Style)](https://github.com/yukiorsrs/third-person-camera-helldivers) by **yukiorsrs**, rebuilt with permission from the author so other mods keep working beside it.\n\nThe camera follows the Helldiver over the shoulder on foot, in vehicles and on the ship. Shots go where the weapon points, and the weapon swings onto the crosshair while aiming or firing. Until then, the crosshair shows where the weapon points. Grenades and stratagems go where the crosshair points.\n\nThe view reaches farther, and the sky over the level is filled in. On screen:\n\n- A ring around the crosshair warns of nearby enemies.\n- A bar shows where hits come from, and the screen edges flash red when the Helldiver is hurt.\n- A compass at the top shows the way to objectives found on the map.\n- Off-screen stratagem beacons and allies show at the screen edge. Downed allies show in red.\n- A dashed line shows where a held grenade or stratagem ball would fly.\n\nThe ping key marks enemies, objectives, dropped support weapons or a spot on the ground for the squad. After a death, the camera stays on the body, then follows a living ally until the Helldiver is back. After extraction, it rides the shuttle out.\n\nThird Person Camera replaces 28 game scripts, so mods that change the same parts of the game stop working with it. Eyes of Liberty replaces none: every change is a hook through Obsidian.\n\n## How to use\n\n**F8** switches between the top-down camera and third person. **H** swaps shoulders. **F** pings what the crosshair is on. The keys can be changed in Obsidian.\n\nOn gamepads, the right stick turns the camera and holding the left trigger aims. While aiming, the reload button throws grenades. Tapping the right stick swaps shoulders. While the death cam follows allies, left and right click switch between them.\n\n## Playing with others\n\nThe camera and everything on screen work in any lobby. 5 session features change the game for the whole lobby:\n\n- Ballistics revamp: every weapon reaches far, with damage falling off past the normal range of the weapon.\n- Far enemy detection.\n- Free movement.\n- Increased throw range.\n- Patrols stay in view.\n\nThese run only when every player runs Obsidian with the same mods, and switch off when anyone else joins. With all 5 off, the mod counts as a client mod.\n\nPings show only for teammates with the mod. Nothing goes to the game chat.\n\n## Known issues\n\n- Local co-op players share one screen, so the camera goes back to top-down while a second local player is in, and comes back after.\n- The mod stays off while Third Person Camera, Unleashed Camera or Integrated Third Person is installed.\n\nFirst person is in development, for separate beta versions.\n\nMod authors can read the camera state through `obsidian.import(\"alomare.eyesofliberty\")`: `active()`, `mode()`, `crosshair()` and `shoulder()`.",
-   "version": "1.2.1",
+   "version": "1.2.2",
    "early": false,
    "scope": "session",
    "requires": [
@@ -1058,13 +1058,19 @@
    ],
    "repo": "Alomare/HD1-EyesOfLiberty",
    "stars": 2,
-   "downloads": 638,
+   "downloads": 640,
    "kit": false,
    "icon": "img/alomare-eyesofliberty-icon-c0e5f7be9b.jpg",
    "banner": "img/alomare-eyesofliberty-banner-076933b3cf.jpg",
-   "released": "2026-11-25",
+   "released": "2026-11-26",
    "added": "2026-11-11",
    "versions": [
+    {
+     "version": "1.2.2",
+     "date": "2026-11-26",
+     "channel": "stable",
+     "notes": "- Fixed: a bright white glare on the ship and the title screen after a mission, from the fog of the last planet staying on."
+    },
     {
      "version": "1.2.1",
      "date": "2026-11-25",
@@ -1118,12 +1124,6 @@
      "date": "2026-11-20",
      "channel": "stable",
      "notes": "- New: Pings on ammo boxes, blue with the Resupply icon, and on research samples, white with the sample icon.\n- New: An enemy ping also plays one of the stratagem arrow sounds.\n- Changed: A ping goes to an objective only within 5 m of it, down from 12 m.\n- Changed: Ping markers out of view keep to the screen edges as the markers of allies do.\n- Changed: The ping diamond is 15 percent smaller, and the line has a thin outline. The pulse up the line is gone, and markers no longer fade while the crosshair is on them.\n- Fixed: Weapon follows aim no longer snaps back to the plain pose when looking far down."
-    },
-    {
-     "version": "0.15.1",
-     "date": "2026-11-20",
-     "channel": "stable",
-     "notes": "- Fixed: Weapon follows aim bends the Helldiver on screen. In 0.15.0 the bend came after the frame was drawn, so the weapon stayed level.\n- Changed: The ammo bar shows a line between rounds for weapons of up to 50 rounds, up from 40."
     }
    ]
   },
